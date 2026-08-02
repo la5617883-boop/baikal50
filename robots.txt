@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://la5617883-boop.github.io/baikal50/sitemap.xml
