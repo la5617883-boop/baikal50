@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# 临时屏蔽百度爬虫（2026-08-04 起，Cloudflare 迁移期间，完成后移除）
+User-agent: Baiduspider
+Disallow: /
+
 Sitemap: https://la5617883-boop.github.io/baikal50/sitemap.xml
