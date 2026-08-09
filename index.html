@@ -17,171 +17,207 @@
     <meta name="google-site-verification" content="Z9mCA1X9NxxXOVVtAu80nAGcuLXPaUJShh3j6M5PYP0" />
     <meta name="baidu-site-verification" content="codeva-1RFM5iVUwb" />
     <style>
+    :root {
+        --ink: #1a1a1a;          /* 主文字：柔和黑 */
+        --ink-2: #555;           /* 次要文字 */
+        --ink-3: #999;           /* 弱化文字 */
+        --paper: #faf9f7;        /* 页面背景：纸感暖白 */
+        --card: #ffffff;         /* 卡片背景 */
+        --line: #e8e6e1;         /* 细分隔线 */
+        --line-strong: #1a1a1a;  /* 强调分隔线 */
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body {
+        font-family: var(--sans);
+        line-height: 2;
+        color: var(--ink);
+        background: var(--paper);
+    }
+    .page { max-width: 720px; margin: 0 auto; min-height: 100vh; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans SC", "Segoe UI", Roboto, sans-serif;
-            line-height: 1.8;
-            color: #000;
-            background: #fff;
-        }
-        .page { max-width: 640px; margin: 0 auto; min-height: 100vh; }
+    /* ============ Hero：雪山泰加林背景，文字沉入底部暗区 ============ */
+    .hero {
+        position: relative;
+        min-height: 78vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 120px 40px 90px;
+        text-align: center;
+        background-color: var(--ink);
+        background-image: url('hero.jpg');
+        background-size: cover;
+        background-position: center 32%;
+        color: #fff;
+        overflow: hidden;
+    }
+    .hero::before {
+        /* 深色遮罩：有图时保证白字可读，无图时纯黑底 */
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.65) 100%);
+        z-index: 1;
+    }
+    .hero > * { position: relative; z-index: 2; }
+    .hero h1 {
+        font-family: var(--serif);
+        font-size: 2.6em;
+        font-weight: 600;
+        letter-spacing: 12px;
+        text-indent: 12px; /* 视觉居中补偿字距 */
+        color: #fff;
+    }
+    .hero .sub {
+        font-size: 0.85em;
+        color: rgba(255,255,255,0.75);
+        margin-top: 14px;
+        letter-spacing: 6px;
+        text-indent: 6px;
+    }
+    .hero .line {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 300;
+        color: rgba(255,255,255,0.92);
+        margin-top: 48px;
+        letter-spacing: 4px;
+    }
 
-        /* Hero */
-        .hero {
-            padding: 100px 32px 60px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 1.8em;
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: #000;
-        }
-        .hero .sub {
-            font-size: 0.8em;
-            color: #888;
-            margin-top: 8px;
-            letter-spacing: 3px;
-        }
-        .hero .line {
-            font-size: 1em;
-            color: #000;
-            margin-top: 40px;
-            line-height: 2;
-            font-weight: 300;
-        }
+    /* Hero 底部细线 */
+    .hero-divider {
+        width: 100%;
+        height: 3px;
+        background: var(--ink);
+    }
 
-        /* Hero bottom line */
-        .hero-divider {
-            width: 100%;
-            height: 1px;
-            background: #000;
-            margin: 0 auto;
-        }
+    /* ============ 内容区 ============ */
+    .content { padding: 24px 40px 64px; }
 
-        /* Sections */
-        section { padding: 48px 32px; }
-        section + section { padding-top: 48px; }
-        section + section::before {
-            content: '';
-            display: block;
-            margin: 0 auto 48px;
-            width: 200px;
-            height: 42px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='42' viewBox='0 0 200 42'%3E%3C!-- outer curves left --%3E%3Cpath d='M2,21 C8,16 14,26 20,21 C26,16 30,8 36,16 C42,24 46,12 52,20' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M52,20 C58,28 62,16 68,24 C74,32 78,14 84,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- decorative loops left --%3E%3Cpath d='M36,16 C34,8 40,6 42,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M68,24 C66,32 72,34 74,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small berry curls left --%3E%3Cpath d='M20,21 C18,15 24,13 26,19' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M84,21 C86,27 80,29 78,23' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center left --%3E%3Cpath d='M88,21 C92,10 98,4 100,4 C102,4 104,8 104,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M88,21 C92,32 98,38 100,38 C102,38 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center right --%3E%3Cpath d='M112,21 C108,10 102,4 100,4 C98,4 96,8 96,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M112,21 C108,32 102,38 100,38 C98,38 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center ring --%3E%3Ccircle cx='100' cy='21' r='12' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='9' fill='none' stroke='%23000' stroke-width='0.4'/%3E%3Ccircle cx='100' cy='21' r='5' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='2' fill='%23000'/%3E%3C!-- center flower petals --%3E%3Cpath d='M100,9 C102,3 106,5 104,9' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,33 C102,39 106,37 104,33' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M88,21 C82,19 84,15 88,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M112,21 C118,19 116,15 112,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small dots around center --%3E%3Ccircle cx='92' cy='12' r='1.5' fill='%23000'/%3E%3Ccircle cx='108' cy='12' r='1.5' fill='%23000'/%3E%3Ccircle cx='92' cy='30' r='1.5' fill='%23000'/%3E%3Ccircle cx='108' cy='30' r='1.5' fill='%23000'/%3E%3Ccircle cx='100' cy='7' r='1.5' fill='%23000'/%3E%3Ccircle cx='100' cy='35' r='1.5' fill='%23000'/%3E%3Ccircle cx='86' cy='21' r='1.5' fill='%23000'/%3E%3Ccircle cx='114' cy='21' r='1.5' fill='%23000'/%3E%3C!-- outer curves right --%3E%3Cpath d='M116,21 C120,28 124,16 130,24 C136,32 140,14 146,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M146,21 C152,28 156,16 162,24 C168,32 172,12 178,20 C184,28 190,16 196,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- decorative loops right --%3E%3Cpath d='M130,24 C128,32 134,34 136,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M162,24 C160,32 166,34 168,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small berry curls right --%3E%3Cpath d='M178,20 C176,14 182,12 184,18' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M116,21 C118,15 124,13 126,19' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E") center no-repeat;
-            background-size: contain;
-        }
+    /* 俄罗斯装饰分隔（保留原 SVG） */
+    section + section::before {
+        content: '';
+        display: block;
+        margin: 0 auto 56px;
+        width: 200px;
+        height: 42px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='42' viewBox='0 0 200 42'%3E%3C!-- outer curves left --%3E%3Cpath d='M2,21 C8,16 14,26 20,21 C26,16 30,8 36,16 C42,24 46,12 52,20' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M52,20 C58,28 62,16 68,24 C74,32 78,14 84,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- decorative loops left --%3E%3Cpath d='M36,16 C34,8 40,6 42,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M68,24 C66,32 72,34 74,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small berry curls left --%3E%3Cpath d='M20,21 C18,15 24,13 26,19' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M84,21 C86,27 80,29 78,23' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center left --%3E%3Cpath d='M88,21 C92,10 98,4 100,4 C102,4 104,8 104,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M88,21 C92,32 98,38 100,38 C102,38 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center right --%3E%3Cpath d='M112,21 C108,10 102,4 100,4 C98,4 96,8 96,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M112,21 C108,32 102,38 100,38 C98,38 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center ring --%3E%3Ccircle cx='100' cy='21' r='12' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='9' fill='none' stroke='%23000' stroke-width='0.4'/%3E%3Ccircle cx='100' cy='21' r='5' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='2' fill='%23000'/%3E%3C!-- center flower petals --%3E%3Cpath d='M100,9 C102,3 106,5 104,9' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,33 C102,39 106,37 104,33' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M88,21 C82,19 84,15 88,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M112,21 C118,19 116,15 112,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center right mirror --%3E%3Cpath d='M96,12 C94,16 98,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M104,12 C106,16 102,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center bottom --%3E%3Cpath d='M100,26 C100,32 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,26 C100,32 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- outer leaf pairs --%3E%3Cpath d='M10,21 C6,17 8,12 14,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M10,21 C6,25 8,30 14,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,17 192,12 186,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,25 192,30 186,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg>");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.55;
+    }
 
-        h2 {
-            font-size: 0.75em;
-            font-weight: 600;
-            color: #000;
-            letter-spacing: 3px;
-            margin-bottom: 24px;
-        }
-        p { font-size: 0.9em; color: #444; margin-bottom: 16px; line-height: 2; }
-        .small { font-size: 0.8em; color: #888; }
+    /* 标题 */
+    h2 {
+        font-family: var(--serif);
+        font-size: 1.35em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 4px;
+        margin: 56px 0 26px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--ink);
+        display: inline-block;
+    }
+    h3 {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 2px;
+        margin: 44px 0 16px;
+        padding-left: 14px;
+        border-left: 3px solid var(--ink);
+    }
 
-        /* Feature list */
-        .feature-list { list-style: none; }
-        .feature-list li {
-            padding: 10px 0;
-            font-size: 0.9em;
-            color: #444;
-            line-height: 1.9;
-        }
+    /* 正文 */
+    p { font-size: 0.95em; color: var(--ink-2); margin-bottom: 18px; line-height: 2.05; }
+    .small { font-size: 0.8em; color: var(--ink-3); }
+    strong { color: var(--ink); font-weight: 600; }
 
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            margin: 24px 0;
-            border: 1px solid #ddd;
-        }
-        .stat {
-            text-align: center;
-            padding: 20px 8px;
-            border-right: 1px solid #ddd;
-        }
-        .stat:last-child { border-right: none; }
-        .stat .num { display: block; font-size: 1.2em; font-weight: 400; color: #000; }
-        .stat .lbl { display: block; font-size: 0.65em; color: #888; margin-top: 4px; letter-spacing: 1px; }
+    /* 列表 */
+    ul, ol { margin: 0 0 20px 1.4em; }
+    li { font-size: 0.95em; color: var(--ink-2); line-height: 2; margin-bottom: 6px; }
+    li::marker { color: var(--ink-3); }
 
-        /* Table */
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 12px; text-align: left; font-size: 0.85em; }
-        th { color: #000; font-weight: 600; border-bottom: 1px solid #000; }
-        td { color: #444; border-bottom: 1px solid #eee; }
-        tr:last-child td { border-bottom: none; }
+    /* 引用 */
+    blockquote {
+        border-left: 3px solid var(--ink);
+        padding: 6px 20px;
+        margin: 28px 0;
+        color: var(--ink-2);
+        font-size: 0.9em;
+        background: var(--card);
+    }
 
-        /* Pricing */
-        .pricing {
-            margin-top: 16px;
-            padding: 16px 0;
-            border-top: 1px solid #000;
-        }
-        .pricing .row { font-size: 0.9em; }
-        .pricing .row .lbl { color: #888; }
-        .pricing .row .val { font-weight: 600; color: #000; float: right; }
+    /* 表格：纸感卡片化 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 26px 0;
+        background: var(--card);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    th, td { padding: 14px 16px; text-align: left; font-size: 0.88em; }
+    th {
+        color: #fff;
+        font-weight: 600;
+        background: var(--ink);
+        letter-spacing: 2px;
+    }
+    td { color: var(--ink-2); border-bottom: 1px solid var(--line); }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #faf9f7; }
 
-        /* FAQ */
-        .faq-item { margin-bottom: 16px; }
-        .faq-item .q { font-weight: 600; color: #000; margin-bottom: 4px; font-size: 0.9em; }
+    /* 图片 */
+    section img, .content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 22px auto;
+        border: 1px solid var(--line);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    em { color: var(--ink-3); font-size: 0.8em; display: block; text-align: center; margin: -10px 0 20px; }
 
-        /* Map */
-        .map-wrap { text-align: center; margin: 28px 0; }
-        .map-wrap img { border: 1px solid #eee; }
+    /* 分隔线 */
+    hr {
+        border: none;
+        height: 1px;
+        background: var(--line);
+        margin: 48px 0;
+    }
 
-        /* Contact */
-        .contact {
-            text-align: center;
-            padding: 40px 32px 60px;
-        }
-        .contact p { color: #888; font-size: 0.8em; }
-        .contact .link {
-            color: #000;
-            text-decoration: none;
-            font-size: 0.85em;
-            border-bottom: 1px solid #888;
-        }
-        .contact .link:hover { border-bottom-color: #000; }
+    /* 联系方式块 */
+    .content h2:last-of-type + ul { background: var(--card); padding: 24px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
 
-        footer {
-            text-align: center;
-            padding: 40px 32px;
-            color: #ddd;
-            font-size: 0.7em;
-            letter-spacing: 2px;
-        }
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+    a:hover { text-decoration-color: var(--ink); }
 
-        @media (max-width: 480px) {
-            .hero { padding: 60px 24px 40px; }
-            section { padding: 32px 24px; }
-            section + section { padding-top: 32px; }
-            section + section::before { margin-bottom: 32px; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
-            .stat:nth-child(2) { border-right: none; }
-            .stat:nth-child(3), .stat:nth-child(4) { border-top: 0; }
-        }
-    
-        h3 { font-size: 0.8em; font-weight: 600; color: #000; letter-spacing: 2px; margin: 36px 0 14px; }
-        blockquote { border-left: 2px solid #000; padding-left: 16px; margin: 20px 0; color: #555; font-size: 0.85em; }
-        section img { max-width: 100%; height: auto; display: block; margin: 12px auto; border: 1px solid #eee; }
-        section em { color: #888; font-size: 0.8em; display: block; text-align: center; }
+    footer {
+        text-align: center;
+        padding: 48px 32px;
+        color: var(--ink-3);
+        font-size: 0.7em;
+        letter-spacing: 8px;
+        text-indent: 8px;
+    }
 
-    
-        .content { padding: 16px 32px 48px; }
-        hr { border: none; border-top: 1px solid #eee; margin: 40px 0; }
-        h3 { font-size: 0.8em; font-weight: 600; color: #000; letter-spacing: 2px; margin: 36px 0 14px; }
-        blockquote { border-left: 2px solid #000; padding-left: 16px; margin: 20px 0; color: #555; font-size: 0.85em; }
-        .content img { max-width: 100%; height: auto; display: block; margin: 12px auto; border: 1px solid #eee; }
-        .content em { color: #888; font-size: 0.8em; display: block; text-align: center; }
-        .content table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-
-    </style>
+    @media (max-width: 480px) {
+        .hero { padding: 80px 24px 60px; }
+        .hero h1 { font-size: 1.9em; letter-spacing: 8px; text-indent: 8px; }
+        .hero .sub { font-size: 0.75em; letter-spacing: 4px; text-indent: 4px; }
+        .content { padding: 16px 24px 48px; }
+        h2 { font-size: 1.15em; }
+        section { padding: 40px 0; }
+        table { font-size: 0.82em; }
+        th, td { padding: 10px 10px; }
+    }
+</style>
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -368,6 +404,8 @@
 <li>装备最后检查、个人物资补充</li>
 <li>早睡，明天开始徒步</li>
 </ul>
+<p><img alt="贝加尔湖 · 巴尔古津湾" src="baikal-bay.jpg" /></p>
+<p><em>贝加尔湖 · 巴尔古津湾（东岸实拍）</em></p>
 <hr />
 <h3>Day 3 ｜利斯特维扬卡 → 黑谷营地</h3>
 <p><strong>主题：第一脚踩进荒野</strong></p>
@@ -391,6 +429,8 @@
 <blockquote>
 <p><em>不看手机、不想工作、不计划明天，只知道帐篷外面就是西伯利亚的风和贝加尔湖的浪声。</em></p>
 </blockquote>
+<p><img alt="西伯利亚荒野 · 河谷" src="valley.jpg" /></p>
+<p><em>西伯利亚 · 荒野</em></p>
 <hr />
 <h3>Day 5 ｜大卡季角2号营地 → 大戈洛</h3>
 <p><strong>主题：抵达终点，也是新的开始</strong></p>
@@ -648,7 +688,7 @@
 <p><strong>退改</strong>：
 - 因不成团导致行程取消，首付款全额退还
 - 因不可抗力（天气、航班、政策等）导致行程取消，全额退款或顺延至下一批次
-- 因个人原因取消：出发前 15 日以上，可退还尾款 6,200 元，首付款不予退还；出发前 15 日内（含），尾款不予退还</p>
+- 因个人原因取消行程，出发前15日以上，不予退还首付款；出发前15日以内（含），尾款不予退还（可协商顺延至下一批次）</p>
 <h3>装备与出行</h3>
 <ul>
 <li><strong>气罐</strong>：由领队在伊尔库茨克统一购买，徒步前分发到每名队员</li>
