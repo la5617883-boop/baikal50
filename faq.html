@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>贝加尔湖徒步常见问题解答 | 贝加尔50径</title>
+    <meta name="description" content="贝加尔湖徒步常见问题官方解答：路线难度、需要什么装备、一个人能参加吗、路上有信号吗、安全吗、费用多少、怎么联系——贝加尔50径团队逐一回答。">
+    <meta name="keywords" content="贝加尔湖徒步常见问题,贝加尔50径FAQ,贝加尔湖徒步装备,贝加尔湖徒步安全,贝加尔湖徒步费用">
+    <meta name="robots" content="index, follow">
+    <style>
+
+    :root {
+        --ink: #1a1a1a;          /* 主文字：柔和黑 */
+        --ink-2: #555;           /* 次要文字 */
+        --ink-3: #999;           /* 弱化文字 */
+        --paper: #faf9f7;        /* 页面背景：纸感暖白 */
+        --card: #ffffff;         /* 卡片背景 */
+        --line: #e8e6e1;         /* 细分隔线 */
+        --line-strong: #1a1a1a;  /* 强调分隔线 */
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body {
+        font-family: var(--sans);
+        line-height: 2;
+        color: var(--ink);
+        background: var(--paper);
+    }
+    .page { max-width: 720px; margin: 0 auto; min-height: 100vh; }
+
+    /* ============ Hero：雪山泰加林背景，文字沉入底部暗区 ============ */
+    .hero {
+        position: relative;
+        min-height: 78vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 120px 40px 90px;
+        text-align: center;
+        background-color: var(--ink);
+        background-image: url('hero.jpg');
+        background-size: cover;
+        background-position: center 32%;
+        color: #fff;
+        overflow: hidden;
+    }
+    .hero::before {
+        /* 深色遮罩：有图时保证白字可读，无图时纯黑底 */
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.65) 100%);
+        z-index: 1;
+    }
+    .hero > * { position: relative; z-index: 2; }
+    .hero h1 {
+        font-family: var(--serif);
+        font-size: 2.6em;
+        font-weight: 600;
+        letter-spacing: 12px;
+        text-indent: 12px; /* 视觉居中补偿字距 */
+        color: #fff;
+    }
+    .hero .sub {
+        font-size: 0.85em;
+        color: rgba(255,255,255,0.75);
+        margin-top: 14px;
+        letter-spacing: 6px;
+        text-indent: 6px;
+    }
+    .hero .line {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 300;
+        color: rgba(255,255,255,0.92);
+        margin-top: 48px;
+        letter-spacing: 4px;
+    }
+
+    /* Hero 底部细线 */
+    .hero-divider {
+        width: 100%;
+        height: 3px;
+        background: var(--ink);
+    }
+
+    /* ============ 内容区 ============ */
+    .content { padding: 24px 40px 64px; }
+
+    /* 俄罗斯装饰分隔（保留原 SVG） */
+    section + section::before {
+        content: '';
+        display: block;
+        margin: 0 auto 56px;
+        width: 200px;
+        height: 42px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='42' viewBox='0 0 200 42'%3E%3C!-- outer curves left --%3E%3Cpath d='M2,21 C8,16 14,26 20,21 C26,16 30,8 36,16 C42,24 46,12 52,20' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M52,20 C58,28 62,16 68,24 C74,32 78,14 84,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- decorative loops left --%3E%3Cpath d='M36,16 C34,8 40,6 42,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M68,24 C66,32 72,34 74,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small berry curls left --%3E%3Cpath d='M20,21 C18,15 24,13 26,19' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M84,21 C86,27 80,29 78,23' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center left --%3E%3Cpath d='M88,21 C92,10 98,4 100,4 C102,4 104,8 104,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M88,21 C92,32 98,38 100,38 C102,38 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center right --%3E%3Cpath d='M112,21 C108,10 102,4 100,4 C98,4 96,8 96,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M112,21 C108,32 102,38 100,38 C98,38 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center ring --%3E%3Ccircle cx='100' cy='21' r='12' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='9' fill='none' stroke='%23000' stroke-width='0.4'/%3E%3Ccircle cx='100' cy='21' r='5' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='2' fill='%23000'/%3E%3C!-- center flower petals --%3E%3Cpath d='M100,9 C102,3 106,5 104,9' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,33 C102,39 106,37 104,33' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M88,21 C82,19 84,15 88,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M112,21 C118,19 116,15 112,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center right mirror --%3E%3Cpath d='M96,12 C94,16 98,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M104,12 C106,16 102,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center bottom --%3E%3Cpath d='M100,26 C100,32 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,26 C100,32 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- outer leaf pairs --%3E%3Cpath d='M10,21 C6,17 8,12 14,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M10,21 C6,25 8,30 14,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,17 192,12 186,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,25 192,30 186,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg>");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.55;
+    }
+
+    /* 标题 */
+    h2 {
+        font-family: var(--serif);
+        font-size: 1.35em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 4px;
+        margin: 56px 0 26px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--ink);
+        display: inline-block;
+    }
+    h3 {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 2px;
+        margin: 44px 0 16px;
+        padding-left: 14px;
+        border-left: 3px solid var(--ink);
+    }
+
+    /* 正文 */
+    p { font-size: 0.95em; color: var(--ink-2); margin-bottom: 18px; line-height: 2.05; }
+    .small { font-size: 0.8em; color: var(--ink-3); }
+    strong { color: var(--ink); font-weight: 600; }
+
+    /* 列表 */
+    ul, ol { margin: 0 0 20px 1.4em; }
+    li { font-size: 0.95em; color: var(--ink-2); line-height: 2; margin-bottom: 6px; }
+    li::marker { color: var(--ink-3); }
+
+    /* 引用 */
+    blockquote {
+        border-left: 3px solid var(--ink);
+        padding: 6px 20px;
+        margin: 28px 0;
+        color: var(--ink-2);
+        font-size: 0.9em;
+        background: var(--card);
+    }
+
+    /* 表格：纸感卡片化 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 26px 0;
+        background: var(--card);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    th, td { padding: 14px 16px; text-align: left; font-size: 0.88em; }
+    th {
+        color: #fff;
+        font-weight: 600;
+        background: var(--ink);
+        letter-spacing: 2px;
+    }
+    td { color: var(--ink-2); border-bottom: 1px solid var(--line); }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #faf9f7; }
+
+    /* 图片 */
+    section img, .content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 22px auto;
+        border: 1px solid var(--line);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    em { color: var(--ink-3); font-size: 0.8em; display: block; text-align: center; margin: -10px 0 20px; }
+
+    /* 分隔线 */
+    hr {
+        border: none;
+        height: 1px;
+        background: var(--line);
+        margin: 48px 0;
+    }
+
+    /* 联系方式块 */
+    .content h2:last-of-type + ul { background: var(--card); padding: 24px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+    a:hover { text-decoration-color: var(--ink); }
+
+    footer {
+        text-align: center;
+        padding: 48px 32px;
+        color: var(--ink-3);
+        font-size: 0.7em;
+        letter-spacing: 8px;
+        text-indent: 8px;
+    }
+
+    @media (max-width: 480px) {
+        .hero { padding: 80px 24px 60px; }
+        .hero h1 { font-size: 1.9em; letter-spacing: 8px; text-indent: 8px; }
+        .hero .sub { font-size: 0.75em; letter-spacing: 4px; text-indent: 4px; }
+        .content { padding: 16px 24px 48px; }
+        h2 { font-size: 1.15em; }
+        section { padding: 40px 0; }
+        table { font-size: 0.82em; }
+        th, td { padding: 10px 10px; }
+    }
+
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="content">
+<h1>常见问题</h1>
+<h2>关于路线</h2>
+<h3>这条路线难度如何？</h3>
+<p>中等偏上。三天50公里重装徒步，适合有基本户外经验的人。不需要极端的体能，但需要有露营和负重行走的经历。</p>
+<h3>需要什么样的装备？</h3>
+<p>见<a href="./route.md">路线详情页</a>的装备建议。大件装备（帐篷、睡袋等）如果没有，可以提前告知代为协调租赁，费用个人承担。气罐由领队在伊尔库茨克统一购买、出发前分发；注意带有电子打火的炉头不能上飞机，登山杖需托运。</p>
+<h3>一个人可以参加吗？</h3>
+<p>可以。很多人是独自报名，路上一起走，营地一起扎。全程酒店均为单人大床房。</p>
+<h3>没有户外经验可以吗？</h3>
+<p>建议至少有一次重装露营经历。如果完全没有经验但体能好、意愿强，可以先跟领队聊一下具体情况。</p>
+<h2>关于时间与批次</h2>
+<h3>什么时候出发？</h3>
+<p>出行时间为6-9月。批次和具体出发日期视报名情况确定，人齐即发。</p>
+<h3>一批多少人？</h3>
+<p>5-6人成团，每团配备1名领队、1名协作。</p>
+<h2>关于签证</h2>
+<h3>需要办俄罗斯签证吗？</h3>
+<p>不需要。中俄互免签证，个人亦无需办理签证，持有效护照即可入境。</p>
+<h3>需要哪些证件？</h3>
+<p>有效护照（6个月以上有效期）。境外及户外意外伤害险已包含在费用内。</p>
+<h2>关于费用</h2>
+<h3>费用是多少？</h3>
+<p>16,200 元/人。</p>
+<h3>费用包含什么？</h3>
+<ul>
+<li>往返国航 CA869/CA870 机票（托运行李 1×23kg，手提行李 1×7kg）</li>
+<li>酒店住宿（共3晚）：伊尔库茨克中心酒店（四星，Day 1、Day 5）、利斯特维扬卡贝加尔酒店（四星，Day 2）——全部单人大床房</li>
+<li>全程标准餐（徒步以外为标准俄餐，徒步期间由领队统一采购分发）</li>
+<li>进入国家公园手续及相关门票</li>
+<li>接送机及全程用车</li>
+<li>领队及相关服务费用</li>
+<li>全程翻译服务</li>
+<li>境外及户外意外伤害险（京东安联麦哲伦计划：医疗运送和送返 200 万、意外身故及伤残 100 万）</li>
+</ul>
+<h3>费用不含什么？</h3>
+<ul>
+<li>个人消费</li>
+<li>徒步个人装备（帐篷、睡袋、防潮垫、登山杖等，需自备；可代为协调租赁）</li>
+</ul>
+<h3>付费方式？</h3>
+<p>确定出发日期后支付首付款 10,000 元（用于购机票、订酒店和车辆等），出发前 15 日支付尾款 6,200 元。</p>
+<h3>取消行程怎么办？</h3>
+<ul>
+<li>因不成团导致行程取消，首付款全额退还</li>
+<li>因不可抗力（天气、航班、政策等）导致行程取消，全额退款或顺延至下一批次</li>
+<li>因个人原因取消行程，出发前15日以上，不予退还首付款；出发前15日以内（含），尾款不予退还（可协商顺延至下一批次）</li>
+</ul>
+<h2>关于安全</h2>
+<h3>路上有信号吗？</h3>
+<p>绝大部分路段无信号，仅个别点位有信号。这正是这条路线的一部分——大部分时间断联。</p>
+<h3>路上会遇到野生动物吗？</h3>
+<p>不会。路线为国家公园内成熟徒步路线，路标清晰，路线周围不会出现大型野生动物。</p>
+<h3>有紧急联系方式吗？</h3>
+<p>领队全程携带卫星电话或应急通讯设备。出发前会告知紧急联络方式。</p>
+<h3>迷路怎么办？</h3>
+<p>路线沿贝加尔湖岸线行进，方向明确。领队全程带队，徒步期间不得单独离队。</p>
+<h3>中途走不动、受伤或想退出怎么办？</h3>
+<p>可联系国家公园管理机构安排交通接出，相关费用由个人承担。</p>
+<h2>关于行程</h2>
+<h3>怎么到伊尔库茨克？</h3>
+<p>北京有直飞伊尔库茨克的航班（CA869），飞行时间约3小时。</p>
+<h3>到了之后怎么走？</h3>
+<p>Day 1 抵达伊尔库茨克，入住伊尔库茨克中心酒店。Day 2 乘车前往利斯特维扬卡（约1小时），入住利村，参观贝加尔湖博物馆。Day 3 一早开始徒步。</p>
+<h3>徒步结束后怎么安排？</h3>
+<p>Day 5 抵达大戈洛后乘车返回伊尔库茨克，Day 6 参观十二月党人纪念馆后乘 CA870 返回北京。</p>
+<h3>语言沟通怎么办？</h3>
+<p>领队与协作均精通俄语，全程提供翻译服务，沟通无障碍。</p>
+<hr />
+<p><strong>还有别的问题？</strong> 去小红书 <a href="https://xhslink.cn/m/1q8Sq05uGYg">贝加尔50径</a> 私信留言。</p>
+<p><a href="/">← 返回首页</a></p>
+    </div>
+    <footer><a href="https://baikal50.cn/" style="color:inherit;text-decoration:none;letter-spacing:4px;">← 返回首页 · 贝加尔50径</a></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>十二月党人与伊尔库茨克 | 贝加尔50径</title>
+    <meta name="description" content="十二月党人起义失败后流放西伯利亚的历史：上百名贵族被流放至伊尔库茨克，他们的妻子放弃贵族身份跨越6000公里追随，深刻影响了这座城市的文化与建设。">
+    <meta name="keywords" content="十二月党人,伊尔库茨克历史,西伯利亚历史,十二月党人妻子,贝加尔湖徒步">
+    <meta name="robots" content="index, follow">
+    <style>
+
+    :root {
+        --ink: #1a1a1a;          /* 主文字：柔和黑 */
+        --ink-2: #555;           /* 次要文字 */
+        --ink-3: #999;           /* 弱化文字 */
+        --paper: #faf9f7;        /* 页面背景：纸感暖白 */
+        --card: #ffffff;         /* 卡片背景 */
+        --line: #e8e6e1;         /* 细分隔线 */
+        --line-strong: #1a1a1a;  /* 强调分隔线 */
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body {
+        font-family: var(--sans);
+        line-height: 2;
+        color: var(--ink);
+        background: var(--paper);
+    }
+    .page { max-width: 720px; margin: 0 auto; min-height: 100vh; }
+
+    /* ============ Hero：雪山泰加林背景，文字沉入底部暗区 ============ */
+    .hero {
+        position: relative;
+        min-height: 78vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 120px 40px 90px;
+        text-align: center;
+        background-color: var(--ink);
+        background-image: url('hero.jpg');
+        background-size: cover;
+        background-position: center 32%;
+        color: #fff;
+        overflow: hidden;
+    }
+    .hero::before {
+        /* 深色遮罩：有图时保证白字可读，无图时纯黑底 */
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.65) 100%);
+        z-index: 1;
+    }
+    .hero > * { position: relative; z-index: 2; }
+    .hero h1 {
+        font-family: var(--serif);
+        font-size: 2.6em;
+        font-weight: 600;
+        letter-spacing: 12px;
+        text-indent: 12px; /* 视觉居中补偿字距 */
+        color: #fff;
+    }
+    .hero .sub {
+        font-size: 0.85em;
+        color: rgba(255,255,255,0.75);
+        margin-top: 14px;
+        letter-spacing: 6px;
+        text-indent: 6px;
+    }
+    .hero .line {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 300;
+        color: rgba(255,255,255,0.92);
+        margin-top: 48px;
+        letter-spacing: 4px;
+    }
+
+    /* Hero 底部细线 */
+    .hero-divider {
+        width: 100%;
+        height: 3px;
+        background: var(--ink);
+    }
+
+    /* ============ 内容区 ============ */
+    .content { padding: 24px 40px 64px; }
+
+    /* 俄罗斯装饰分隔（保留原 SVG） */
+    section + section::before {
+        content: '';
+        display: block;
+        margin: 0 auto 56px;
+        width: 200px;
+        height: 42px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='42' viewBox='0 0 200 42'%3E%3C!-- outer curves left --%3E%3Cpath d='M2,21 C8,16 14,26 20,21 C26,16 30,8 36,16 C42,24 46,12 52,20' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M52,20 C58,28 62,16 68,24 C74,32 78,14 84,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- decorative loops left --%3E%3Cpath d='M36,16 C34,8 40,6 42,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M68,24 C66,32 72,34 74,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small berry curls left --%3E%3Cpath d='M20,21 C18,15 24,13 26,19' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M84,21 C86,27 80,29 78,23' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center left --%3E%3Cpath d='M88,21 C92,10 98,4 100,4 C102,4 104,8 104,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M88,21 C92,32 98,38 100,38 C102,38 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center right --%3E%3Cpath d='M112,21 C108,10 102,4 100,4 C98,4 96,8 96,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M112,21 C108,32 102,38 100,38 C98,38 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center ring --%3E%3Ccircle cx='100' cy='21' r='12' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='9' fill='none' stroke='%23000' stroke-width='0.4'/%3E%3Ccircle cx='100' cy='21' r='5' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='2' fill='%23000'/%3E%3C!-- center flower petals --%3E%3Cpath d='M100,9 C102,3 106,5 104,9' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,33 C102,39 106,37 104,33' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M88,21 C82,19 84,15 88,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M112,21 C118,19 116,15 112,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center right mirror --%3E%3Cpath d='M96,12 C94,16 98,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M104,12 C106,16 102,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center bottom --%3E%3Cpath d='M100,26 C100,32 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,26 C100,32 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- outer leaf pairs --%3E%3Cpath d='M10,21 C6,17 8,12 14,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M10,21 C6,25 8,30 14,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,17 192,12 186,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,25 192,30 186,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg>");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.55;
+    }
+
+    /* 标题 */
+    h2 {
+        font-family: var(--serif);
+        font-size: 1.35em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 4px;
+        margin: 56px 0 26px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--ink);
+        display: inline-block;
+    }
+    h3 {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 2px;
+        margin: 44px 0 16px;
+        padding-left: 14px;
+        border-left: 3px solid var(--ink);
+    }
+
+    /* 正文 */
+    p { font-size: 0.95em; color: var(--ink-2); margin-bottom: 18px; line-height: 2.05; }
+    .small { font-size: 0.8em; color: var(--ink-3); }
+    strong { color: var(--ink); font-weight: 600; }
+
+    /* 列表 */
+    ul, ol { margin: 0 0 20px 1.4em; }
+    li { font-size: 0.95em; color: var(--ink-2); line-height: 2; margin-bottom: 6px; }
+    li::marker { color: var(--ink-3); }
+
+    /* 引用 */
+    blockquote {
+        border-left: 3px solid var(--ink);
+        padding: 6px 20px;
+        margin: 28px 0;
+        color: var(--ink-2);
+        font-size: 0.9em;
+        background: var(--card);
+    }
+
+    /* 表格：纸感卡片化 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 26px 0;
+        background: var(--card);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    th, td { padding: 14px 16px; text-align: left; font-size: 0.88em; }
+    th {
+        color: #fff;
+        font-weight: 600;
+        background: var(--ink);
+        letter-spacing: 2px;
+    }
+    td { color: var(--ink-2); border-bottom: 1px solid var(--line); }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #faf9f7; }
+
+    /* 图片 */
+    section img, .content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 22px auto;
+        border: 1px solid var(--line);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    em { color: var(--ink-3); font-size: 0.8em; display: block; text-align: center; margin: -10px 0 20px; }
+
+    /* 分隔线 */
+    hr {
+        border: none;
+        height: 1px;
+        background: var(--line);
+        margin: 48px 0;
+    }
+
+    /* 联系方式块 */
+    .content h2:last-of-type + ul { background: var(--card); padding: 24px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+    a:hover { text-decoration-color: var(--ink); }
+
+    footer {
+        text-align: center;
+        padding: 48px 32px;
+        color: var(--ink-3);
+        font-size: 0.7em;
+        letter-spacing: 8px;
+        text-indent: 8px;
+    }
+
+    @media (max-width: 480px) {
+        .hero { padding: 80px 24px 60px; }
+        .hero h1 { font-size: 1.9em; letter-spacing: 8px; text-indent: 8px; }
+        .hero .sub { font-size: 0.75em; letter-spacing: 4px; text-indent: 4px; }
+        .content { padding: 16px 24px 48px; }
+        h2 { font-size: 1.15em; }
+        section { padding: 40px 0; }
+        table { font-size: 0.82em; }
+        th, td { padding: 10px 10px; }
+    }
+
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="content">
+<h1>历史背景</h1>
+<h2>十二月党人与贝加尔湖</h2>
+<h3>1825 — 放逐的开始</h3>
+<p>1825年12月，一批俄国贵族军官在圣彼得堡发动起义，试图推翻沙皇专制制度。起义失败后，他们被流放到西伯利亚——其中最远的流放地，就在贝加尔湖以东。</p>
+<p>这些人被称为"十二月党人"。</p>
+<p>他们原本是俄国的精英——贵族出身、受过最好的教育、在军队中担任军官。一夜之间，他们离开了客厅和沙龙，走进这片冻土。</p>
+<h3>这条路曾是流放之路</h3>
+<p>今天走过的贝加尔湖西岸，正是当年流放路线的一部分。十二月党人和他们的妻子——那些自愿跟随丈夫前往西伯利亚的贵族女性——踏过了同一片土地。</p>
+<blockquote>
+<p>不是被赶走，是因为有些东西，自己放不下，只能留在这里。</p>
+</blockquote>
+<h3>两百年后</h3>
+<p>今天的贝加尔50径，不是一条被遗忘的历史路线。它是一条你选择主动走入的路。</p>
+<p>不是流放，是放逐。</p>
+<p>两百年了，湖还是那个湖。走在这条路上的人，从被迫到主动。有些人走进来，有些人走出去。湖水一直在那里，不说话。</p>
+<hr />
+<p><em>关于十二月党人的更多故事，及这条路线与这段历史的联系，可以在实地徒步时了解。</em></p>
+<p><a href="/">← 返回首页</a></p>
+    </div>
+    <footer><a href="https://baikal50.cn/" style="color:inherit;text-decoration:none;letter-spacing:4px;">← 返回首页 · 贝加尔50径</a></footer>
+</div>
+</body>
+</html>
