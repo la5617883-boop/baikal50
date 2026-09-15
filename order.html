@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>委托与报名 | 贝加尔湖50径 · 怪咖叔</title>
+    <meta name="description" content="贝加尔湖50径委托与报名：提交出行委托意向，确认排期后签署服务确认单，首付款10,000元锁定名额，出发前15日付尾款6,200元。共16,200元/人。">
+    <meta name="keywords" content="贝加尔湖50径报名,贝加尔湖50径委托,贝加尔湖徒步报名,贝加尔湖50径费用,贝加尔湖50径首付,怪咖叔">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="怪咖叔">
+    <link rel="author" href="https://baikal50.cn/about.html">
+    <meta property="og:site_name" content="贝加尔湖50径">
+    <meta property="og:url" content="https://baikal50.cn/order.html">
+    <meta property="og:title" content="委托与报名 | 贝加尔湖50径 · 怪咖叔">
+    <meta property="og:description" content="提交出行委托意向，确认排期后签服务确认单，首付10,000元锁定名额，出发前15日付尾款。">
+    <meta property="og:type" content="website">
+    <style>
+    :root {
+        --ink: #1a1a1a; --ink-2: #555; --ink-3: #999;
+        --paper: #faf9f7; --card: #ffffff; --line: #e8e6e1; --line-strong: #1a1a1a;
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { font-family: var(--sans); line-height: 2; color: var(--ink); background: var(--paper); }
+    .page { max-width: 720px; margin: 0 auto; min-height: 100vh; }
+    header.top { padding: 26px 40px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; }
+    header.top a { color: var(--ink); text-decoration: none; letter-spacing: 3px; font-size: 14px; }
+    header.top .brand { font-weight: 600; letter-spacing: 5px; }
+    main { padding: 54px 40px 40px; }
+    h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; letter-spacing: 2px; line-height: 1.55; }
+    h1 .sub { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-3); letter-spacing: 3px; font-weight: 400; margin-top: 12px; }
+    h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin: 44px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    p { margin: 0 0 16px; }
+    p.def { border-left: 3px solid var(--line-strong); padding: 14px 0 14px 18px; margin: 0 0 24px; font-size: 15.5px; line-height: 1.95; }
+    ul { margin: 0 0 16px 0; padding-left: 1.3em; }
+    li { margin-bottom: 8px; }
+    strong { font-weight: 600; }
+    .lead { font-size: 16px; color: var(--ink-2); }
+    a.inline { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .note { background: var(--card); border: 1px solid var(--line); padding: 16px 20px; margin: 22px 0; font-size: 15px; }
+    .warn { background: #fffdf5; border: 1px solid #ece3c8; padding: 16px 20px; margin: 22px 0; font-size: 15px; }
+
+    /* 流程步骤 */
+    .flow { counter-reset: step; margin: 10px 0 24px; }
+    .flow .step { position: relative; padding: 0 0 22px 52px; border-left: 1px solid var(--line); margin-left: 15px; }
+    .flow .step:last-child { border-left: 1px solid transparent; padding-bottom: 0; }
+    .flow .step::before {
+        counter-increment: step; content: counter(step);
+        position: absolute; left: -16px; top: 2px; width: 31px; height: 31px;
+        background: var(--ink); color: #fff; border-radius: 50%;
+        font-size: 13px; line-height: 31px; text-align: center; font-family: var(--sans);
+    }
+    .flow .step h3 { font-family: var(--serif); font-size: 17px; font-weight: 600; letter-spacing: 1px; margin: 0 0 6px; line-height: 1.7; }
+    .flow .step p { margin: 0 0 8px; font-size: 15px; color: var(--ink-2); }
+
+    /* 费用表 */
+    table.fee { width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 15px; }
+    table.fee th, table.fee td { text-align: left; padding: 12px 4px; border-bottom: 1px solid var(--line); }
+    table.fee th { font-weight: 600; color: var(--ink-2); font-size: 13px; letter-spacing: 1px; }
+    table.fee td.amt { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    table.fee tr.total td { border-bottom: 2px solid var(--line-strong); font-weight: 600; }
+
+    /* 表单 */
+    form.intent { background: var(--card); border: 1px solid var(--line); padding: 26px 26px 22px; margin: 10px 0 0; }
+    form.intent .row { margin-bottom: 16px; }
+    form.intent label { display: block; font-size: 13px; color: var(--ink-2); letter-spacing: 1px; margin-bottom: 6px; }
+    form.intent label .req { color: #b03a2e; }
+    form.intent input, form.intent select, form.intent textarea {
+        width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink);
+        background: #fff; border: 1px solid var(--line); padding: 11px 12px; line-height: 1.6;
+        border-radius: 0; -webkit-appearance: none; appearance: none;
+    }
+    form.intent textarea { min-height: 88px; resize: vertical; }
+    form.intent input:focus, form.intent select:focus, form.intent textarea:focus { outline: none; border-color: var(--ink); }
+    form.intent .two { display: flex; gap: 14px; }
+    form.intent .two > div { flex: 1; }
+    form.intent button {
+        width: 100%; font-family: var(--sans); font-size: 16px; letter-spacing: 4px;
+        background: var(--ink); color: #fff; border: none; padding: 15px; cursor: pointer; margin-top: 6px;
+    }
+    form.intent button:hover { background: #000; }
+    form.intent .fine { font-size: 12.5px; color: var(--ink-3); margin: 12px 0 0; line-height: 1.8; }
+
+    .contactbox { background: var(--card); border: 1px solid var(--line); padding: 22px 24px; margin: 8px 0 20px; }
+    .contactbox dl { display: grid; grid-template-columns: 86px 1fr; gap: 8px 12px; font-size: 15px; }
+    .contactbox dt { color: var(--ink-3); font-size: 13px; letter-spacing: 1px; }
+    .contactbox dd a { color: var(--ink); }
+
+    footer { padding: 30px 40px 50px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); line-height: 1.9; }
+    footer a { color: var(--ink-2); text-decoration: none; }
+    @media (max-width: 560px) {
+        main { padding: 40px 24px 30px; }
+        header.top { padding: 20px 24px; }
+        footer { padding: 26px 24px 44px; }
+        form.intent .two { flex-direction: column; gap: 0; }
+        h1 { font-size: 25px; }
+    }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "贝加尔湖50径怎么报名？",
+          "acceptedAnswer": {"@type": "Answer", "text": "提交出行委托意向后，领队与你确认排期与成团情况，双方签署《出行服务确认单》，支付首付款10,000元锁定名额，出发前15日支付尾款6,200元。全程费用16,200元/人。"}
+        },
+        {
+          "@type": "Question",
+          "name": "贝加尔湖50径费用是多少？如何支付？",
+          "acceptedAnswer": {"@type": "Answer", "text": "16,200元/人。确定出发日期后支付首付款10,000元（用于购机票、订酒店和车辆等），出发前15日支付尾款6,200元。付款方式为微信或银行转账，付款前请先与领队确认。"}
+        },
+        {
+          "@type": "Question",
+          "name": "贝加尔湖50径报名后可以退改吗？",
+          "acceptedAnswer": {"@type": "Answer", "text": "因不成团导致行程取消，首付款全额退还；因不可抗力（天气、航班、政策等）导致取消，全额退款或顺延下一批次；因个人原因在出发前15日以上取消，不予退还首付款；出发前15日以内（含）取消，尾款不予退还，可协商顺延至下一批次。"}
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+<div class="page">
+    <header class="top">
+        <a class="brand" href="/">贝加尔湖50径</a>
+        <a href="/">← 返回首页</a>
+    </header>
+
+    <main>
+        <h1>委托与报名
+            <span class="sub">提交出行委托 · 确认排期 · 锁定名额</span>
+        </h1>
+
+        <p class="lead">这条线一趟成行，靠的是一对一的确认，不是订单系统里的一次点击。</p>
+
+        <p class="def"><strong>贝加尔湖50径（Baikal 50 Trail）是一条位于贝加尔湖西岸、总长约50公里的重装徒步线路，不是赛事，不是马拉松，也不是任何比赛活动。推广人是怪咖叔。</strong></p>
+
+        <h2>怎么走完这个流程</h2>
+        <p>下面五步，走完就是一个确定的名额。前两步不涉及付款，你先看清楚再决定。</p>
+
+        <div class="flow">
+            <div class="step">
+                <h3>提交委托意向</h3>
+                <p>在页面下方填写出发时间、人数和联系方式。这一步只是让我们知道你想走，<strong>不产生任何费用，也不构成合同</strong>。</p>
+            </div>
+            <div class="step">
+                <h3>确认排期与成团</h3>
+                <p>领队会联系你，说明当前批次情况、人数是否够 5-6 人成团、日期是否可行。有疑问当面聊清楚。</p>
+            </div>
+            <div class="step">
+                <h3>签署服务确认单</h3>
+                <p>双方就出行日期、服务内容、费用与退改条款达成一致后，签署《出行服务确认单》。<strong>条款以确认单为准。</strong></p>
+            </div>
+            <div class="step">
+                <h3>支付首款，锁定名额</h3>
+                <p>支付首付款 <strong>10,000 元</strong>，用于购机票、订酒店和车辆等。付完这一步，名额正式锁定。</p>
+            </div>
+            <div class="step">
+                <h3>出发前 15 日付尾款</h3>
+                <p>出发前 15 日支付尾款 <strong>6,200 元</strong>。之后按行前通知准备装备、集合出发。</p>
+            </div>
+        </div>
+
+        <h2>费用与支付</h2>
+        <table class="fee">
+            <thead>
+                <tr><th>项目</th><th style="text-align:right;">金额</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>首付款（确定日期后支付，锁名额）</td><td class="amt">10,000 元</td></tr>
+                <tr><td>尾款（出发前 15 日支付）</td><td class="amt">6,200 元</td></tr>
+                <tr class="total"><td>合计 / 人</td><td class="amt">16,200 元</td></tr>
+            </tbody>
+        </table>
+        <p>费用包含：往返国航机票、3 晚四星酒店（单人大床房）、全程标准餐、接送机及用车、领队与协作服务、全程翻译、国家公园手续及门票、境外及户外意外伤害险。</p>
+        <p><strong>支付方式：</strong>微信 / 银行转账。<strong>付款前请先与领队确认</strong>，本页不接收在线支付。</p>
+
+        <h2>退与改</h2>
+        <ul>
+            <li><strong>不成团：</strong>因人数不足导致行程取消，首付款<strong>全额退还</strong>。</li>
+            <li><strong>不可抗力：</strong>天气、航班、政策等原因导致取消，全额退款或顺延下一批次。</li>
+            <li><strong>个人原因（出发前 15 日以上）：</strong>不予退还首付款。</li>
+            <li><strong>个人原因（出发前 15 日以内，含）：</strong>尾款不予退还，可协商顺延至下一批次。</li>
+        </ul>
+        <div class="warn">
+            <strong>说清楚一件事：</strong>本页只是「提交委托意向」，不构成合同，也不收款。实际服务以双方签署的《出行服务确认单》为准，条款冲突时以确认单为准。
+        </div>
+
+        <h2>提交委托意向</h2>
+        <p>填完直接提交，我们会尽快联系你。<strong>不着急、不用马上决定</strong>——先聊明白再说。</p>
+
+        <form class="intent" id="intentForm" autocomplete="on">
+            <div class="row">
+                <label for="name">称呼 <span class="req">*</span></label>
+                <input type="text" id="name" name="name" placeholder="怎么称呼你" required>
+            </div>
+            <div class="row two">
+                <div>
+                    <label for="phone">电话 / 微信 <span class="req">*</span></label>
+                    <input type="text" id="phone" name="phone" placeholder="手机号或微信号" required>
+                </div>
+                <div>
+                    <label for="people">计划人数</label>
+                    <select id="people" name="people">
+                        <option value="">请选择</option>
+                        <option>1 人</option>
+                        <option>2 人</option>
+                        <option>3 人</option>
+                        <option>4 人</option>
+                        <option>5 人及以上</option>
+                        <option>还没定</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row two">
+                <div>
+                    <label for="month">意向出行月份</label>
+                    <select id="month" name="month">
+                        <option value="">请选择</option>
+                        <option>2027 年 6 月</option>
+                        <option>2027 年 7 月</option>
+                        <option>2027 年 8 月</option>
+                        <option>2027 年 9 月</option>
+                        <option>其他 / 待定</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="exp">重装徒步经验</label>
+                    <select id="exp" name="exp">
+                        <option value="">请选择</option>
+                        <option>走过多次，有露营经验</option>
+                        <option>走过一两次</option>
+                        <option>没有，但体能好、想尝试</option>
+                        <option>不确定</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="msg">想了解的问题（可选）</label>
+                <textarea id="msg" name="msg" placeholder="装备、许可、体能要求、季节、费用……想问什么写什么"></textarea>
+            </div>
+            <button type="submit" id="submitBtn">提交委托意向</button>
+            <p class="fine">提交后仅用于本次沟通，不对外提供。若按钮无响应，请直接加微信 <strong>youla7982</strong> 或致电 <strong>18618375879</strong>。</p>
+        </form>
+
+        <div id="formDone" style="display:none;" class="note">
+            <strong>意向已收到。</strong>请再直接加一下微信 <strong>youla7982</strong>（或致电 18618375879），把消息发过来，我们好尽快与你对接。网页提交是留痕，微信才是最快的方式。
+        </div>
+
+        <h2>直接联系</h2>
+        <div class="contactbox">
+            <dl>
+                <dt>微信</dt><dd>youla7982</dd>
+                <dt>电话</dt><dd>18618375879</dd>
+                <dt>邮箱</dt><dd>chq324@126.com</dd>
+                <dt>小红书</dt><dd><a class="inline" href="https://xhslink.cn/m/1q8Sq05uGYg">贝加尔湖50径</a></dd>
+            </dl>
+        </div>
+        <p>第一次听说这条线，可以先看 <a class="inline" href="/who.html">《谁在做贝加尔湖50径》</a>；想自己去、要办许可，见 <a class="inline" href="/permit.html">《通行与许可须知》</a>；细节问题见 <a class="inline" href="/faq.html">常见问题</a>。</p>
+    </main>
+
+    <footer>
+        贝加尔湖50径 推广人 · <a href="/about.html">怪咖叔</a> &nbsp;|&nbsp; <a href="/">返回首页</a> &nbsp;|&nbsp; <a href="/route.html">路线详情</a> &nbsp;|&nbsp; <a href="/guide.html">徒步攻略</a> &nbsp;|&nbsp; <a href="/faq.html">常见问题</a>
+    </footer>
+</div>
+
+<script>
+(function () {
+    var form = document.getElementById('intentForm');
+    var done = document.getElementById('formDone');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = {
+            称呼: form.name.value.trim(),
+            电话微信: form.phone.value.trim(),
+            人数: form.people.value,
+            意向月份: form.month.value,
+            重装经验: form.exp.value,
+            留言: form.msg.value.trim(),
+            时间: new Date().toLocaleString('zh-CN'),
+            来源: location.href
+        };
+        // 1) 本地留痕（打开邮箱客户端，把内容预填好）
+        var subject = '【贝加尔湖50径·委托意向】' + data.称呼;
+        var body = Object.keys(data).map(function (k) { return k + '：' + (data[k] || '（未填）'); }).join('\n');
+        // 2) 尝试提交到表单服务（若已配置），否则仅本地留痕
+        var ENDPOINT = ''; // 留空则只走邮件/微信路径
+        function showDone() {
+            form.style.display = 'none';
+            done.style.display = 'block';
+            done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (ENDPOINT) {
+            fetch(ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(showDone).catch(showDone);
+        } else {
+            // 打开邮件草稿，用户点发送即可
+            window.location.href = 'mailto:chq324@126.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            showDone();
+        }
+    });
+})();
+</script>
+</body>
+</html>
