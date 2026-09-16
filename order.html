@@ -107,7 +107,7 @@
         {
           "@type": "Question",
           "name": "贝加尔湖50径怎么报名？",
-          "acceptedAnswer": {"@type": "Answer", "text": "提交出行委托意向后，领队与你确认排期与成团情况，双方签署《出行服务确认单》，支付定金3,200元锁定名额，出发前15日支付8,000元，出发前3日支付余款5,000元。全程费用16,200元/人。"}
+          "acceptedAnswer": {"@type": "Answer", "text": "在委托页填好出行意向后点「一键复制并加微信」，内容会自动复制，加入领队微信youla7982粘贴发送即可。领队与你确认排期与成团情况，双方签署《出行服务确认单》，支付定金3,200元锁定名额，出发前15日支付8,000元，出发前3日支付余款5,000元。全程费用16,200元/人。"}
         },
         {
           "@type": "Question",
@@ -196,7 +196,7 @@
         </div>
 
         <h2>提交委托意向</h2>
-        <p>填完直接提交，我们会尽快联系你。<strong>不着急、不用马上决定</strong>——先聊明白再说。</p>
+        <p>填完点一下，内容自动复制好，你加到微信里粘贴发过来。<strong>不着急、不用马上决定</strong>——先聊明白再说。</p>
 
         <form class="intent" id="intentForm" autocomplete="on">
             <div class="row">
@@ -248,12 +248,19 @@
                 <label for="msg">想了解的问题（可选）</label>
                 <textarea id="msg" name="msg" placeholder="装备、许可、体能要求、季节、费用……想问什么写什么"></textarea>
             </div>
-            <button type="submit" id="submitBtn">提交委托意向</button>
-            <p class="fine">提交后仅用于本次沟通，不对外提供。若按钮无响应，请直接加微信 <strong>youla7982</strong> 或致电 <strong>18618375879</strong>。</p>
+            <button type="submit" id="submitBtn">一键复制并加微信</button>
+            <p class="fine">点一下，内容自动复制好，你打开微信粘贴发过来就行。表单本身不发往任何服务器——你的信息只在你自己的手机上，我们收不到半个字，直到你发给我们。</p>
         </form>
 
         <div id="formDone" style="display:none;" class="note">
-            <strong>意向已收到。</strong>请再直接加一下微信 <strong>youla7982</strong>（或致电 18618375879），把消息发过来，我们好尽快与你对接。网页提交是留痕，微信才是最快的方式。
+            <strong>✅ 已复制到剪贴板。</strong>现在按下面做——
+            <ol style="margin:10px 0 0;padding-left:22px;line-height:2;">
+                <li>打开微信，加我：<strong style="font-size:16px;">youla7982</strong></li>
+                <li>在聊天框里<strong>长按 → 粘贴</strong></li>
+                <li>发送</li>
+            </ol>
+            <p style="margin:12px 0 0;">或者直接<strong>打给我：18618375879</strong>，说一句"贝加尔湖50径"就行。</p>
+            <button type="button" id="copyAgain" style="margin-top:14px;background:#fff;color:#111;border:1px solid #111;padding:9px 18px;font:inherit;cursor:pointer;">没复制上？再点一次复制</button>
         </div>
 
         <h2>直接联系</h2>
@@ -279,40 +286,59 @@
     var form = document.getElementById('intentForm');
     var done = document.getElementById('formDone');
     if (!form) return;
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+
+    function buildText() {
         var data = {
-            称呼: form.name.value.trim(),
-            电话微信: form.phone.value.trim(),
-            人数: form.people.value,
-            意向月份: form.month.value,
-            重装经验: form.exp.value,
-            留言: form.msg.value.trim(),
-            时间: new Date().toLocaleString('zh-CN'),
-            来源: location.href
+            称呼: form.name.value.trim() || '（未填）',
+            电话微信: form.phone.value.trim() || '（未填）',
+            人数: form.people.value || '（未填）',
+            意向月份: form.month.value || '（未填）',
+            重装经验: form.exp.value || '（未填）',
+            留言: form.msg.value.trim() || '（未填）'
         };
-        // 1) 本地留痕（打开邮箱客户端，把内容预填好）
-        var subject = '【贝加尔湖50径·委托意向】' + data.称呼;
-        var body = Object.keys(data).map(function (k) { return k + '：' + (data[k] || '（未填）'); }).join('\n');
-        // 2) 尝试提交到表单服务（若已配置），否则仅本地留痕
-        var ENDPOINT = ''; // 留空则只走邮件/微信路径
-        function showDone() {
-            form.style.display = 'none';
-            done.style.display = 'block';
-            done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var lines = ['【贝加尔湖50径 · 出行委托意向】', ''];
+        Object.keys(data).forEach(function (k) { lines.push(k + '：' + data[k]); });
+        lines.push('');
+        lines.push('（发送时间：' + new Date().toLocaleString('zh-CN') + '）');
+        return lines.join('\n');
+    }
+
+    function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text);
         }
-        if (ENDPOINT) {
-            fetch(ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            }).then(showDone).catch(showDone);
-        } else {
-            // 打开邮件草稿，用户点发送即可
-            window.location.href = 'mailto:chq324@126.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        // 兼容旧浏览器 / 非 HTTPS
+        return new Promise(function (resolve, reject) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); resolve(); }
+            catch (err) { reject(err); }
+            document.body.removeChild(ta);
+        });
+    }
+
+    function showDone() {
+        form.style.display = 'none';
+        done.style.display = 'block';
+        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function handle(e) {
+        if (e) e.preventDefault();
+        var text = buildText();
+        copyText(text).then(showDone).catch(function () {
+            // 复制失败也显示指引，用户可手动抄
             showDone();
-        }
-    });
+        });
+    }
+
+    form.addEventListener('submit', handle);
+    var again = document.getElementById('copyAgain');
+    if (again) again.addEventListener('click', function () { copyText(buildText()); });
 })();
 </script>
 </body>
