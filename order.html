@@ -88,6 +88,19 @@
     .contactbox dl { display: grid; grid-template-columns: 86px 1fr; gap: 8px 12px; font-size: 15px; }
     .contactbox dt { color: var(--ink-3); font-size: 13px; letter-spacing: 1px; }
     .contactbox dd a { color: var(--ink); }
+    .contactbox.withqr { display: flex; gap: 26px; align-items: flex-start; }
+    .contactbox.withqr > dl { flex: 1; }
+    .qrside { flex: 0 0 200px; text-align: center; }
+    .qrside img { width: 200px; height: auto; display: block; border: 1px solid var(--line); background: #fff; padding: 6px; }
+    .qrside p { font-size: 12.5px; color: var(--ink-3); margin: 8px 0 0; letter-spacing: 1px; }
+    .qrcard { margin: 18px 0 4px; text-align: center; }
+    .qrcard img { width: 240px; height: auto; display: inline-block; border: 1px solid var(--line); background: #fff; padding: 8px; }
+    .qrcard p { font-size: 13px; color: var(--ink-3); margin: 9px 0 0; letter-spacing: 1px; }
+    @media (max-width: 620px) {
+        .contactbox.withqr { flex-direction: column; }
+        .qrside { flex: none; width: 100%; }
+        .qrside img { margin: 0 auto; }
+    }
 
     footer { padding: 30px 40px 50px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); line-height: 1.9; }
     footer a { color: var(--ink-2); text-decoration: none; }
@@ -255,16 +268,24 @@
         <div id="formDone" style="display:none;" class="note">
             <strong>✅ 已复制到剪贴板。</strong>现在按下面做——
             <ol style="margin:10px 0 0;padding-left:22px;line-height:2;">
-                <li>打开微信，加我：<strong style="font-size:16px;">youla7982</strong></li>
+                <li>打开微信，<strong>扫下面的码</strong>加我（或搜微信号 <strong>youla7982</strong>）</li>
                 <li>在聊天框里<strong>长按 → 粘贴</strong></li>
                 <li>发送</li>
             </ol>
+            <div class="qrcard">
+                <img src="/wechat-qr.png" srcset="/wechat-qr.png 1x, /wechat-qr@2x.png 2x" alt="微信扫码添加怪咖叔（微信号 youla7982）" width="240" height="391" loading="lazy">
+                <p>微信扫码 · 加领队怪咖叔</p>
+            </div>
             <p style="margin:12px 0 0;">或者直接<strong>打给我：18618375879</strong>，说一句"贝加尔湖50径"就行。</p>
             <button type="button" id="copyAgain" style="margin-top:14px;background:#fff;color:#111;border:1px solid #111;padding:9px 18px;font:inherit;cursor:pointer;">没复制上？再点一次复制</button>
         </div>
 
         <h2>直接联系</h2>
-        <div class="contactbox">
+        <div class="contactbox withqr">
+            <div class="qrside">
+                <img src="/wechat-qr.png" srcset="/wechat-qr.png 1x, /wechat-qr@2x.png 2x" alt="微信扫码添加怪咖叔（微信号 youla7982）" width="200" height="326" loading="lazy">
+                <p>微信扫码加我</p>
+            </div>
             <dl>
                 <dt>微信</dt><dd>youla7982</dd>
                 <dt>电话</dt><dd>18618375879</dd>
