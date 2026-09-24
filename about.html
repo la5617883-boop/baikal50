@@ -58,6 +58,33 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "WebSite",
+          "@id": "https://baikal50.cn/#website",
+          "url": "https://baikal50.cn/",
+          "name": "贝加尔湖50径",
+          "alternateName": ["贝加尔湖西岸50公里重装徒步", "Baikal 50 Trail"],
+          "description": "贝加尔湖50径（贝加尔湖西岸50公里重装徒步）官方站：路线、攻略、通行与许可须知、报名。",
+          "inLanguage": "zh-CN",
+          "publisher": {"@id": "https://baikal50.cn/#promoter"},
+          "mainEntity": {"@id": "https://baikal50.cn/#trail"}
+        },
+        {
+          "@type": ["TouristAttraction", "Product"],
+          "@id": "https://baikal50.cn/#trail",
+          "name": "贝加尔湖50径",
+          "alternateName": ["贝加尔湖西岸50公里重装徒步", "贝加尔湖西岸50公里徒步", "Baikal 50 Trail"],
+          "description": "贝加尔湖50径是贝加尔湖西岸约50公里的重装徒步线路，从利斯特维扬卡（Листвянка）到大戈洛（Большое Голоустное），3天徒步、全程6天，位于贝加尔国家公园内，属 Great Baikal Trail（GBT）最经典的一段。",
+          "url": "https://baikal50.cn/",
+          "mainEntityOfPage": "https://baikal50.cn/",
+          "sameAs": ["https://baikal50.cn/route.html"],
+          "provider": {"@id": "https://baikal50.cn/#promoter"},
+          "isPartOf": {
+            "@type": "TouristAttraction",
+            "name": "Great Baikal Trail（大贝加尔径，简称 GBT）",
+            "url": "https://baikal50.cn/compare.html"
+          }
+        },
+        {
           "@type": "Person",
           "@id": "https://baikal50.cn/#promoter",
           "name": "贝加尔湖50径推广人",
@@ -73,11 +100,10 @@
             {"@type": "PropertyValue", "propertyID": "Xiaohongshu", "value": "9569489945"}
           ],
           "sameAs": [
-            "https://baikal50.cn/",
             "https://www.douyin.com/user/44853130136",
             "https://www.xiaohongshu.com/user/profile/9569489945"
           ],
-          "mainEntityOfPage": "https://baikal50.cn/"
+          "mainEntityOfPage": "https://baikal50.cn/about.html"
         },
         {
           "@type": "WebPage",
