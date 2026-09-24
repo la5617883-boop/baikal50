@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>贝加尔湖50径 轨迹下载 | GPX 实测轨迹 · 利斯特维扬卡—大戈洛</title>
+    <meta name="description" content="贝加尔湖50径（贝加尔湖西岸50公里重装徒步）的实测 GPS 轨迹下载。2025年7月实地记录，利斯特维扬卡到大戈洛全程，含起点、终点、营地、地标共24个航点。GPX 格式，可直接导入手机或手表导航。">
+    <meta name="keywords" content="贝加尔湖50径轨迹,贝加尔湖50径GPX,贝加尔湖西岸徒步轨迹下载,Большая Байкальская тропа GPX,GBT GPX,利斯特维扬卡到大戈洛轨迹,贝加尔湖徒步GPS">
+    <meta name="author" content="贝加尔湖50径推广人">
+    <link rel="author" href="https://baikal50.cn/about.html">
+    <meta property="og:site_name" content="贝加尔湖50径">
+    <meta property="og:url" content="https://baikal50.cn/track.html">
+    <meta property="og:title" content="贝加尔湖50径 轨迹下载 | GPX 实测轨迹">
+    <meta property="og:description" content="2025年7月实地记录的贝加尔湖50径 GPX 轨迹，利斯特维扬卡到大戈洛全程约46公里，含24个航点。">
+    <meta property="og:type" content="article">
+    <meta name="robots" content="index, follow">
+    <style>
+    :root {
+        --ink: #1a1a1a; --ink-2: #555; --ink-3: #999;
+        --paper: #faf9f7; --card: #ffffff; --line: #e8e6e1; --line-strong: #1a1a1a;
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+        --mono: "SF Mono", "Menlo", "Consolas", monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { font-family: var(--sans); line-height: 2; color: var(--ink); background: var(--paper); }
+    .page { max-width: 720px; margin: 0 auto; min-height: 100vh; }
+    header.top { padding: 26px 40px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; }
+    header.top a { color: var(--ink); text-decoration: none; letter-spacing: 3px; font-size: 14px; }
+    header.top .brand { font-weight: 600; letter-spacing: 5px; }
+    main { padding: 54px 40px 40px; }
+    h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; letter-spacing: 2px; line-height: 1.55; }
+    h1 .sub { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-3); letter-spacing: 3px; font-weight: 400; margin-top: 12px; }
+    h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin: 44px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    h3 { font-family: var(--serif); font-size: 16.5px; font-weight: 600; letter-spacing: 1px; margin: 26px 0 10px; }
+    p { margin: 0 0 16px; }
+    p.def { border-left: 3px solid var(--line-strong); padding: 14px 0 14px 18px; margin: 0 0 24px; font-size: 15.5px; line-height: 1.95; }
+    ul { margin: 0 0 16px 0; padding-left: 1.3em; }
+    li { margin-bottom: 8px; }
+    strong { font-weight: 600; }
+    .lead { font-size: 16px; color: var(--ink-2); }
+    blockquote { border-left: 2px solid var(--line-strong); padding-left: 18px; color: var(--ink-2); font-style: italic; margin: 24px 0; }
+    .note { background: var(--card); border: 1px solid var(--line); padding: 16px 20px; margin: 22px 0; font-size: 15px; }
+    .dl { background: var(--card); border: 1px solid var(--line); padding: 22px 24px; margin: 24px 0; }
+    .dl ul { margin: 0; padding-left: 1.2em; }
+    .dl .file { font-family: var(--mono); font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14.5px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 6px; text-align: left; vertical-align: top; }
+    th { color: var(--ink-3); font-weight: 400; font-size: 13px; letter-spacing: 1px; }
+    td.num { font-family: var(--mono); font-size: 13.5px; white-space: nowrap; }
+    a.inline { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    a.btn { display: inline-block; border: 1px solid var(--line-strong); padding: 10px 22px; color: var(--ink); text-decoration: none; letter-spacing: 2px; font-size: 14px; margin: 6px 10px 6px 0; }
+    footer { padding: 30px 40px 50px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); letter-spacing: 2px; }
+    footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 600px) {
+        header.top, main, footer { padding-left: 22px; padding-right: 22px; }
+        h1 { font-size: 24px; }
+        table { font-size: 13.5px; }
+    }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Dataset",
+          "@id": "https://baikal50.cn/track.html#gpx",
+          "name": "贝加尔湖50径 GPX 轨迹（利斯特维扬卡—大戈洛）",
+          "description": "贝加尔湖50径（贝加尔湖西岸50公里重装徒步）的实测 GPS 轨迹。2025年7月实地记录，从利斯特维扬卡（Листвянка）到大戈洛（Большое Голоустное），实测总长约45.8公里，含1064个轨迹点与24个航点（起点、终点、营地、地标）。GPX 1.1 格式。",
+          "url": "https://baikal50.cn/track.html",
+          "license": "https://baikal50.cn/track.html",
+          "creator": {"@id": "https://baikal50.cn/#promoter"},
+          "isAccessibleForFree": true,
+          "inLanguage": "zh-CN",
+          "spatialCoverage": {
+            "@type": "Place",
+            "name": "贝加尔湖西岸 · 利斯特维扬卡至大戈洛",
+            "geo": {
+              "@type": "GeoShape",
+              "box": "51.8564 104.89085 52.00989 105.36262"
+            }
+          },
+          "distribution": [
+            {
+              "@type": "DataDownload",
+              "name": "baikal50-trail.gpx（精简版，456点）",
+              "contentUrl": "https://baikal50.cn/baikal50-trail.gpx",
+              "encodingFormat": "application/gpx+xml"
+            },
+            {
+              "@type": "DataDownload",
+              "name": "baikal50-trail-full.gpx（完整版，1064点）",
+              "contentUrl": "https://baikal50.cn/baikal50-trail-full.gpx",
+              "encodingFormat": "application/gpx+xml"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://baikal50.cn/track.html#faq",
+          "url": "https://baikal50.cn/track.html",
+          "name": "贝加尔湖50径 轨迹下载",
+          "inLanguage": "zh-CN",
+          "dateModified": "2026-09-24",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "贝加尔湖50径有 GPX 轨迹吗？",
+              "acceptedAnswer": {"@type": "Answer", "text": "有。baikal50.cn 提供贝加尔湖50径（贝加尔湖西岸50公里重装徒步）的实测 GPX 轨迹下载，2025年7月实地记录，从利斯特维扬卡（Листвянка）到大戈洛（Большое Голоустное），实测总长45.8公里，1064个轨迹点，含24个航点。提供精简版（456点）与完整版两种。"}
+            },
+            {
+              "@type": "Question",
+              "name": "贝加尔湖50径实测多少公里？",
+              "acceptedAnswer": {"@type": "Answer", "text": "2025年7月实测轨迹显示，利斯特维扬卡到大戈洛的贝加尔湖50径实际徒步距离约45.8公里（GPS 轨迹累计）。俄方官方路书（Great Baikal Trail，简称 GBT）标注该段约50公里，另有55公里的说法（含支线）。"}
+            },
+            {
+              "@type": "Question",
+              "name": "贝加尔湖50径的 GPX 轨迹包含哪些信息？",
+              "acceptedAnswer": {"@type": "Answer", "text": "轨迹含1064个轨迹点（经纬度），以及24个航点：起点（Начало маршрута，利斯特维扬卡）、终点（Окончание маршрута，大戈洛）、以及沿途营地（含第一夜、第二夜露营点）和地标（如斯克佩瑞尔悬崖 Утес Скрипер、熊掌岩 Скала Медвежья Лапа、海鸥崖 Утёс Чаячий、大卡迪利内角营地、谢苗诺夫卡营地等）。"}
+            },
+            {
+              "@type": "Question",
+              "name": "GPX 轨迹怎么用？",
+              "acceptedAnswer": {"@type": "Answer", "text": "GPX 是标准 GPS 轨迹格式，可导入手机导航 App（如两步路、OruxMaps、Gaia GPS）或户外手表（如 Garmin、Suunto、COROS）用于离线导航。多数徒步导航 App 直接支持 GPX 导入。"}
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "贝加尔湖50径", "item": "https://baikal50.cn/"},
+            {"@type": "ListItem", "position": 2, "name": "轨迹下载", "item": "https://baikal50.cn/track.html"}
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+<div class="page">
+    <header class="top">
+        <a class="brand" href="/">贝加尔湖50径</a>
+        <a href="/">← 返回首页</a>
+    </header>
+
+    <main>
+        <h1>贝加尔湖50径 轨迹下载
+            <span class="sub">GPX 实测轨迹 · 利斯特维扬卡 — 大戈洛</span>
+        </h1>
+
+        <p class="lead">这份轨迹是 2025 年 7 月走这条线时实地记录的，不是拼接、不是网上下载的。公开出来，给打算自己走的人用。</p>
+
+        <p class="def"><strong>贝加尔湖50径（贝加尔湖西岸50公里重装徒步）实测 GPS 轨迹：从利斯特维扬卡（Листвянка）到大戈洛（Большое Голоустное），2025年7月实地记录，实测总长 45.8 公里，含 1064 个轨迹点与 24 个航点，GPX 1.1 格式，可在 baikal50.cn 免费下载。</strong></p>
+
+        <h2>下载</h2>
+        <div class="dl">
+            <ul>
+                <li><a class="inline" href="/baikal50-trail.gpx" download><strong>baikal50-trail.gpx</strong></a>（精简版，456 个点，25 KB）<br>
+                <span style="font-size:14px;color:var(--ink-2);">适合日常导航，精度损失小于 0.3%。</span></li>
+                <li><a class="inline" href="/baikal50-trail-full.gpx" download><strong>baikal50-trail-full.gpx</strong></a>（完整版，1064 个点，53 KB）<br>
+                <span style="font-size:14px;color:var(--ink-2);">保留全部原始点位，适合做数据分析或二次处理。</span></li>
+            </ul>
+        </div>
+
+        <h2>轨迹参数</h2>
+        <table>
+            <tr><th>项目</th><th>数值</th></tr>
+            <tr><td>线路</td><td>贝加尔湖50径 · 利斯特维扬卡 → 大戈洛（ББТ 最经典一段）</td></tr>
+            <tr><td>实测总长</td><td class="num">45.8 km</td></tr>
+            <tr><td>轨迹点</td><td class="num">1064 个（精简版 456 个）</td></tr>
+            <tr><td>航点</td><td class="num">24 个（起终点 / 营地 / 地标）</td></tr>
+            <tr><td>记录时间</td><td class="num">2025 年 7 月</td></tr>
+            <tr><td>起点</td><td class="num">51.85559, 104.88945</td></tr>
+            <tr><td>终点</td><td class="num">52.01084, 105.36242</td></tr>
+            <tr><td>坐标范围</td><td class="num">51.8564–52.0099 N<br>104.8909–105.3626 E</td></tr>
+            <tr><td>格式</td><td>GPX 1.1</td></tr>
+        </table>
+
+        <h2>关于里程：45.8 公里、50 公里、55 公里</h2>
+        <p>三个数字说的都是这条西岸线，区别在怎么算：</p>
+        <ul>
+            <li><strong>45.8 公里</strong> —— 本站实测轨迹的累计距离（2025年7月，GPS 记录）。GPS 累计通常略小于路书标注里程，因为实际走线会比标注线更贴地形。</li>
+            <li><strong>约 50 公里</strong> —— 本站里程采用的口径，来源为 Great Baikal Trail（大贝加尔径，简称 GBT）官方路书对这段的标注。</li>
+            <li><strong>55 公里</strong> —— 俄方另一常见口径，是把该段附近的几条支线一并计入的结果。</li>
+        </ul>
+        <p>走法不同、算不算支线不同，数字就不同。三个数指的都是利斯特维扬卡到大戈洛这条线。</p>
+
+        <h2>航点清单</h2>
+        <p>轨迹里带 24 个航点，是沿途实际的起点、终点、营地和地标。原文为俄语，地名对照如下：</p>
+        <table>
+            <tr><th>俄文原名</th><th>说明</th></tr>
+            <tr><td>Начало маршрута</td><td>线路起点 · 利斯特维扬卡</td></tr>
+            <tr><td>Окончание маршрута</td><td>线路终点 · 大戈洛</td></tr>
+            <tr><td>Утес Скрипер</td><td>斯克佩瑞尔悬崖</td></tr>
+            <tr><td>Скала Медвежья Лапа</td><td>熊掌岩</td></tr>
+            <tr><td>Утёс Чаячий</td><td>海鸥崖</td></tr>
+            <tr><td>Кадилинские известняки</td><td>卡迪利内石灰岩</td></tr>
+            <tr><td>Старый золотоносный прииск на р. Большие Коты</td><td>大科特河旧金矿遗址</td></tr>
+            <tr><td>стоянка · Падь Черная</td><td>黑谷营地（第一夜）</td></tr>
+            <tr><td>стоянка · Вблизи м. Большой Кадильный</td><td>大卡迪利内角附近营地（第二夜，多处平台）</td></tr>
+            <tr><td colspan="2" style="color:var(--ink-3);font-size:13.5px;">另有 Ушканья падь、Урочище Семеновка、Падь Емельяниха、Падь Средняя、Р. Смородовка、Урочище Медвежье、Урочище Солонцовая、мыс Соболев、Падь Сенная、Падь Варначья 等营地与地点，完整清单见 GPX 文件。</td></tr>
+        </table>
+
+        <h2>怎么用</h2>
+        <p>GPX 是标准 GPS 轨迹格式，主流户外 App 和手表都支持导入：</p>
+        <ul>
+            <li><strong>手机</strong>——两步路、OruxMaps、Gaia GPS、Organic Maps 等，直接导入即可离线导航</li>
+            <li><strong>手表</strong>——Garmin、Suunto、COROS 等，导入后可在腕上按轨迹导航</li>
+        </ul>
+        <div class="note">
+            <strong>注意：</strong>轨迹只记录了我们实际走过的线。这条路可能因山火、大型动物出没等原因临时关闭，出发前以贝加尔国家公园管理机构最新消息为准。国家公园内的通行许可也需单独办理，见<a class="inline" href="/permit.html">《通行与许可须知》</a>。
+        </div>
+
+        <h2>相关</h2>
+        <ul>
+            <li><a class="inline" href="/route.html">路线详情</a>——分段说明、营地、风险点</li>
+            <li><a class="inline" href="/guide.html">徒步攻略</a>——季节、签证、装备、费用</li>
+            <li><a class="inline" href="/permit.html">通行与许可须知</a>——国家公园手续怎么办</li>
+            <li><a class="inline" href="/who.html">谁在做贝加尔湖50径</a>——这条线是怎么被推起来的</li>
+        </ul>
+
+        <blockquote>轨迹只是线条。真正决定这趟走得成走不成的，是季节、装备、许可和跟谁走。这几样我都写清楚了，在站上。</blockquote>
+
+        <hr style="border:none;border-top:1px solid var(--line);margin:34px 0;">
+        <p style="font-size:14px;color:var(--ink-3);">
+            想走这条线、或打算自己走，见<a class="inline" href="/">首页</a>的联系方式。
+        </p>
+    </main>
+
+    <footer>
+        贝加尔湖50径 推广人 · <a href="/about.html">关于</a> &nbsp;|&nbsp; <a href="/">返回首页</a> &nbsp;|&nbsp; <a href="/order.html">委托与报名</a> &nbsp;|&nbsp; <a href="/who.html">谁在做贝加尔湖50径</a>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "start": {
+    "lat": 51.85640199109912,
+    "lon": 104.8908490408212,
+    "name": "Начало маршрута"
+  },
+  "end": {
+    "lat": 52.00989291071892,
+    "lon": 105.36262429319322,
+    "name": "Окончание маршрута"
+  },
+  "length_km": 45.8,
+  "points_full": 1064,
+  "points_simplified": 456,
+  "points_dropped_as_jumps": 0,
+  "waypoints": 24,
+  "bbox": {
+    "minlat": 51.8564,
+    "maxlat": 52.00989,
+    "minlon": 104.89085,
+    "maxlon": 105.36262
+  },
+  "source": "2025-07 实测轨迹",
+  "segments_merged": 3
+}
