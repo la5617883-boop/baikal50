@@ -39,3 +39,34 @@ P3*.md
 诊断*.md
 方案-*.md
 _*.py
+
+# --- 音频工作目录：中间产物不入库（仅成品 audio/ 上线）---
+audio_work/
+gpx/analyze_audio_bands*.py
+gpx/check_audio_ai_impact.py
+gpx/coverage_check.py
+gpx/diagnose_*.py
+gpx/extract_*.py
+gpx/find_ambience*.py
+gpx/inspect_*.py
+gpx/layers_to_mp3.py
+gpx/normalize_confirmed.py
+gpx/scan_audio_sources.py
+gpx/scan_scenes.py
+gpx/split_layers.py
+gpx/to_mp3.py
+gpx/verify.py
+gpx/why72.py
+
+# --- 调研与快照文档：内部资料 ---
+外部推广途径调研-*.md
+GEO功能-微博实体网定-*.md
+GEO动作-*.md
+维基对泳-*.md
+维基对淤-*.md
+维基快照-*/
+Wikivoyage俄语版-补稿与操作指引-*.md
+俄语Wikivoyage补稿-交付说明-*.md
+监测任务清理-*.md
+维基导游-*.md
+维基导游三语编辑-*.md
