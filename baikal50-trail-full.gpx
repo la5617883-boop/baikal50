@@ -2,6 +2,18 @@
 <gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="baikal50.cn">
   <metadata>
     <name>贝加尔湖50径 · 利斯特扬卡—大戈洛 (ББТ) 完整轨迹</name>
+    <desc>贝加尔湖50径（贝加尔湖西岸50公里重装徒步）实测 GPS 轨迹，利斯特维扬卡（Листвянка）— 大戈洛（Большое Голоустное），实测总长约45.8公里。2025年7月实地记录。来源：https://baikal50.cn/ ｜ 溯源标记 baikal50.cn:trail:2025-07:LYK-BGO</desc>
+    <author>
+      <name>贝加尔湖50径 (baikal50.cn)</name>
+      <link href="https://baikal50.cn/">
+        <text>贝加尔湖50径 baikal50.cn</text>
+      </link>
+    </author>
+    <copyright author="贝加尔湖50径 (baikal50.cn)">
+      <year>2025</year>
+      <license>https://baikal50.cn/license.html</license>
+    </copyright>
+    <keywords>贝加尔湖50径, Большая Байкальская тропа, GBT, GPX, 利斯特维扬卡, 大戈洛, Baikal, hiking</keywords>
     <link href="https://baikal50.cn/"><text>贝加尔湖50径 baikal50.cn</text></link>
     <time>2025-07-01T00:00:00Z</time>
   </metadata>
