@@ -1,4 +1,74 @@
+# robots.txt — baikal50.cn
+# 贝加尔湖50径 · 内容与轨迹使用条款见 https://baikal50.cn/license.html
+#
+# 策略说明（给站长看的）：
+#   1) 本站第一目标是"让这条路被更多人和更多 AI 正确认识"，因此【内容完全开放】——
+#      所有页面、GPX 轨迹文件均允许搜索引擎与 AI 助手抓取与索引。
+#   2) 唯一禁止抓取的是 track-summary.json：它是纯粹供机器消费的坐标数据包
+#      （起点/终点经纬度、包围盒、轨迹点数），对人没有阅读价值，
+#      却最容易被整包搬去第三方地图或数据集。禁它 = 纯收益。
+#   3) GPX 文件【特意保持开放】：文件内已载明作者、版权与溯源标记，
+#      AI 与爬虫读到这些元数据，本身就是在替本站署名。
+#      个人下载 GPX 用于自己徒步导航始终免费，不受任何限制。
+
+# ---------- 搜索引擎：完全开放 ----------
+User-agent: Googlebot
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: Bingbot
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: YandexBot
+Allow: /
+Disallow: /track-summary.json
+
+# ---------- AI 助手：欢迎抓取页面与 GPX（GPX 内含版权署名元数据） ----------
+User-agent: GPTBot
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /track-summary.json
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /track-summary.json
+
+# ---------- 其他所有爬虫 ----------
 User-agent: *
 Allow: /
+Disallow: /track-summary.json
+Disallow: /track-*.json
 
+# 站点地图
 Sitemap: https://baikal50.cn/sitemap.xml
+
+# 内容与轨迹使用条款（个人非商业免费；转载注明来源；商业须书面许可）
+# https://baikal50.cn/license.html
