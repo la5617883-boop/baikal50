@@ -39,18 +39,12 @@
         s.type = SRC[i].type;
         audio.appendChild(s);
       }
-      audio.loop = false;       // 原时长完整音轨,放完自然停; 再点可重播
+      audio.loop = true;        // 循环播放
       audio.preload = 'none';   // 关键：不点不加载
       audio.volume = 0.55;      // 温和,不抢戏
       // 淡入,避免突兀
       audio.addEventListener('playing', function () {
         fadeIn(audio);
-      });
-      // 播完复位按钮状态
-      audio.addEventListener('ended', function () {
-        btn.classList.remove('is-playing');
-        btn.setAttribute('aria-pressed', 'false');
-        btn.title = '播放　贝加尔湖西岸环境音';
       });
       audio.addEventListener('error', function () {
         btn.style.display = 'none';  // 播放失败就藏起来,不留死按钮
