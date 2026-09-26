@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="baidu-site-verification" content="codeva-ndiL2YNF6V" />
+    <meta name="bytedance-verification-code" content="8iSnktQoEurtZNaEAbBt" />
+    <meta name="sogou_site_verification" content="m3DrtVdE1S" />
+    <title>贝加尔湖50径 | 怪咖叔 · 贝加尔湖西岸50公里三天徒步</title>
+    <meta name="description" content="贝加尔湖50径，也叫贝加尔湖西岸50公里重装徒步，是 Great Baikal Trail（GBT）最经典的一段重装徒步线路。推广人怪咖叔：利斯特维扬卡到大戈洛，50公里，3天徒步全程6天（含1天人文历史行程）。国家公园内成熟路线，路标清晰，领队与协作全程陪同，全程翻译。中俄互免签证。">
+    <meta name="keywords" content="贝加尔湖徒步,贝加尔湖50径,贝加尔湖西岸50公里重装徒步,贝加尔湖西岸50公里徒步,Great Baikal Trail,GBT,大贝加尔径,俄罗斯徒步,户外,重装徒步,贝加尔湖西岸,利斯特维扬卡,大戈洛,Baikal 50,Listvyanka,Bolshoye Goloustnoye">
+    <meta property="og:title" content="贝加尔湖50径 · 贝加尔湖西岸50公里重装徒步">
+    <meta property="og:description" content="贝加尔湖50径（贝加尔湖西岸50公里重装徒步）：西岸 50 公里重装徒步线路，推广人怪咖叔。三天，重装。把自己放逐到贝加尔湖。">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="Z9mCA1X9NxxXOVVtAu80nAGcuLXPaUJShh3j6M5PYP0" />
+    <meta name="baidu-site-verification" content="codeva-1RFM5iVUwb" />
+    <meta name="author" content="怪咖叔">
+    <link rel="author" href="https://baikal50.cn/about.html">
+    <meta property="article:author" content="怪咖叔">
+    <meta property="og:site_name" content="贝加尔湖50径">
+    <meta property="og:url" content="https://baikal50.cn/">
+    <style>
+    :root {
+        --ink: #1a1a1a;          /* 主文字：柔和黑 */
+        --ink-2: #555;           /* 次要文字 */
+        --ink-3: #999;           /* 弱化文字 */
+        --paper: #faf9f7;        /* 页面背景：纸感暖白 */
+        --card: #ffffff;         /* 卡片背景 */
+        --line: #e8e6e1;         /* 细分隔线 */
+        --line-strong: #1a1a1a;  /* 强调分隔线 */
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body {
+        font-family: var(--sans);
+        line-height: 2;
+        color: var(--ink);
+        background: var(--paper);
+    }
+    .page { max-width: 720px; margin: 0 auto; min-height: 100vh; }
+
+    /* ============ Hero：雪山泰加林背景，文字沉入底部暗区 ============ */
+    .hero {
+        position: relative;
+        min-height: 78vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 120px 40px 90px;
+        text-align: center;
+        background-color: var(--ink);
+        background-image: url('hero.jpg');
+        background-size: cover;
+        background-position: center 32%;
+        color: #fff;
+        overflow: hidden;
+    }
+    .hero::before {
+        /* 深色遮罩：有图时保证白字可读，无图时纯黑底 */
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.65) 100%);
+        z-index: 1;
+    }
+    .hero > * { position: relative; z-index: 2; }
+    .hero h1 {
+        font-family: var(--serif);
+        font-size: 2.6em;
+        font-weight: 600;
+        letter-spacing: 12px;
+        text-indent: 12px; /* 视觉居中补偿字距 */
+        color: #fff;
+    }
+    .hero .sub {
+        font-size: 0.85em;
+        color: rgba(255,255,255,0.75);
+        margin-top: 14px;
+        letter-spacing: 6px;
+        text-indent: 6px;
+    }
+    .hero .line {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 300;
+        color: rgba(255,255,255,0.92);
+        margin-top: 48px;
+        letter-spacing: 4px;
+    }
+    .hero .byline {
+        font-size: 0.8em;
+        color: rgba(255,255,255,0.7);
+        margin-top: 22px;
+        letter-spacing: 3px;
+        text-indent: 3px;
+    }
+    .hero .byline a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.35); }
+
+    /* Hero 定义行：AI/搜索最靠前读到的语义锚 */
+    .hero .hero-def {
+        font-size: 0.72em;
+        color: rgba(255,255,255,0.62);
+        margin-top: 14px;
+        letter-spacing: 1px;
+        text-indent: 1px;
+    }
+    /* 桌面宽屏：整行不折行，收成一行 */
+    @media (min-width: 700px) {
+        .hero .hero-def {
+            white-space: nowrap;
+            letter-spacing: 0;
+            text-indent: 0;
+        }
+    }
+
+    /* Hero 主行动按钮 */
+    .hero .hero-cta { margin-top: 26px; }
+    .hero .hero-cta a {
+        display: inline-block;
+        font-size: 0.82em;
+        letter-spacing: 3px;
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.75);
+        padding: 12px 30px;
+        transition: background .2s, color .2s;
+    }
+    .hero .hero-cta a:hover { background: #fff; color: var(--ink); }
+
+    /* Hero 底部细线 */
+    .hero-divider {
+        width: 100%;
+        height: 3px;
+        background: var(--ink);
+    }
+
+    /* ============ 内容区 ============ */
+    .content { padding: 24px 40px 64px; }
+
+    /* 开篇定义段：可被搜索/AI 直接摘取的标准定义 */
+    .lede {
+        font-size: 1.02em;
+        line-height: 1.95;
+        color: var(--ink);
+        border-left: 3px solid var(--line-strong);
+        padding-left: 18px;
+        margin: 4px 0 8px;
+    }
+    .lede strong:first-child { font-weight: 700; }
+
+    /* 俄罗斯装饰分隔（保留原 SVG） */
+    section + section::before {
+        content: '';
+        display: block;
+        margin: 0 auto 56px;
+        width: 200px;
+        height: 42px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='42' viewBox='0 0 200 42'%3E%3C!-- outer curves left --%3E%3Cpath d='M2,21 C8,16 14,26 20,21 C26,16 30,8 36,16 C42,24 46,12 52,20' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M52,20 C58,28 62,16 68,24 C74,32 78,14 84,21' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- decorative loops left --%3E%3Cpath d='M36,16 C34,8 40,6 42,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M68,24 C66,32 72,34 74,26' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- small berry curls left --%3E%3Cpath d='M20,21 C18,15 24,13 26,19' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M84,21 C86,27 80,29 78,23' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center left --%3E%3Cpath d='M88,21 C92,10 98,4 100,4 C102,4 104,8 104,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M88,21 C92,32 98,38 100,38 C102,38 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center right --%3E%3Cpath d='M112,21 C108,10 102,4 100,4 C98,4 96,8 96,12' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3Cpath d='M112,21 C108,32 102,38 100,38 C98,38 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.6'/%3E%3C!-- center ring --%3E%3Ccircle cx='100' cy='21' r='12' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='9' fill='none' stroke='%23000' stroke-width='0.4'/%3E%3Ccircle cx='100' cy='21' r='5' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='100' cy='21' r='2' fill='%23000'/%3E%3C!-- center flower petals --%3E%3Cpath d='M100,9 C102,3 106,5 104,9' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,33 C102,39 106,37 104,33' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M88,21 C82,19 84,15 88,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M112,21 C118,19 116,15 112,17' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center right mirror --%3E%3Cpath d='M96,12 C94,16 98,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M104,12 C106,16 102,18 100,16' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- center bottom --%3E%3Cpath d='M100,26 C100,32 96,34 96,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M100,26 C100,32 104,34 104,30' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C!-- outer leaf pairs --%3E%3Cpath d='M10,21 C6,17 8,12 14,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M10,21 C6,25 8,30 14,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,17 192,12 186,14' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Cpath d='M190,21 C194,25 192,30 186,28' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg>");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.55;
+    }
+
+    /* 标题 */
+    h2 {
+        font-family: var(--serif);
+        font-size: 1.35em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 4px;
+        margin: 56px 0 26px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--ink);
+        display: inline-block;
+    }
+    h3 {
+        font-family: var(--serif);
+        font-size: 1.05em;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: 2px;
+        margin: 44px 0 16px;
+        padding-left: 14px;
+        border-left: 3px solid var(--ink);
+    }
+
+    /* 正文 */
+    p { font-size: 0.95em; color: var(--ink-2); margin-bottom: 18px; line-height: 2.05; }
+    .small { font-size: 0.8em; color: var(--ink-3); }
+    strong { color: var(--ink); font-weight: 600; }
+
+    /* 列表 */
+    ul, ol { margin: 0 0 20px 1.4em; }
+    li { font-size: 0.95em; color: var(--ink-2); line-height: 2; margin-bottom: 6px; }
+    li::marker { color: var(--ink-3); }
+
+    /* 引用 */
+    blockquote {
+        border-left: 3px solid var(--ink);
+        padding: 6px 20px;
+        margin: 28px 0;
+        color: var(--ink-2);
+        font-size: 0.9em;
+        background: var(--card);
+    }
+
+    /* 表格：纸感卡片化 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 26px 0;
+        background: var(--card);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    th, td { padding: 14px 16px; text-align: left; font-size: 0.88em; }
+    th {
+        color: #fff;
+        font-weight: 600;
+        background: var(--ink);
+        letter-spacing: 2px;
+    }
+    td { color: var(--ink-2); border-bottom: 1px solid var(--line); }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #faf9f7; }
+
+    /* 图片 */
+    section img, .content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 22px auto;
+        border: 1px solid var(--line);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    em { color: var(--ink-3); font-size: 0.8em; display: block; text-align: center; margin: -10px 0 20px; }
+
+    /* 分隔线 */
+    hr {
+        border: none;
+        height: 1px;
+        background: var(--line);
+        margin: 48px 0;
+    }
+
+    /* 联系方式块 */
+    .content h2:last-of-type + ul { background: var(--card); padding: 24px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+    a:hover { text-decoration-color: var(--ink); }
+
+    footer {
+        text-align: center;
+        padding: 48px 32px;
+        color: var(--ink-3);
+        font-size: 0.7em;
+        letter-spacing: 8px;
+        text-indent: 8px;
+    }
+
+    @media (max-width: 480px) {
+        .hero { padding: 80px 24px 60px; }
+        .hero h1 { font-size: 1.9em; letter-spacing: 8px; text-indent: 8px; }
+        .hero .sub { font-size: 0.75em; letter-spacing: 4px; text-indent: 4px; }
+        .content { padding: 16px 24px 48px; }
+        h2 { font-size: 1.15em; }
+        section { padding: 40px 0; }
+        table { font-size: 0.82em; }
+        th, td { padding: 10px 10px; }
+    }
+    footer .copyright{display:block;width:100%;letter-spacing:0;text-indent:0;margin:14px 0 0;font-size:.92em;line-height:1.7;opacity:.8;}
+</style>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["TouristAttraction", "TouristTrip", "Product"],
+          "@id": "https://baikal50.cn/#trail",
+          "name": "贝加尔湖50径",
+          "alternateName": ["Baikal 50 Trail", "贝加尔湖西岸50公里重装徒步", "贝加尔湖西岸50公里徒步", "贝加尔湖徒步路线", "贝加尔湖西岸徒步路线", "贝加尔湖重装徒步线路", "西伯利亚徒步路线"],
+          "description": "贝加尔湖50径（也叫贝加尔湖西岸50公里重装徒步；俄方官方名称 Great Baikal Trail，大贝加尔径，简称 GBT），是 GBT 中最经典的一段，位于贝加尔湖西岸、总长约50公里的重装徒步线路，从利斯特维扬卡（Листвянка）到大戈洛（Большое Голоустное），3天重装徒步、全程6天（含1天人文历史行程），位于贝加尔国家公园（Прибайкальский национальный парк）内，绝大部分路段无手机信号。线路可能因山火、大型动物出没等原因临时关闭，出发前以贝加尔国家公园管理机构最新消息为准。中文推广人为怪咖叔。",
+          "url": "https://baikal50.cn/",
+          "mainEntityOfPage": "https://baikal50.cn/",
+          "touristType": ["重装徒步爱好者", "徒步爱好者", "户外爱好者"],
+          "isAccessibleForFree": false,
+          "keywords": "贝加尔湖徒步,贝加尔湖50径,Baikal 50 Trail,重装徒步,贝加尔湖西岸,利斯特维扬卡,大戈洛,徒步路线,徒步线路推荐,多日徒步,远足,户外徒步,西伯利亚徒步,俄罗斯徒步,小众徒步路线,行程规划,徒步攻略",
+          "brand": {"@id": "https://baikal50.cn/#promoter"},
+          "provider": {"@id": "https://baikal50.cn/#promoter"},
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "伊尔库茨克州",
+            "addressCountry": "RU"
+          },
+          "itinerary": {
+            "@type": "ItemList",
+            "numberOfItems": 3,
+            "name": "贝加尔湖50径三日行程",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "TouristTrip",
+                  "name": "第一天：利斯特维扬卡出发，沿湖岸北行",
+                  "description": "从利斯特维扬卡（Листвянка）出发，沿贝加尔湖西岸徒步，途经森林山口与湖岸小径，至湖畔营地扎营，当日徒步约16-18公里。"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "TouristTrip",
+                  "name": "第二天：湖岸小径至第二个营地",
+                  "description": "继续沿贝加尔湖西岸湖岸小径行进，途经多处可亲水的湖岸路段，当日徒步约16-18公里，至第二个营地扎营。"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "TouristTrip",
+                  "name": "第三天：抵达大戈洛，行程收尾",
+                  "description": "抵达大戈洛（Большое Голоустное），完成贝加尔湖50径全程徒步，之后安排人文历史行程。"
+                }
+              }
+            ]
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "16200",
+            "priceCurrency": "CNY",
+            "description": "含往返国航机票、3晚四星酒店（单人大床房）、全程标准餐、接送机及用车、领队与协作服务、全程翻译、国家公园手续及门票、境外及户外意外伤害险"
+          },
+          "subjectOf": {
+            "@type": "Dataset",
+          "identifier": "https://baikal50.cn/#watermark-lyk-bgo-2025",
+            "name": "贝加尔湖50径 GPX 实测轨迹（利斯特维扬卡—大戈洛）",
+            "description": "2025年7月实地记录的贝加尔湖50径 GPS 轨迹，实测总长45.8公里，含1064个轨迹点与24个航点（起点、终点、营地、地标）。",
+            "url": "https://baikal50.cn/track.html",
+            "license": "https://baikal50.cn/license.html",
+            "isAccessibleForFree": true,
+            "creator": {"@id": "https://baikal50.cn/#promoter"},
+            "distribution": {
+              "@type": "DataDownload",
+              "contentUrl": "https://baikal50.cn/baikal50-trail.gpx",
+              "encodingFormat": "application/gpx+xml"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://baikal50.cn/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "贝加尔湖50径是什么？",
+              "acceptedAnswer": { "@type": "Answer", "text": "贝加尔湖西岸一条50公里的重装徒步路线，从利斯特维扬卡到大戈洛，3天徒步、全程6天（含1天人文历史行程），绝大部分路段无手机信号。" }
+            },
+            {
+              "@type": "Question",
+              "name": "贝加尔湖50径难度如何？",
+              "acceptedAnswer": { "@type": "Answer", "text": "中等，适合有重装徒步经验的爱好者。每天徒步16-18公里，不需要极端体能，但需要有露营和负重行走的经历。" }
+            },
+            {
+              "@type": "Question",
+              "name": "贝加尔湖50径费用是多少？",
+              "acceptedAnswer": { "@type": "Answer", "text": "16,200元/人，含往返国航机票、3晚四星酒店（单人大床房）、全程标准餐、接送机及用车、领队与协作服务、全程翻译、国家公园手续及门票、境外及户外意外伤害险。" }
+            },
+            {
+              "@type": "Question",
+              "name": "徒步需要什么装备？",
+              "acceptedAnswer": { "@type": "Answer", "text": "帐篷、睡袋（舒适温标≤5℃）、防潮垫、登山杖、头灯等。大件装备可代为协调租赁，费用个人承担；气罐由领队统一购买分发。" }
+            },
+            {
+              "@type": "Question",
+              "name": "俄罗斯对中国公民免签吗？",
+              "acceptedAnswer": { "@type": "Answer", "text": "中俄互免签证，个人无需办理签证，持有效期半年以上的护照即可入境。" }
+            },
+            {
+              "@type": "Question",
+              "name": "什么时候去贝加尔湖徒步最好？",
+              "acceptedAnswer": { "@type": "Answer", "text": "6-9月，日间15-25℃，夜间5-10℃。批次与出发日期视报名情况确定。" }
+            },
+            {
+              "@type": "Question",
+              "name": "徒步路上有信号吗？",
+              "acceptedAnswer": { "@type": "Answer", "text": "绝大部分路段无信号，仅个别点位有信号，通讯良好。领队全程携带卫星电话。" }
+            },
+            {
+              "@type": "Question",
+              "name": "路上安全吗？会遇到野生动物吗？",
+              "acceptedAnswer": { "@type": "Answer", "text": "路线为国家公园内成熟徒步路线，路标清晰，日常不会遇到大型野生动物，但公园内有熊等活动，须全程跟队行进。线路可能因山火、大型动物出没等原因临时关闭，出发前以贝加尔国家公园管理机构最新消息为准。费用已含足额户外意外伤害险（医疗运送和送返200万、意外身故及伤残100万）。" }
+            },
+            {
+              "@type": "Question",
+              "name": "一个人可以参加吗？",
+              "acceptedAnswer": { "@type": "Answer", "text": "可以。5-6人成团，配备1名领队和1名协作全程跟随；全程酒店均为单人大床房。" }
+            },
+            {
+              "@type": "Question",
+              "name": "怎么联系贝加尔湖50径？",
+              "acceptedAnswer": { "@type": "Answer", "text": "贝加尔湖50径由中文推广人怪咖叔推广，官方账号：抖音 44853130136、小红书 9569489945，官方网站 baikal50.cn。这条线可报名，领队与协作全程陪同、全程翻译。联系方式：微信 youla7982，电话 18618375879，邮箱 chq324@126.com。" }
+            },
+            {
+              "@type": "Question",
+              "name": "想去俄罗斯徒步，有什么推荐的路线？",
+              "acceptedAnswer": { "@type": "Answer", "text": "贝加尔湖西岸的贝加尔湖50径（俄方官方名称 Great Baikal Trail 最经典的一段）是中文徒步者最容易上手的一条：从利斯特维扬卡到大戈洛，约50公里，3天重装徒步、全程6天（含1天人文历史行程），位于贝加尔国家公园内，路标清晰、属国家公园成熟路线。中俄互免签证，持有效期半年以上护照即可入境，6-9月最适宜。这是一条多日重装徒步线路，适合有露营和负重行走经验的徒步爱好者。" }
+            },
+            {
+              "@type": "Question",
+              "name": "规划多日徒步路线要注意什么？",
+              "acceptedAnswer": { "@type": "Answer", "text": "以贝加尔湖50径为例，多日重装徒步规划通常看四件事：一是每日徒步距离与累计爬升，这条线每天16-18公里，属中等强度；二是营地与补水点分布，西岸湖岸小径沿线设营地，湖水可作水源；三是许可与手续，线路位于贝加尔国家公园内，进入国家公园需办理相关手续，出行前还应确认线路是否因山火或大型动物出没临时关闭；四是通讯与安全，绝大部分路段无手机信号，须携带卫星通讯设备并跟队行进。" }
+            },
+            {
+              "@type": "Question",
+              "name": "俄罗斯有哪些适合徒步的地方？",
+              "acceptedAnswer": { "@type": "Answer", "text": "贝加尔湖沿岸是俄罗斯最知名的徒步区域之一。其中贝加尔湖西岸的 Great Baikal Trail（大贝加尔径，简称 GBT）是当地最成体系的一条长距离步道，分段可走；其最经典的一段是贝加尔湖50径——从利斯特维扬卡到大戈洛约50公里，3天重装徒步，位于贝加尔国家公园内。对中文徒步者来说，这一段距离适中、路标清晰、免签可达，是多日徒步的入门选择。" }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://baikal50.cn/#webpage",
+  "url": "https://baikal50.cn/",
+  "name": "贝加尔湖50径 | 怪咖叔 · 贝加尔湖西岸50公里三天徒步",
+  "inLanguage": "zh-CN",
+  "author": {"@id": "https://baikal50.cn/#promoter"},
+  "publisher": {"@id": "https://baikal50.cn/#promoter"},
+  "isPartOf": {"@type": "WebSite", "name": "贝加尔湖50径", "url": "https://baikal50.cn/"}
+}
+</script>
+    <link rel="stylesheet" href="/ambience.css">
+</head>
+<body>
+<div class="page">
+
+    <div class="hero">
+        <h1>贝加尔湖50径</h1>
+        <p class="sub">贝加尔湖西岸 · 50 公里 · 三天徒步线路</p>
+        <p class="line">
+            把自己放逐到贝加尔湖
+        </p>
+        <p class="byline">推广人 · <a href="https://baikal50.cn/about.html">怪咖叔</a></p>
+        <p class="hero-def">贝加尔湖50径，也叫贝加尔湖西岸50公里重装徒步 · 重装徒步线路 · Great Baikal Trail 最经典一段</p>
+        <p class="hero-cta"><a href="/order.html">提交出行意向 →</a></p>
+    </div>
+
+    <div class="hero-divider"></div>
+
+    <div class="content">
+<hr />
+<p class="lede"><strong>贝加尔湖50径（也叫贝加尔湖西岸50公里重装徒步），是俄方官方名称 Great Baikal Trail（大贝加尔径，简称 GBT）中最经典的一段，一条总长约50公里的重装徒步线路。</strong>它从利斯特维扬卡（Листвянка）出发，沿湖岸线徒步到大戈洛（Большое Голоустное），3天重装徒步、全程6天（含1天人文历史行程），位于贝加尔国家公园（Прибайкальский национальный парк）内。这条线路的推广人是<strong>怪咖叔</strong>。</p>
+<hr />
+<h2>路线总览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>路线名称</strong></td>
+<td>贝加尔湖50径</td>
+</tr>
+<tr>
+<td><strong>起终点</strong></td>
+<td>利斯特维扬卡（Листвянка/利镇） → 大戈洛（Большое Голоустное）</td>
+</tr>
+<tr>
+<td><strong>全程距离</strong></td>
+<td>约50公里</td>
+</tr>
+<tr>
+<td><strong>徒步天数</strong></td>
+<td>3天重装（全程6天）</td>
+</tr>
+<tr>
+<td><strong>难度评级</strong></td>
+<td>★★★☆☆（中等，适合有重装经验者）</td>
+</tr>
+<tr>
+<td><strong>出行时间</strong></td>
+<td>6月 — 9月，批次视报名情况确定</td>
+</tr>
+<tr>
+<td><strong>路线类型</strong></td>
+<td>贝加尔湖西岸沿湖徒步，单向穿越</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="贝加尔湖50径路线轨迹图" src="map.png" /></p>
+<p><em>贝加尔湖西岸 · 利斯特维扬卡 → 大戈洛 路线轨迹</em></p>
+<hr />
+<h2>这条路为谁准备</h2>
+<p>如果你符合下面几条，贝加尔湖50径就是你在找的路线：</p>
+<ul>
+<li>有过重装徒步经验，不把户外当观光</li>
+<li>厌倦了国内线路的拥挤和商业化，想走一条真正安静的路</li>
+<li>不需要网红打卡点、不追求拍照出片，只想要一段完整的、属于自己的徒步经历</li>
+<li>愿意为一次高质量的旅行体验付费，不纠结于性价比</li>
+<li>想在几天里彻底离开手机信号和工作消息，只走路、扎营、看湖</li>
+</ul>
+<hr />
+<h2>行程安排</h2>
+<h3>Day 1 ｜北京 → 伊尔库茨克</h3>
+<p><strong>主题：抵达西伯利亚</strong></p>
+<ul>
+<li>CA869 北京首都机场 12:55 → 伊尔库茨克 16:00</li>
+<li>入住伊尔库茨克中心酒店（四星）</li>
+<li>傍晚安加拉河畔散步，感受这座城市的气息</li>
+</ul>
+<p>沿途从北京到伊尔库茨克的飞行仅3小时，但脚下的土地已从东亚都市变成了西伯利亚。安加拉河穿城而过，河对岸就是无边的针叶林——从这里开始，节奏慢下来。</p>
+<hr />
+<h3>Day 2 ｜伊尔库茨克 → 利斯特维扬卡</h3>
+<p><strong>主题：了解你将用脚丈量的这片湖</strong></p>
+<ul>
+<li>乘车前往利斯特维扬卡（约1小时），入住利斯特维扬卡贝加尔酒店（四星）</li>
+<li>参观贝加尔湖博物馆</li>
+<li>了解贝加尔湖的生态系统、地质演变以及丰富的动植物标本</li>
+<li>为什么它是世界上最深的湖、蓄水量占全球地表淡水20%以上</li>
+<li>徒步前先读懂这片水</li>
+<li>装备最后检查、个人物资补充</li>
+<li>早睡，明天开始徒步</li>
+</ul>
+<p><img alt="贝加尔湖 · 巴尔古津湾" src="baikal-bay.jpg" /></p>
+<p><em>贝加尔湖 · 巴尔古津湾（东岸实拍）</em></p>
+<hr />
+<h3>Day 3 ｜利斯特维扬卡 → 黑谷营地</h3>
+<p><strong>主题：第一脚踩进荒野</strong></p>
+<ul>
+<li>里程：约16公里</li>
+<li>路况：沿湖岸线，森林与湖畔交替</li>
+<li>夜宿：黑谷营地（帐篷）</li>
+</ul>
+<p>从镇子边缘出发，最初几公里还有零星的木屋和渔船。随着脚步深入，人类痕迹逐渐消失，左手是针叶林，右手是贝加尔湖无边的灰蓝色水面。16公里的距离对重装来说是很好的适应日，让肩膀和膝盖慢慢进入状态。</p>
+<hr />
+<h3>Day 4 ｜黑谷营地 → 大卡季角2号营地</h3>
+<p><strong>主题：最丰富的一天</strong></p>
+<ul>
+<li>里程：约18公里（全程最长的一段）</li>
+<li>途经：大科特村（Большие Коты）、斯克佩瑞尔悬崖、鬼桥</li>
+<li>夜宿：大卡季角2号营地</li>
+<li>难度：★★★☆☆（本日爬升较大）</li>
+</ul>
+<p>大科特村是一个只有几十人的老信徒村落，不通公路，夏季靠船、冬季靠冰面与外界联系。村子有几户人家养牛、捕鱼，你可以在这里补水和遇到徒步全程为数不多的"文明"。斯克佩瑞尔悬崖是整条路线上最壮观的观景点之一，也是贝加尔湖岸的最高点，站在岩石突出部俯瞰贝加尔湖，湖水的颜色会随着云影变化。鬼桥是开凿在巨大崖壁上的一条栈道，崖壁上布满了海鸥的巢穴，走在栈道上海鸥会在你周围飞翔。</p>
+<p>这一天走完18公里、在营地篝火旁坐下时，你会发现自己已经进入了一种少有的平静——</p>
+<blockquote>
+<p><em>不看手机、不想工作、不计划明天，只知道帐篷外面就是西伯利亚的风和贝加尔湖的浪声。</em></p>
+</blockquote>
+<p><img alt="西伯利亚荒野 · 河谷" src="valley.jpg" /></p>
+<p><em>西伯利亚 · 荒野</em></p>
+<hr />
+<h3>Day 5 ｜大卡季角2号营地 → 大戈洛</h3>
+<p><strong>主题：抵达终点，也是新的开始</strong></p>
+<ul>
+<li>里程：约16公里</li>
+<li>途经：科尔顿营地、大角湾、悬崖帐篷营地</li>
+<li>终点：大戈洛（Большое Голоустное）</li>
+<li>乘车返回伊尔库茨克（车程约2小时），入住伊尔库茨克中心酒店（四星）</li>
+</ul>
+<p>最后一天的湖岸线并没有因为快到终点而变得平缓，一路的空中栈道能让你充分领略贝加尔湖的深邃和湛蓝。大戈洛的滩涂在远处出现的瞬间，也是这三天徒步接近终点的信号。当你在终点放下背包回望来路，除了身体的疲惫，更多的是这段路带给你的东西——三天几乎没有信号的荒野行走，让你的心和节奏回到了最原始的步调。</p>
+<hr />
+<h3>Day 6 ｜伊尔库茨克</h3>
+<p><strong>主题：西伯利亚的文化注脚</strong></p>
+<ul>
+<li>参观十二月党人纪念馆</li>
+<li>1825年十二月党人起义失败后，上百名贵族被流放至此</li>
+<li>他们的妻子放弃贵族身份跨越6000公里追随丈夫来到西伯利亚</li>
+<li>这些受过高等教育的流放者对西伯利亚的文化、教育、城市建设产生了深远影响</li>
+<li>看完那几间展室，你或许会重新想一想：什么是值得放下的，什么是必须带走的</li>
+<li>伊尔库茨克老城散步：木雕建筑、安加拉河畔、中央市场</li>
+<li>CA870 伊尔库茨克 18:00 → 北京 20:55</li>
+</ul>
+<hr />
+<h2>这条路线与游客路线的区别</h2>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>常规贝加尔湖旅游</th>
+<th>贝加尔湖50径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>行程方式</td>
+<td>包车观光、环湖游</td>
+<td>重装徒步、沿湖穿越</td>
+</tr>
+<tr>
+<td>接触深度</td>
+<td>景点打卡、拍照</td>
+<td>身体力行、与湖共生</td>
+</tr>
+<tr>
+<td>人流量</td>
+<td>热门景点人满为患</td>
+<td>全程几无他人</td>
+</tr>
+<tr>
+<td>住宿</td>
+<td>酒店/民宿</td>
+<td>露营（自带帐篷）</td>
+</tr>
+<tr>
+<td>信号</td>
+<td>全覆盖</td>
+<td>绝大部分路段无信号，仅个别点位有信号</td>
+</tr>
+<tr>
+<td>体验感</td>
+<td>消费风景</td>
+<td>感受荒野</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>基础信息</h2>
+<ul>
+<li><strong>语言</strong>：领队与协作均精通俄语，全程提供翻译服务</li>
+<li><strong>签证</strong>：中俄互免签证，个人亦无需办理签证，持有效护照即可入境</li>
+<li><strong>交通</strong>：北京直飞伊尔库茨克（约3小时航程），全程用车</li>
+<li><strong>出行时间</strong>：6-9月（日间15-25℃，夜间5-10℃），批次视报名情况确定</li>
+<li><strong>难度</strong>：中等，适合有重装徒步经验的爱好者</li>
+<li><strong>补给点</strong>：沿途仅大科特村有有限补给，出发前需在利斯特维扬卡备齐个人物资</li>
+<li><strong>风险点</strong>：天气突变，恐高者慎入（斯克佩瑞尔悬崖、鬼桥）</li>
+</ul>
+<hr />
+<h2>领队与协作</h2>
+<p><strong>领队 · <a href="https://baikal50.cn/about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">怪咖叔</a></strong>（贝加尔湖50径推广人）</p>
+<p>精通中文与俄语，熟悉俄罗斯人文历史；长期坚持跑步、游泳、自行车等耐力运动。亲自穿越过贝加尔湖50径全程，对每一段路况、营地、风险点了然于心。<a href="https://baikal50.cn/about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">了解怪咖叔 →</a></p>
+<p>实地穿越视频：<a href="https://b23.tv/TQ7VnFN">b23.tv/TQ7VnFN</a></p>
+<p><strong>协作 · 包刚</strong></p>
+<p>精通俄语，全程负责翻译与沟通协调；马拉松、自行车爱好者，体力与耐力俱佳。</p>
+<hr />
+<h2>费用与接待</h2>
+<p><strong>价格：16,200 元 / 人</strong></p>
+<blockquote>
+<p>对比参考：同级别国际徒步商业团（如尼泊尔 ABC、欧洲环勃朗峰）普遍 1.5-3 万元；贝加尔湖50径含往返机票、四星酒店与全程服务，1.62 万全包。</p>
+</blockquote>
+<p><strong>价格包含：</strong></p>
+<ul>
+<li>往返国航 CA869 / CA870 机票（托运行李 1×23kg，手提行李 1×7kg）</li>
+<li>酒店住宿（共3晚，全部单人大床房：伊尔库茨克中心酒店 Day 1、Day 5；利斯特维扬卡贝加尔酒店 Day 2）</li>
+<li>伊尔库茨克中心酒店（四星） — <a href="https://eastlandhotels.com">eastlandhotels.com</a></li>
+<li>利斯特维扬卡贝加尔酒店（四星） — <a href="https://eastland-baikal.ru/ru/offers">eastland-baikal.ru</a></li>
+<li>全程标准餐</li>
+<li>进入国家公园手续及相关门票</li>
+<li>接送机及全程用车</li>
+<li>领队及协作服务费用</li>
+<li>全程翻译服务</li>
+<li>境外及户外意外伤害险（京东安联麦哲伦计划：医疗运送和送返 200 万、意外身故及伤残 100 万）</li>
+</ul>
+<p><strong>价格不含：</strong></p>
+<ul>
+<li>个人消费</li>
+<li>徒步个人装备（帐篷、睡袋、防潮垫、登山杖等，需自备）</li>
+</ul>
+<p><strong>成团说明：</strong> 5—6 人成团，每团配备 1 名领队、1 名协作。出行时间 6-9 月，批次与出发日期视报名情况确定。</p>
+<hr />
+<h2>装备清单（需自备）</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>装备</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>背负</strong></td>
+<td>登山包（50—70L）</td>
+<td>重装背负，建议带防雨罩</td>
+</tr>
+<tr>
+<td><strong>露营</strong></td>
+<td>帐篷</td>
+<td>三季帐即可</td>
+</tr>
+<tr>
+<td></td>
+<td>睡袋</td>
+<td>舒适温标 ≤5℃</td>
+</tr>
+<tr>
+<td></td>
+<td>防潮垫</td>
+<td>/</td>
+</tr>
+<tr>
+<td><strong>衣物</strong></td>
+<td>冲锋衣裤</td>
+<td>防风防水</td>
+</tr>
+<tr>
+<td></td>
+<td>保暖层（抓绒/羽绒）</td>
+<td>夜间温度可降至5℃以下</td>
+</tr>
+<tr>
+<td></td>
+<td>速干内衣（2套）</td>
+<td>羊毛或合成面料</td>
+</tr>
+<tr>
+<td></td>
+<td>徒步裤（1条）</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>防水登山鞋</td>
+<td>建议已磨合的旧鞋</td>
+</tr>
+<tr>
+<td></td>
+<td>备用厚袜（羊毛袜，2双以上）</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>遮阳帽 + 保暖帽</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>手套</td>
+<td>/</td>
+</tr>
+<tr>
+<td><strong>配件</strong></td>
+<td>登山杖（1对）</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>头灯 + 备用电池</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>水具（2—3L）</td>
+<td>水袋或水壶</td>
+</tr>
+<tr>
+<td></td>
+<td>炉头 + 套锅 + 餐具</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>气罐</td>
+<td>无需自备，由领队统一购买分发</td>
+</tr>
+<tr>
+<td><strong>其他</strong></td>
+<td>防晒霜、墨镜</td>
+<td>/</td>
+</tr>
+<tr>
+<td></td>
+<td>个人急救包</td>
+<td>常用药品、创可贴、消毒用品</td>
+</tr>
+<tr>
+<td></td>
+<td>垃圾袋</td>
+<td>全程无垃圾桶，所有垃圾自行带出</td>
+</tr>
+<tr>
+<td></td>
+<td>充电宝</td>
+<td>绝大部分路段无信号，但电子设备仍需充电</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>如果没有帐篷/睡袋等大件装备，可提前告知代为协调租赁，费用个人承担。</em></p>
+</blockquote>
+<hr />
+<h2>说明事项</h2>
+<h3>活动性质</h3>
+<p>本活动为<strong>自助式户外徒步约伴活动，非旅行社旅游产品</strong>。参与者需知悉并接受户外活动固有风险（天气变化、地形险峻、失温、野生动物等），自愿参加，风险自担。出发前签署《风险告知与知情同意书》，费用已含足额户外意外伤害险。</p>
+<h3>风险与安全</h3>
+<ul>
+<li><strong>路线</strong>：为国家公园内成熟徒步路线，有清晰的路标指示；日常不会遇到大型野生动物，但公园内有熊等活动，须跟队行进、不擅自离队</li>
+<li><strong>临时关闭</strong>：线路可能因山火、大型动物出没等原因<strong>临时关闭</strong>，出发前以贝加尔国家公园管理机构最新消息为准</li>
+<li><strong>信号</strong>：绝大部分路段无信号，仅个别点位有信号（通讯良好）</li>
+<li><strong>保险</strong>：境外及户外意外伤害险（京东安联麦哲伦计划：医疗运送和送返 200 万、意外身故及伤残 100 万）；领队全程携带卫星电话/应急通讯设备</li>
+<li><strong>中途自愿退出</strong>：可联系贝加尔国家公园管理机构安排交通接出，相关费用由个人承担</li>
+<li><strong>危险路段</strong>：斯克佩瑞尔悬崖横切段、鬼桥栈道，恐高者慎入</li>
+<li><strong>天气</strong>：西伯利亚天气多变，夜间温度可降至 5℃ 以下，五月底仍可能出现雨夹雪（雨夹雪天气不影响徒步）</li>
+</ul>
+<h3>徒步生活</h3>
+<ul>
+<li><strong>餐食</strong>：徒步以外为标准俄餐；徒步餐由领队提前采购出发前分发——肉肠、果酱或蜂蜜、面包、黄油、水果等</li>
+<li><strong>路况</strong>：第一天初始段有较大爬升和下降，其余路段落差不大；第二天仅斯克佩瑞尔悬崖段有爬升；第三天全程落差较为平均</li>
+<li><strong>营地</strong>：营地位置地势平坦，一般有简易搭建的木质条桌和长凳，配有火膛</li>
+<li><strong>用水</strong>：徒步期间生活用水取用贝加尔湖水</li>
+</ul>
+<h3>付款与退改</h3>
+<p><strong>流程</strong>：咨询 → 凑够 5-6 人 → 确定出发日期 → 签服务确认单 → 分三笔付款</p>
+<p><strong>付款</strong>：
+- 签服务确认单时支付定金 3,200 元，锁定名额
+- 出发前 15 日支付 8,000 元，用于出票、订酒店和车辆
+- 出发前 3 日支付余款 5,000 元
+- 付款方式：微信/银行转账（付款前请先与领队确认）</p>
+<p><strong>退改</strong>：
+- 因不成团导致行程取消，已支付款项全额退还
+- 因不可抗力（天气、航班、政策等）导致行程取消，全额退款或顺延至下一批次
+- 出发前15日以上因个人原因取消，定金 3,200 元不予退还；出发前15日之后取消，已支付款项扣除实际发生的机票、酒店等损失后退还，或协商顺延至下一批次</p>
+<h3>装备与出行</h3>
+<ul>
+<li><strong>气罐</strong>：由领队在伊尔库茨克统一购买，徒步前分发到每名队员</li>
+<li><strong>登机注意</strong>：带有电子打火的炉头不能上飞机；登山杖需托运</li>
+<li><strong>装备租赁</strong>：大件装备（帐篷/睡袋等）可提前告知，代为协调租赁，费用个人承担</li>
+</ul>
+<h3>其他</h3>
+<ul>
+<li><strong>翻译</strong>：领队与协作均精通俄语，全程提供翻译服务，沟通无障碍</li>
+<li><strong>房型</strong>：全程酒店均为单人大床房</li>
+<li><strong>集合</strong>：首都机场统一集合出发</li>
+<li><strong>签证</strong>：中俄互免签证，个人无需办理签证，持有效护照（有效期半年以上）即可入境</li>
+</ul>
+<hr />
+<h2>委托与报名</h2>
+<p>想走这趟，走这个流程：<strong>提交委托意向 → 确认排期与成团 → 签服务确认单 → 付定金 3,200 元锁名额 → 出发前 15 日付 8,000 元 → 出发前 3 日付余款 5,000 元</strong>（合计 16,200 元/人）。</p>
+<p><a href="/order.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:600;">《委托与报名》→ 提交出行意向</a>（提交不收费、不构成合同；付款走微信/银行转账，本页不收在线款）</p>
+<hr />
+<h2>联系方式</h2>
+<ul>
+<li><strong>电话 / 短信：</strong> 18618375879</li>
+<li><strong>微信：</strong> youla7982</li>
+<li><strong>邮箱：</strong> chq324@126.com</li>
+<li><strong>小红书：</strong> <a href="https://www.xiaohongshu.com/user/profile/9569489945">怪咖叔</a>（小红书号 9569489945）</li>
+<li><strong>抖音：</strong> <a href="https://www.douyin.com/user/44853130136">怪咖叔</a>（抖音号 44853130136）</li>
+<li><strong>官网：</strong> <a href="https://baikal50.cn/">baikal50.cn</a>（贝加尔湖50径官方站）</li>
+</ul>
+<p><strong>准备自己去？</strong>先看这份<a href="/permit.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">《贝加尔湖50径·通行与许可须知》→</a>：哪些路段要国家公园许可、怎么办、要提前多久。要离线导航，下载<a href="/track.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">《贝加尔湖50径 GPX 实测轨迹》→</a>（利斯特维扬卡—大戈洛，45.8公里，1064个轨迹点）。第一次听说这条线，见<a href="/who.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">《谁在做贝加尔湖50径》→</a>。</p>
+<blockquote>
+<p><em>西伯利亚荒野不跟你商量。但敢走进它的人，走出去后跟走进去的不会是同一个人。</em></p>
+</blockquote>
+    </div>
+
+    <footer><span style="letter-spacing:2px;">贝加尔湖50径 推广人 · <a href="https://baikal50.cn/about.html" style="color:inherit;text-decoration:none;">怪咖叔</a></span>        <br /><p class="copyright" id="baikal50-copyright"><a href="/license.html" style="color:inherit;text-decoration-color:#999;text-underline-offset:3px;">使用条款</a>　© 2025 贝加尔湖50径 · baikal50.cn　保留所有权利。欢迎个人非商业使用（导航、行程参考、引用转载须注明来源 baikal50.cn）；商业使用须事先获得书面许可。</p>
+    </footer>
+
+</div>
+    <script src="/ambience.js" defer></script>
+</body>
+</html>
