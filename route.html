@@ -230,7 +230,38 @@
   "inLanguage": "zh-CN",
   "author": {"@id": "https://baikal50.cn/#promoter"},
   "publisher": {"@id": "https://baikal50.cn/#promoter"},
-  "isPartOf": {"@type": "WebSite", "name": "贝加尔湖50径", "url": "https://baikal50.cn/"}
+  "isPartOf": {"@type": "WebSite", "name": "贝加尔湖50径", "url": "https://baikal50.cn/"},
+  "about": {
+    "@type": "TouristRoute",
+    "@id": "https://baikal50.cn/route.html#route",
+    "name": "贝加尔湖50径路线",
+    "alternateName": ["贝加尔湖西岸徒步路线", "贝加尔湖徒步路线", "Great Baikal Trail 最经典一段"],
+    "description": "贝加尔湖50径路线详解：从利斯特维扬卡（Листвянка）沿贝加尔湖西岸至大戈洛（Большое Голоустное），约50公里，3天重装徒步、全程6天（含1天人文历史行程），每天16-18公里，累计爬升约1200-1500米，途经大科特村、斯克佩瑞尔悬崖、鬼桥等地标，位于贝加尔国家公园内。",
+    "isPartOf": {"@id": "https://baikal50.cn/#trail"},
+    "distance": {"@type": "QuantitativeValue", "value": 45.8, "unitCode": "KMT"},
+    "touristType": ["重装徒步爱好者", "徒步爱好者", "户外爱好者"],
+    "itinerary": {
+      "@type": "ItemList",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "第一天：利斯特维扬卡出发，沿湖岸北行，至湖畔营地（约16-18公里）"},
+        {"@type": "ListItem", "position": 2, "name": "第二天：湖岸小径继续北行，途经大科特村、斯克佩瑞尔悬崖，至第二个营地（约16-18公里）"},
+        {"@type": "ListItem", "position": 3, "name": "第三天：经鬼桥抵达大戈洛，完成全程徒步（约16-18公里）"}
+      ]
+    },
+    "subjectOf": {
+      "@type": "Dataset",
+      "name": "贝加尔湖50径 GPX 实测轨迹（利斯特维扬卡—大戈洛）",
+      "description": "2025年7月实地记录的贝加尔湖50径 GPS 轨迹，实测总长45.8公里，含1064个轨迹点与24个航点（起点、终点、营地、地标）。",
+      "url": "https://baikal50.cn/track.html",
+      "creator": {"@id": "https://baikal50.cn/#promoter"},
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://baikal50.cn/baikal50-trail.gpx",
+        "encodingFormat": "application/gpx+xml"
+      }
+    }
+  }
 }
 </script>
     <link rel="stylesheet" href="/ambience.css">
