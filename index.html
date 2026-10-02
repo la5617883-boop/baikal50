@@ -70,28 +70,7 @@
         background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.65) 100%);
         z-index: 1;
     }
-    .hero > *:not(.medal-corner) { position: relative; z-index: 2; }
-
-    /* 右上角双纪念章（比初版小，并排） */
-    .hero .medal-corner {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .hero .medal-corner img {
-        width: 44px;
-        height: 44px;
-        display: block;
-        filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
-    }
-    @media (max-width: 600px) {
-        .hero .medal-corner { top: 16px; right: 16px; gap: 6px; }
-        .hero .medal-corner img { width: 36px; height: 36px; }
-    }
+    .hero > * { position: relative; z-index: 2; }
     .hero h1 {
         font-family: var(--serif);
         font-size: 2.6em;
@@ -556,10 +535,6 @@
 <div class="page">
 
     <div class="hero">
-        <div class="medal-corner">
-            <img src="/badge-20.png" alt="贝加尔湖50径小熊徒步徽章" width="44" height="44">
-            <img src="/badge-19.png" alt="贝加尔湖50径纪念章" width="44" height="44">
-        </div>
         <h1>贝加尔湖50径</h1>
         <p class="sub">贝加尔湖西岸 · 50 公里 · 三天徒步线路</p>
         <p class="line">
