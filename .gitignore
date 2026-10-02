@@ -90,3 +90,8 @@ badge-medal-round-80.png
 badge-medal-round.png
 gpx/resize_alpha.py
 给ББТ的回信-俄语正文-*
+
+# --- 内部文档（2026-10-02 三次补充：误提交回滚）---
+badge-medal-round.orig_*
+__pycache__/
+*.pyc
