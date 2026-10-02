@@ -120,6 +120,28 @@
         }
     }
 
+    /* Hero 证书行（方案B：徽章 + 证书说明并排） */
+    .hero .cert-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 16px;
+    }
+    .hero .cert-row img {
+        width: 64px; height: 64px;
+        display: block;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,.55));
+    }
+    .hero .cert-row span {
+        font-size: 0.88em;
+        letter-spacing: 1.5px;
+        color: rgba(255,255,255,0.95);
+        text-align: left;
+        line-height: 1.7;
+        text-indent: 0;
+        text-shadow: 0 1px 6px rgba(0,0,0,.6);
+    }
 
     /* Hero 主行动按钮 */
     .hero .hero-cta { margin-top: 26px; }
@@ -169,6 +191,19 @@
         opacity: 0.55;
     }
 
+    /* 证书卡片 */
+    .certbox {
+        border: 1px solid var(--line);
+        background: var(--card);
+        padding: 18px 20px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        margin: 20px 0 12px;
+    }
+    .certbox img { width: 56px; height: 56px; flex: 0 0 auto; }
+    .certbox p { font-size: 0.9em; color: var(--ink-2); margin: 0; line-height: 1.9; }
+    .certbox strong { color: var(--ink); }
 
     /* 正文内联链接统一样式 */
     p a.lnk, li a.lnk {
@@ -529,6 +564,10 @@
             把自己放逐到贝加尔湖
         </p>
         <p class="byline">推广人 · <a href="https://baikal50.cn/about.html">怪咖叔</a></p>
+        <div class="cert-row">
+            <img src="/badge-medal-web.png" alt="贝加尔湖50径纪念章" width="64" height="64">
+            <span>走完全程<br>贝加尔国家公园管理局颁发线路毕业证书</span>
+        </div>
         <p class="hero-def">贝加尔湖50径，也叫贝加尔湖西岸50公里重装徒步 · 重装徒步线路 · Great Baikal Trail 最经典一段</p>
         <p class="hero-cta"><a href="/order.html">提交出行意向 →</a></p>
     </div>
@@ -574,8 +613,11 @@
 <p class="small"><em>贝加尔湖西岸 · 利斯特维扬卡 → 大戈洛</em></p>
 <hr />
 <h2>完成证书</h2>
-<p>走完全程，将获颁<strong>贝加尔国家公园管理局（ФГБУ «Заповедное Прибайкалье»）线路毕业证书</strong>，证书上填写每位完成者的姓名。</p>
-<p class="small"><a class="lnk" href="/certificate.html">《线路毕业证书与纪念章》→</a></p>
+<div class="certbox">
+<img src="/badge-medal-web.png" alt="贝加尔湖50径纪念章" width="56" height="56">
+<p><strong>走完全程，将获颁贝加尔国家公园管理局（ФГБУ «Заповедное Прибайкалье»）线路毕业证书。</strong><br>
+证书上填写每位完成者的姓名。</p>
+</div>
 <p class="small">本线路位于贝加尔国家公园（Прибайкальский национальный парк）范围内，团队按公园规定办理通行与营位手续。</p>
 <hr />
 <h2>这条路为谁准备</h2>
