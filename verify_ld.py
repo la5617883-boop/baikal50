@@ -5,7 +5,8 @@ import json, re, sys, glob, os
 
 ROOT = "/Volumes/新加卷/projects/baikal50"
 PAGES = ["index.html","about.html","route.html","guide.html","compare.html",
-         "faq.html","license.html","history.html","track.html","order.html"]
+         "faq.html","license.html","history.html","track.html","order.html",
+         "certificate.html","permit.html","who.html"]
 
 # 红线：否定澄清 / 居住地 —— 全文都查（这两条对正文同样致命）
 RED = [
