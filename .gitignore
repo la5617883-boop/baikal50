@@ -70,3 +70,23 @@ Wikivoyage俄语版-补稿与操作指引-*.md
 监测任务清理-*.md
 维基导游-*.md
 维基导游三语编辑-*.md
+
+# --- 内部文档（2026-10-02 补充：西蒙线/徽章源件/预览）---
+西蒙线-*.md
+西蒙线-*/
+预览-*.html
+给公园的*.md
+给ББТ的*.md
+index.html.bak_*
+slim_index.py
+badge/
+badge-medal.png
+badge-medal-round-800.png
+badge-medal-white-800.png
+gpx/make_medal_round.py
+
+badge-medal-160.png
+badge-medal-round-80.png
+badge-medal-round.png
+gpx/resize_alpha.py
+给ББТ的回信-俄语正文-*

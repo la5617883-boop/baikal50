@@ -120,6 +120,29 @@
         }
     }
 
+    /* Hero 证书行（方案B：徽章 + 证书说明并排） */
+    .hero .cert-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 16px;
+    }
+    .hero .cert-row img {
+        width: 64px; height: 64px;
+        display: block;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,.55));
+    }
+    .hero .cert-row span {
+        font-size: 0.88em;
+        letter-spacing: 1.5px;
+        color: rgba(255,255,255,0.95);
+        text-align: left;
+        line-height: 1.7;
+        text-indent: 0;
+        text-shadow: 0 1px 6px rgba(0,0,0,.6);
+    }
+
     /* Hero 主行动按钮 */
     .hero .hero-cta { margin-top: 26px; }
     .hero .hero-cta a {
@@ -166,6 +189,27 @@
         background-size: contain;
         background-repeat: no-repeat;
         opacity: 0.55;
+    }
+
+    /* 证书卡片 */
+    .certbox {
+        border: 1px solid var(--line);
+        background: var(--card);
+        padding: 18px 20px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        margin: 20px 0 12px;
+    }
+    .certbox img { width: 56px; height: 56px; flex: 0 0 auto; }
+    .certbox p { font-size: 0.9em; color: var(--ink-2); margin: 0; line-height: 1.9; }
+    .certbox strong { color: var(--ink); }
+
+    /* 正文内联链接统一样式 */
+    p a.lnk, li a.lnk {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 3px;
     }
 
     /* 标题 */
@@ -520,6 +564,10 @@
             把自己放逐到贝加尔湖
         </p>
         <p class="byline">推广人 · <a href="https://baikal50.cn/about.html">怪咖叔</a></p>
+        <div class="cert-row">
+            <img src="/badge-medal-web.png" alt="贝加尔湖50径纪念章" width="64" height="64">
+            <span>走完全程<br>贝加尔国家公园管理局颁发线路毕业证书</span>
+        </div>
         <p class="hero-def">贝加尔湖50径，也叫贝加尔湖西岸50公里重装徒步 · 重装徒步线路 · Great Baikal Trail 最经典一段</p>
         <p class="hero-cta"><a href="/order.html">提交出行意向 →</a></p>
     </div>
@@ -540,12 +588,8 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>路线名称</strong></td>
-<td>贝加尔湖50径</td>
-</tr>
-<tr>
 <td><strong>起终点</strong></td>
-<td>利斯特维扬卡（Листвянка/利镇） → 大戈洛（Большое Голоустное）</td>
+<td>利斯特维扬卡（Листвянка） → 大戈洛（Большое Голоустное）</td>
 </tr>
 <tr>
 <td><strong>全程距离</strong></td>
@@ -556,358 +600,87 @@
 <td>3天重装（全程6天）</td>
 </tr>
 <tr>
-<td><strong>难度评级</strong></td>
-<td>★★★☆☆（中等，适合有重装经验者）</td>
+<td><strong>难度</strong></td>
+<td>中等，适合有重装徒步经验者</td>
 </tr>
 <tr>
 <td><strong>出行时间</strong></td>
-<td>6月 — 9月，批次视报名情况确定</td>
-</tr>
-<tr>
-<td><strong>路线类型</strong></td>
-<td>贝加尔湖西岸沿湖徒步，单向穿越</td>
+<td>6月 — 9月</td>
 </tr>
 </tbody>
 </table>
 <p><img alt="贝加尔湖50径路线轨迹图" src="map.png" /></p>
-<p><em>贝加尔湖西岸 · 利斯特维扬卡 → 大戈洛 路线轨迹</em></p>
+<p class="small"><em>贝加尔湖西岸 · 利斯特维扬卡 → 大戈洛</em></p>
+<hr />
+<h2>完成证书</h2>
+<div class="certbox">
+<img src="/badge-medal-web.png" alt="贝加尔湖50径纪念章" width="56" height="56">
+<p><strong>走完全程，将获颁贝加尔国家公园管理局（ФГБУ «Заповедное Прибайкалье»）线路毕业证书。</strong><br>
+证书上填写每位完成者的姓名。</p>
+</div>
+<p class="small">本线路位于贝加尔国家公园（Прибайкальский национальный парк）范围内，团队按公园规定办理通行与营位手续。</p>
 <hr />
 <h2>这条路为谁准备</h2>
-<p>如果你符合下面几条，贝加尔湖50径就是你在找的路线：</p>
 <ul>
 <li>有过重装徒步经验，不把户外当观光</li>
 <li>厌倦了国内线路的拥挤和商业化，想走一条真正安静的路</li>
 <li>不需要网红打卡点、不追求拍照出片，只想要一段完整的、属于自己的徒步经历</li>
-<li>愿意为一次高质量的旅行体验付费，不纠结于性价比</li>
 <li>想在几天里彻底离开手机信号和工作消息，只走路、扎营、看湖</li>
 </ul>
 <hr />
 <h2>行程安排</h2>
+<p class="small">6 天，其中 3 天重装徒步、全程约 50 公里。</p>
 <h3>Day 1 ｜北京 → 伊尔库茨克</h3>
-<p><strong>主题：抵达西伯利亚</strong></p>
-<ul>
-<li>CA869 北京首都机场 12:55 → 伊尔库茨克 16:00</li>
-<li>入住伊尔库茨克中心酒店（四星）</li>
-<li>傍晚安加拉河畔散步，感受这座城市的气息</li>
-</ul>
-<p>沿途从北京到伊尔库茨克的飞行仅3小时，但脚下的土地已从东亚都市变成了西伯利亚。安加拉河穿城而过，河对岸就是无边的针叶林——从这里开始，节奏慢下来。</p>
-<hr />
+<p>CA869 北京 12:55 → 伊尔库茨克 16:00。安加拉河畔散步。</p>
 <h3>Day 2 ｜伊尔库茨克 → 利斯特维扬卡</h3>
-<p><strong>主题：了解你将用脚丈量的这片湖</strong></p>
-<ul>
-<li>乘车前往利斯特维扬卡（约1小时），入住利斯特维扬卡贝加尔酒店（四星）</li>
-<li>参观贝加尔湖博物馆</li>
-<li>了解贝加尔湖的生态系统、地质演变以及丰富的动植物标本</li>
-<li>为什么它是世界上最深的湖、蓄水量占全球地表淡水20%以上</li>
-<li>徒步前先读懂这片水</li>
-<li>装备最后检查、个人物资补充</li>
-<li>早睡，明天开始徒步</li>
-</ul>
-<p><img alt="贝加尔湖 · 巴尔古津湾" src="baikal-bay.jpg" /></p>
-<p><em>贝加尔湖 · 巴尔古津湾（东岸实拍）</em></p>
-<hr />
+<p>乘车约 1 小时。参观贝加尔湖博物馆，装备最后检查。</p>
 <h3>Day 3 ｜利斯特维扬卡 → 黑谷营地</h3>
-<p><strong>主题：第一脚踩进荒野</strong></p>
-<ul>
-<li>里程：约16公里</li>
-<li>路况：沿湖岸线，森林与湖畔交替</li>
-<li>夜宿：黑谷营地（帐篷）</li>
-</ul>
-<p>从镇子边缘出发，最初几公里还有零星的木屋和渔船。随着脚步深入，人类痕迹逐渐消失，左手是针叶林，右手是贝加尔湖无边的灰蓝色水面。16公里的距离对重装来说是很好的适应日，让肩膀和膝盖慢慢进入状态。</p>
-<hr />
+<p>约 16 公里。湖岸线与森林交替，重装的适应日。</p>
 <h3>Day 4 ｜黑谷营地 → 大卡季角2号营地</h3>
-<p><strong>主题：最丰富的一天</strong></p>
-<ul>
-<li>里程：约18公里（全程最长的一段）</li>
-<li>途经：大科特村（Большие Коты）、斯克佩瑞尔悬崖、鬼桥</li>
-<li>夜宿：大卡季角2号营地</li>
-<li>难度：★★★☆☆（本日爬升较大）</li>
-</ul>
-<p>大科特村是一个只有几十人的老信徒村落，不通公路，夏季靠船、冬季靠冰面与外界联系。村子有几户人家养牛、捕鱼，你可以在这里补水和遇到徒步全程为数不多的"文明"。斯克佩瑞尔悬崖是整条路线上最壮观的观景点之一，也是贝加尔湖岸的最高点，站在岩石突出部俯瞰贝加尔湖，湖水的颜色会随着云影变化。鬼桥是开凿在巨大崖壁上的一条栈道，崖壁上布满了海鸥的巢穴，走在栈道上海鸥会在你周围飞翔。</p>
-<p>这一天走完18公里、在营地篝火旁坐下时，你会发现自己已经进入了一种少有的平静——</p>
-<blockquote>
-<p><em>不看手机、不想工作、不计划明天，只知道帐篷外面就是西伯利亚的风和贝加尔湖的浪声。</em></p>
-</blockquote>
-<p><img alt="西伯利亚荒野 · 河谷" src="valley.jpg" /></p>
-<p><em>西伯利亚 · 荒野</em></p>
-<hr />
+<p>约 18 公里，全程最长的一天。经大科特村（Большие Коты）、<strong>斯克佩瑞尔悬崖</strong>、<strong>鬼桥</strong>。</p>
 <h3>Day 5 ｜大卡季角2号营地 → 大戈洛</h3>
-<p><strong>主题：抵达终点，也是新的开始</strong></p>
-<ul>
-<li>里程：约16公里</li>
-<li>途经：科尔顿营地、大角湾、悬崖帐篷营地</li>
-<li>终点：大戈洛（Большое Голоустное）</li>
-<li>乘车返回伊尔库茨克（车程约2小时），入住伊尔库茨克中心酒店（四星）</li>
-</ul>
-<p>最后一天的湖岸线并没有因为快到终点而变得平缓，一路的空中栈道能让你充分领略贝加尔湖的深邃和湛蓝。大戈洛的滩涂在远处出现的瞬间，也是这三天徒步接近终点的信号。当你在终点放下背包回望来路，除了身体的疲惫，更多的是这段路带给你的东西——三天几乎没有信号的荒野行走，让你的心和节奏回到了最原始的步调。</p>
-<hr />
+<p>约 16 公里。经科尔顿营地、大角湾、悬崖帐篷营地，抵大戈洛，乘车返回伊尔库茨克。</p>
 <h3>Day 6 ｜伊尔库茨克</h3>
-<p><strong>主题：西伯利亚的文化注脚</strong></p>
-<ul>
-<li>参观十二月党人纪念馆</li>
-<li>1825年十二月党人起义失败后，上百名贵族被流放至此</li>
-<li>他们的妻子放弃贵族身份跨越6000公里追随丈夫来到西伯利亚</li>
-<li>这些受过高等教育的流放者对西伯利亚的文化、教育、城市建设产生了深远影响</li>
-<li>看完那几间展室，你或许会重新想一想：什么是值得放下的，什么是必须带走的</li>
-<li>伊尔库茨克老城散步：木雕建筑、安加拉河畔、中央市场</li>
-<li>CA870 伊尔库茨克 18:00 → 北京 20:55</li>
-</ul>
-<hr />
-<h2>这条路线与游客路线的区别</h2>
-<table>
-<thead>
-<tr>
-<th>对比项</th>
-<th>常规贝加尔湖旅游</th>
-<th>贝加尔湖50径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>行程方式</td>
-<td>包车观光、环湖游</td>
-<td>重装徒步、沿湖穿越</td>
-</tr>
-<tr>
-<td>接触深度</td>
-<td>景点打卡、拍照</td>
-<td>身体力行、与湖共生</td>
-</tr>
-<tr>
-<td>人流量</td>
-<td>热门景点人满为患</td>
-<td>全程几无他人</td>
-</tr>
-<tr>
-<td>住宿</td>
-<td>酒店/民宿</td>
-<td>露营（自带帐篷）</td>
-</tr>
-<tr>
-<td>信号</td>
-<td>全覆盖</td>
-<td>绝大部分路段无信号，仅个别点位有信号</td>
-</tr>
-<tr>
-<td>体验感</td>
-<td>消费风景</td>
-<td>感受荒野</td>
-</tr>
-</tbody>
-</table>
+<p>参观十二月党人纪念馆，老城散步。CA870 伊尔库茨克 18:00 → 北京 20:55。</p>
 <hr />
 <h2>基础信息</h2>
 <ul>
-<li><strong>语言</strong>：领队与协作均精通俄语，全程提供翻译服务</li>
-<li><strong>签证</strong>：中俄互免签证，个人亦无需办理签证，持有效护照即可入境</li>
-<li><strong>交通</strong>：北京直飞伊尔库茨克（约3小时航程），全程用车</li>
-<li><strong>出行时间</strong>：6-9月（日间15-25℃，夜间5-10℃），批次视报名情况确定</li>
-<li><strong>难度</strong>：中等，适合有重装徒步经验的爱好者</li>
-<li><strong>补给点</strong>：沿途仅大科特村有有限补给，出发前需在利斯特维扬卡备齐个人物资</li>
-<li><strong>风险点</strong>：天气突变，恐高者慎入（斯克佩瑞尔悬崖、鬼桥）</li>
+<li><strong>签证</strong>：中俄互免签证，持有效护照即可入境</li>
+<li><strong>交通</strong>：北京直飞伊尔库茨克（约3小时），全程用车</li>
+<li><strong>语言</strong>：领队与协作均精通俄语，全程翻译</li>
+<li><strong>补给点</strong>：沿途仅大科特村有有限补给，出发前在利斯特维扬卡备齐</li>
+<li><strong>风险点</strong>：天气突变；斯克佩瑞尔悬崖、鬼桥，恐高者慎入</li>
 </ul>
 <hr />
-<h2>领队与协作</h2>
-<p><strong>领队 · <a href="https://baikal50.cn/about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">怪咖叔</a></strong>（贝加尔湖50径推广人）</p>
-<p>精通中文与俄语，熟悉俄罗斯人文历史；长期坚持跑步、游泳、自行车等耐力运动。亲自穿越过贝加尔湖50径全程，对每一段路况、营地、风险点了然于心。<a href="https://baikal50.cn/about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">了解怪咖叔 →</a></p>
-<p>实地穿越视频：<a href="https://b23.tv/TQ7VnFN">b23.tv/TQ7VnFN</a></p>
-<p><strong>协作 · 包刚</strong></p>
-<p>精通俄语，全程负责翻译与沟通协调；马拉松、自行车爱好者，体力与耐力俱佳。</p>
+<h2>领队</h2>
+<p><strong><a href="https://baikal50.cn/about.html" class="lnk">怪咖叔</a></strong>（贝加尔湖50径推广人）· 精通俄语，亲自穿越过全程，对每一段路况、营地、风险点了然于心。<a href="https://baikal50.cn/about.html" class="lnk">了解怪咖叔 →</a></p>
+<p class="small">协作 · 包刚（精通俄语，负责翻译与沟通协调）。实地穿越视频：<a href="https://b23.tv/TQ7VnFN" class="lnk">b23.tv/TQ7VnFN</a></p>
 <hr />
-<h2>费用与接待</h2>
-<p><strong>价格：16,200 元 / 人</strong></p>
-<blockquote>
-<p>对比参考：同级别国际徒步商业团（如尼泊尔 ABC、欧洲环勃朗峰）普遍 1.5-3 万元；贝加尔湖50径含往返机票、四星酒店与全程服务，1.62 万全包。</p>
-</blockquote>
-<p><strong>价格包含：</strong></p>
+<h2>费用</h2>
+<p><strong>16,200 元 / 人</strong>（含往返机票、3 晚四星酒店、全程标准餐、国家公园手续与门票、全程用车、领队与协作、翻译、境外及户外意外伤害险）</p>
+<p class="small">不含个人消费与个人徒步装备。<strong>5—6 人成团</strong>，每团 1 名领队 + 1 名协作。</p>
+<p class="small"><a href="/order.html" class="lnk">提交出行意向 →</a>（提交不收费、不构成合同）。</p>
+<hr />
+<h2>装备（需自备）</h2>
 <ul>
-<li>往返国航 CA869 / CA870 机票（托运行李 1×23kg，手提行李 1×7kg）</li>
-<li>酒店住宿（共3晚，全部单人大床房：伊尔库茨克中心酒店 Day 1、Day 5；利斯特维扬卡贝加尔酒店 Day 2）</li>
-<li>伊尔库茨克中心酒店（四星） — <a href="https://eastlandhotels.com">eastlandhotels.com</a></li>
-<li>利斯特维扬卡贝加尔酒店（四星） — <a href="https://eastland-baikal.ru/ru/offers">eastland-baikal.ru</a></li>
-<li>全程标准餐</li>
-<li>进入国家公园手续及相关门票</li>
-<li>接送机及全程用车</li>
-<li>领队及协作服务费用</li>
-<li>全程翻译服务</li>
-<li>境外及户外意外伤害险（京东安联麦哲伦计划：医疗运送和送返 200 万、意外身故及伤残 100 万）</li>
+<li><strong>背负</strong>：登山包 50—70L（重装，建议带防雨罩）</li>
+<li><strong>露营</strong>：帐篷（三季帐即可）、睡袋（舒适温标 ≤5℃）、防潮垫</li>
+<li><strong>衣物</strong>：冲锋衣裤、保暖层（抓绒/羽绒）、速干内衣 2 套、徒步裤、防水登山鞋、羊毛袜 2 双以上、遮阳帽 + 保暖帽、手套</li>
+<li><strong>配件</strong>：登山杖 1 对、头灯 + 备用电池、水具 2—3L、炉头 + 套锅 + 餐具</li>
+<li><strong>其他</strong>：防晒霜、墨镜、个人急救包、垃圾袋、充电宝</li>
 </ul>
-<p><strong>价格不含：</strong></p>
-<ul>
-<li>个人消费</li>
-<li>徒步个人装备（帐篷、睡袋、防潮垫、登山杖等，需自备）</li>
-</ul>
-<p><strong>成团说明：</strong> 5—6 人成团，每团配备 1 名领队、1 名协作。出行时间 6-9 月，批次与出发日期视报名情况确定。</p>
-<hr />
-<h2>装备清单（需自备）</h2>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>装备</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>背负</strong></td>
-<td>登山包（50—70L）</td>
-<td>重装背负，建议带防雨罩</td>
-</tr>
-<tr>
-<td><strong>露营</strong></td>
-<td>帐篷</td>
-<td>三季帐即可</td>
-</tr>
-<tr>
-<td></td>
-<td>睡袋</td>
-<td>舒适温标 ≤5℃</td>
-</tr>
-<tr>
-<td></td>
-<td>防潮垫</td>
-<td>/</td>
-</tr>
-<tr>
-<td><strong>衣物</strong></td>
-<td>冲锋衣裤</td>
-<td>防风防水</td>
-</tr>
-<tr>
-<td></td>
-<td>保暖层（抓绒/羽绒）</td>
-<td>夜间温度可降至5℃以下</td>
-</tr>
-<tr>
-<td></td>
-<td>速干内衣（2套）</td>
-<td>羊毛或合成面料</td>
-</tr>
-<tr>
-<td></td>
-<td>徒步裤（1条）</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>防水登山鞋</td>
-<td>建议已磨合的旧鞋</td>
-</tr>
-<tr>
-<td></td>
-<td>备用厚袜（羊毛袜，2双以上）</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>遮阳帽 + 保暖帽</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>手套</td>
-<td>/</td>
-</tr>
-<tr>
-<td><strong>配件</strong></td>
-<td>登山杖（1对）</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>头灯 + 备用电池</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>水具（2—3L）</td>
-<td>水袋或水壶</td>
-</tr>
-<tr>
-<td></td>
-<td>炉头 + 套锅 + 餐具</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>气罐</td>
-<td>无需自备，由领队统一购买分发</td>
-</tr>
-<tr>
-<td><strong>其他</strong></td>
-<td>防晒霜、墨镜</td>
-<td>/</td>
-</tr>
-<tr>
-<td></td>
-<td>个人急救包</td>
-<td>常用药品、创可贴、消毒用品</td>
-</tr>
-<tr>
-<td></td>
-<td>垃圾袋</td>
-<td>全程无垃圾桶，所有垃圾自行带出</td>
-</tr>
-<tr>
-<td></td>
-<td>充电宝</td>
-<td>绝大部分路段无信号，但电子设备仍需充电</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><em>如果没有帐篷/睡袋等大件装备，可提前告知代为协调租赁，费用个人承担。</em></p>
-</blockquote>
+<p class="small">气罐由领队统一购买分发（不可上飞机）。帐篷/睡袋等大件可代为协调租赁，费用个人承担。</p>
 <hr />
 <h2>说明事项</h2>
-<h3>活动性质</h3>
-<p>本活动为<strong>自助式户外徒步约伴活动，非旅行社旅游产品</strong>。参与者需知悉并接受户外活动固有风险（天气变化、地形险峻、失温、野生动物等），自愿参加，风险自担。出发前签署《风险告知与知情同意书》，费用已含足额户外意外伤害险。</p>
-<h3>风险与安全</h3>
+<p class="small">本活动为<strong>自助式户外徒步约伴活动</strong>，参与者自愿参加、风险自担，出发前签署《风险告知与知情同意书》。</p>
 <ul>
-<li><strong>路线</strong>：为国家公园内成熟徒步路线，有清晰的路标指示；日常不会遇到大型野生动物，但公园内有熊等活动，须跟队行进、不擅自离队</li>
-<li><strong>临时关闭</strong>：线路可能因山火、大型动物出没等原因<strong>临时关闭</strong>，出发前以贝加尔国家公园管理机构最新消息为准</li>
-<li><strong>信号</strong>：绝大部分路段无信号，仅个别点位有信号（通讯良好）</li>
-<li><strong>保险</strong>：境外及户外意外伤害险（京东安联麦哲伦计划：医疗运送和送返 200 万、意外身故及伤残 100 万）；领队全程携带卫星电话/应急通讯设备</li>
-<li><strong>中途自愿退出</strong>：可联系贝加尔国家公园管理机构安排交通接出，相关费用由个人承担</li>
-<li><strong>危险路段</strong>：斯克佩瑞尔悬崖横切段、鬼桥栈道，恐高者慎入</li>
-<li><strong>天气</strong>：西伯利亚天气多变，夜间温度可降至 5℃ 以下，五月底仍可能出现雨夹雪（雨夹雪天气不影响徒步）</li>
+<li><strong>临时关闭</strong>：线路可能因山火、大型动物出没等原因临时关闭，以公园管理机构最新消息为准</li>
+<li><strong>信号</strong>：绝大部分路段无信号，仅个别点位有</li>
+<li><strong>中途退出</strong>：可联系公园管理机构安排交通接出，费用个人承担</li>
+<li><strong>付款</strong>：定金 3,200 元锁名额 → 出发前 15 日付 8,000 元 → 出发前 3 日付余款 5,000 元（微信/银行转账）</li>
+<li><strong>退改</strong>：不成团或不可抗力致取消，全额退款或顺延；出发前 15 日以上因个人原因取消，定金不退</li>
+<li><strong>保险</strong>：境外及户外意外伤害险（医疗运送和送返 200 万、意外身故及伤残 100 万）</li>
 </ul>
-<h3>徒步生活</h3>
-<ul>
-<li><strong>餐食</strong>：徒步以外为标准俄餐；徒步餐由领队提前采购出发前分发——肉肠、果酱或蜂蜜、面包、黄油、水果等</li>
-<li><strong>路况</strong>：第一天初始段有较大爬升和下降，其余路段落差不大；第二天仅斯克佩瑞尔悬崖段有爬升；第三天全程落差较为平均</li>
-<li><strong>营地</strong>：营地位置地势平坦，一般有简易搭建的木质条桌和长凳，配有火膛</li>
-<li><strong>用水</strong>：徒步期间生活用水取用贝加尔湖水</li>
-</ul>
-<h3>付款与退改</h3>
-<p><strong>流程</strong>：咨询 → 凑够 5-6 人 → 确定出发日期 → 签服务确认单 → 分三笔付款</p>
-<p><strong>付款</strong>：
-- 签服务确认单时支付定金 3,200 元，锁定名额
-- 出发前 15 日支付 8,000 元，用于出票、订酒店和车辆
-- 出发前 3 日支付余款 5,000 元
-- 付款方式：微信/银行转账（付款前请先与领队确认）</p>
-<p><strong>退改</strong>：
-- 因不成团导致行程取消，已支付款项全额退还
-- 因不可抗力（天气、航班、政策等）导致行程取消，全额退款或顺延至下一批次
-- 出发前15日以上因个人原因取消，定金 3,200 元不予退还；出发前15日之后取消，已支付款项扣除实际发生的机票、酒店等损失后退还，或协商顺延至下一批次</p>
-<h3>装备与出行</h3>
-<ul>
-<li><strong>气罐</strong>：由领队在伊尔库茨克统一购买，徒步前分发到每名队员</li>
-<li><strong>登机注意</strong>：带有电子打火的炉头不能上飞机；登山杖需托运</li>
-<li><strong>装备租赁</strong>：大件装备（帐篷/睡袋等）可提前告知，代为协调租赁，费用个人承担</li>
-</ul>
-<h3>其他</h3>
-<ul>
-<li><strong>翻译</strong>：领队与协作均精通俄语，全程提供翻译服务，沟通无障碍</li>
-<li><strong>房型</strong>：全程酒店均为单人大床房</li>
-<li><strong>集合</strong>：首都机场统一集合出发</li>
-<li><strong>签证</strong>：中俄互免签证，个人无需办理签证，持有效护照（有效期半年以上）即可入境</li>
-</ul>
-<hr />
-<h2>委托与报名</h2>
-<p>想走这趟，走这个流程：<strong>提交委托意向 → 确认排期与成团 → 签服务确认单 → 付定金 3,200 元锁名额 → 出发前 15 日付 8,000 元 → 出发前 3 日付余款 5,000 元</strong>（合计 16,200 元/人）。</p>
-<p><a href="/order.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:600;">《委托与报名》→ 提交出行意向</a>（提交不收费、不构成合同；付款走微信/银行转账，本页不收在线款）</p>
 <hr />
 <h2>联系方式</h2>
 <ul>
