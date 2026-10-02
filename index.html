@@ -156,6 +156,17 @@
         padding: 14px 0 0;
     }
     .content > .cert-line strong { color: var(--ink); font-weight: 600; }
+    /* 宽屏：整行不折行 */
+    @media (min-width: 700px) {
+        .content > .cert-line {
+            white-space: nowrap;
+            letter-spacing: 0;
+        }
+    }
+    /* 窄屏：缩小字号，尽量单行 */
+    @media (max-width: 480px) {
+        .content > .cert-line { font-size: 0.86em; letter-spacing: 0; }
+    }
 
     /* 开篇定义段：可被搜索/AI 直接摘取的标准定义 */
     .lede {
@@ -625,7 +636,8 @@
 <hr />
 <h2>领队</h2>
 <p><strong><a href="https://baikal50.cn/about.html" class="lnk">怪咖叔</a></strong>（贝加尔湖50径推广人）· 精通俄语，亲自穿越过全程，对每一段路况、营地、风险点了然于心。<a href="https://baikal50.cn/about.html" class="lnk">了解怪咖叔 →</a></p>
-<p class="small">协作 · 包刚（精通俄语，负责翻译与沟通协调）。实地穿越视频：<a href="https://b23.tv/TQ7VnFN" class="lnk">b23.tv/TQ7VnFN</a></p>
+<p class="small">实地穿越视频：<a href="https://b23.tv/TQ7VnFN" class="lnk">b23.tv/TQ7VnFN</a></p>
+<p class="small">协作 · 包刚（精通俄语，负责翻译与沟通协调）。</p>
 <hr />
 <h2>费用</h2>
 <p><strong>16,200 元 / 人</strong>（含往返机票、3 晚四星酒店、全程标准餐、国家公园手续与门票、<strong>线路毕业证书</strong>、全程用车、领队与协作、翻译、境外及户外意外伤害险）</p>
