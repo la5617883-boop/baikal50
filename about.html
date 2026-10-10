@@ -13,6 +13,7 @@
     <meta property="og:url" content="https://baikal50.cn/about.html">
     <meta property="og:title" content="怪咖叔 | 贝加尔湖50径推广人 · 领队">
     <meta property="og:description" content="贝加尔湖50径推广人、领队。精通中文、俄语，亲自穿越贝加尔湖50径全程。">
+    <meta property="og:image" content="https://baikal50.cn/guai-1.jpg">
     <meta name="robots" content="index, follow">
     <style>
     :root {
@@ -29,6 +30,9 @@
     header.top a { color: var(--ink); text-decoration: none; letter-spacing: 3px; font-size: 14px; }
     header.top .brand { font-weight: 600; letter-spacing: 5px; }
     main { padding: 60px 40px 40px; }
+    .intro { display: flex; align-items: center; gap: 24px; }
+    .intro h1 { flex: 1 1 auto; min-width: 0; }
+    .idphoto { flex: 0 0 auto; width: 104px; height: auto; display: block; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     h1 { font-family: var(--serif); font-size: 34px; font-weight: 600; letter-spacing: 3px; line-height: 1.5; }
     h1 .sub { display: block; font-family: var(--sans); font-size: 14px; color: var(--ink-2); letter-spacing: 4px; font-weight: 400; margin-top: 14px; }
     h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin: 46px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
@@ -49,6 +53,8 @@
     @media (max-width: 600px) {
         header.top, main, footer { padding-left: 22px; padding-right: 22px; }
         h1 { font-size: 27px; }
+        .intro { gap: 14px; }
+        .idphoto { width: 82px; }
         .facts dl { grid-template-columns: 1fr; gap: 2px 0; }
         .facts dt { margin-top: 8px; }
     }
@@ -92,6 +98,7 @@
           "nationality": "CN",
           "knowsLanguage": ["zh-CN", "ru"],
           "knowsAbout": ["贝加尔湖50径", "贝加尔湖西岸徒步", "俄罗斯户外徒步", "重装徒步", "伊尔库茨克", "贝加尔湖", "中俄免签旅行"],
+          "image": {"@type": "ImageObject", "url": "https://baikal50.cn/guai-1.jpg", "width": 900, "height": 1125, "caption": "怪咖叔"},
           "identifier": [
             {"@type": "PropertyValue", "propertyID": "Douyin", "value": "44853130136"},
             {"@type": "PropertyValue", "propertyID": "Xiaohongshu", "value": "9569489945"}
@@ -111,7 +118,8 @@
           "author": {"@id": "https://baikal50.cn/#promoter"},
           "publisher": {"@id": "https://baikal50.cn/#promoter"},
           "isPartOf": {"@type": "WebSite", "name": "贝加尔湖50径", "url": "https://baikal50.cn/"},
-          "about": {"@id": "https://baikal50.cn/#promoter"}
+          "about": {"@id": "https://baikal50.cn/#promoter"},
+          "primaryImageOfPage": {"@type": "ImageObject", "url": "https://baikal50.cn/guai-1.jpg"}
         }
       ]
     }
@@ -126,9 +134,12 @@
     </header>
 
     <main>
-        <h1>怪咖叔
-            <span class="sub">贝加尔湖50径 推广人 · 领队</span>
-        </h1>
+        <div class="intro">
+            <h1>怪咖叔
+                <span class="sub">贝加尔湖50径 推广人 · 领队</span>
+            </h1>
+            <img class="idphoto" src="/guai-1.jpg" alt="怪咖叔工作照" width="900" height="1125">
+        </div>
 
         <p class="lead">贝加尔湖50径，是我在做的一条线；也是我自己走过的线。这条线由我带队走，<strong>可报名</strong>：领队与协作全程陪同、全程翻译，国家公园手续一并办妥。</p>
 
