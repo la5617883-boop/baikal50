@@ -39,9 +39,8 @@
     strong { font-weight: 600; }
     blockquote { border-left: 2px solid var(--line-strong); padding-left: 18px; color: var(--ink-2); font-style: italic; margin: 24px 0; }
     .lead { font-size: 17px; color: var(--ink-2); margin-bottom: 8px; }
-    .photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 26px 0; align-items: start; }
-    .photos figure { margin: 0; }
-    .photos img { width: 100%; height: auto; display: block; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .photo { margin: 26px auto; max-width: 340px; }
+    .photo img { width: 100%; height: auto; display: block; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .facts { background: var(--card); border: 1px solid var(--line); padding: 22px 24px; margin: 24px 0; }
     .facts dl { display: grid; grid-template-columns: 5.5em 1fr; gap: 10px 16px; font-size: 15px; }
     .facts dt { color: var(--ink-3); }
@@ -79,8 +78,8 @@
           "knowsLanguage": ["zh-CN", "ru"],
           "knowsAbout": ["贝加尔湖50径", "俄语翻译", "中俄沟通协调", "重装徒步", "马拉松", "自行车"],
           "image": [
-            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-1.jpg", "width": 900, "height": 1157, "caption": "包刚"},
-            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-2.jpg", "width": 720, "height": 1282, "caption": "包刚"}
+            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-1.jpg", "width": 900, "height": 1157, "caption": "包刚（工作照）"},
+            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-2.jpg", "width": 720, "height": 1282, "caption": "包刚（生活照）"}
           ],
           "worksFor": {"@id": "https://baikal50.cn/#promoter"},
           "mainEntityOfPage": "https://baikal50.cn/baogang.html"
@@ -118,15 +117,6 @@
 
         <p class="def"><strong>贝加尔湖50径（也叫贝加尔湖西岸50公里重装徒步；俄方官方名称 Great Baikal Trail，大贝加尔径，简称 GBT），是 GBT 中最经典的一段，位于贝加尔湖西岸、总长约50公里的重装徒步线路。协作：包刚。</strong></p>
 
-        <div class="photos">
-            <figure>
-                <img src="/baogang-1.jpg" alt="包刚，贝加尔湖50径协作" width="900" height="1157" loading="lazy">
-            </figure>
-            <figure>
-                <img src="/baogang-2.jpg" alt="包刚，贝加尔湖50径协作" width="720" height="1282" loading="lazy">
-            </figure>
-        </div>
-
         <div class="facts">
             <dl>
                 <dt>身份</dt><dd>贝加尔湖50径 协作</dd>
@@ -143,8 +133,16 @@
             <li><strong>后勤保障</strong>——补给、营地、交通等环节的落地执行</li>
         </ul>
 
+        <figure class="photo">
+            <img src="/baogang-1.jpg" alt="包刚工作照" width="900" height="1157" loading="lazy">
+        </figure>
+
         <h2>为什么是我</h2>
         <p>我是马拉松和自行车爱好者，长期的耐力运动让我在重装徒步里体力与耐力都有保障。协作这个角色，既要随时沟通协调，也要在队伍需要时顶上——体力和状态是基础。</p>
+
+        <figure class="photo">
+            <img src="/baogang-2.jpg" alt="包刚生活照" width="720" height="1282" loading="lazy">
+        </figure>
 
         <h2>内容与联系</h2>
         <p>关于这条线路本身，请看这些页面：</p>
