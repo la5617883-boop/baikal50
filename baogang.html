@@ -29,6 +29,9 @@
     header.top a { color: var(--ink); text-decoration: none; letter-spacing: 3px; font-size: 14px; }
     header.top .brand { font-weight: 600; letter-spacing: 5px; }
     main { padding: 60px 40px 40px; }
+    .intro { display: flex; align-items: center; gap: 24px; }
+    .intro h1 { flex: 1 1 auto; min-width: 0; }
+    .idphoto { flex: 0 0 auto; width: 104px; height: auto; display: block; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     h1 { font-family: var(--serif); font-size: 34px; font-weight: 600; letter-spacing: 3px; line-height: 1.5; }
     h1 .sub { display: block; font-family: var(--sans); font-size: 14px; color: var(--ink-2); letter-spacing: 4px; font-weight: 400; margin-top: 14px; }
     h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin: 46px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
@@ -51,6 +54,8 @@
     @media (max-width: 600px) {
         header.top, main, footer { padding-left: 22px; padding-right: 22px; }
         h1 { font-size: 27px; }
+        .intro { gap: 14px; }
+        .idphoto { width: 82px; }
         .facts dl { grid-template-columns: 1fr; gap: 2px 0; }
         .facts dt { margin-top: 8px; }
     }
@@ -78,8 +83,8 @@
           "knowsLanguage": ["zh-CN", "ru"],
           "knowsAbout": ["贝加尔湖50径", "俄语翻译", "中俄沟通协调", "重装徒步", "马拉松", "自行车"],
           "image": [
-            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-1.jpg", "width": 900, "height": 1157, "caption": "包刚（工作照）"},
-            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-2.jpg", "width": 720, "height": 1282, "caption": "包刚（生活照）"}
+            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-1.jpg", "width": 900, "height": 1157, "caption": "包刚证件照"},
+            {"@type": "ImageObject", "url": "https://baikal50.cn/baogang-2.jpg", "width": 720, "height": 1282, "caption": "包刚生活照"}
           ],
           "worksFor": {"@id": "https://baikal50.cn/#promoter"},
           "mainEntityOfPage": "https://baikal50.cn/baogang.html"
@@ -109,9 +114,12 @@
     </header>
 
     <main>
-        <h1>包刚
-            <span class="sub">贝加尔湖50径 协作</span>
-        </h1>
+        <div class="intro">
+            <h1>包刚
+                <span class="sub">贝加尔湖50径 协作</span>
+            </h1>
+            <img class="idphoto" src="/baogang-1.jpg" alt="包刚证件照" width="900" height="1157">
+        </div>
 
         <p class="lead">我是包刚，贝加尔湖50径的协作。团队出行时，我负责<b>翻译与沟通协调</b>，让领队和队员在路上没有语言障碍。</p>
 
@@ -132,10 +140,6 @@
             <li><strong>沟通协调</strong>——协助领队处理队伍事务，让行程按计划推进</li>
             <li><strong>后勤保障</strong>——补给、营地、交通等环节的落地执行</li>
         </ul>
-
-        <figure class="photo">
-            <img src="/baogang-1.jpg" alt="包刚工作照" width="900" height="1157" loading="lazy">
-        </figure>
 
         <h2>为什么是我</h2>
         <p>我是马拉松和自行车爱好者，长期的耐力运动让我在重装徒步里体力与耐力都有保障。协作这个角色，既要随时沟通协调，也要在队伍需要时顶上——体力和状态是基础。</p>
