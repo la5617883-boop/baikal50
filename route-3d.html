@@ -20,7 +20,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     html, body { height:100%; }
     body { background:#07090c; color:#e9e9e9; font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif; overflow:hidden; }
-    canvas { display:block; }
+    canvas { display:block; touch-action:none; -webkit-user-select:none; user-select:none; }
     .topbar { position:fixed; left:0; right:0; top:0; height:46px; display:flex; align-items:center; justify-content:space-between;
               padding:0 20px; font-size:12px; letter-spacing:1.5px; z-index:20;
               background:linear-gradient(180deg, rgba(7,9,12,.92), rgba(7,9,12,0)); }
@@ -41,6 +41,7 @@
     .lbl { position:fixed; font-size:10.5px; color:#c6ccd4; background:rgba(8,10,13,.72); border:1px solid rgba(255,255,255,.09);
            padding:2px 7px; border-radius:2px; white-space:nowrap; pointer-events:none; transform:translate(-50%,-50%); letter-spacing:.4px; z-index:9; }
     .lbl.main { color:#fff; border-color:rgba(255,255,255,.28); font-size:11.5px; }
+    #hint { position:fixed; left:22px; bottom:62px; font-size:10px; color:#5a636f; letter-spacing:.5px; pointer-events:none; z-index:10; }
     #credit { position:fixed; right:22px; bottom:62px; font-size:9.5px; color:#4c545e; letter-spacing:.4px; pointer-events:none; z-index:10; }
     #credit a { color:inherit; }
     #legend { position:fixed; right:22px; top:60px; font-size:11px; color:#6b7480; line-height:2; text-align:right; pointer-events:none; z-index:10; }
@@ -50,7 +51,8 @@
       #hud { left:16px; top:56px; }
       #hud h1 { font-size:13px; }
       #legend { display:none; }
-      #credit { right:16px; bottom:66px; font-size:9px; }
+      #credit { right:16px; bottom:88px; font-size:8.5px; max-width:78%; text-align:right; line-height:1.5; }
+      #hint { left:16px; bottom:66px; font-size:9px; }
       #bar { left:16px; right:16px; bottom:16px; }
       #km { min-width:84px; }
     }
@@ -130,13 +132,14 @@
 </div>
 <div id="legend">
   白色轨迹＝2025-07 实测 GPX<i style="background:#ffffff"></i><br>
-  地形高程×8 显示<i style="background:#5b6672"></i>
+  地形高程×3 显示<i style="background:#5b6672"></i>
 </div>
 <div id="bar">
   <button id="play">暂停</button>
   <div id="track"><div id="fill"></div></div>
   <div id="km">0.0 / 45.8 km</div>
 </div>
+<div id="hint">单指拖动旋转 · 双指缩放</div>
 <div id="credit">地形：AWS Terrain Tiles (Mapzen terrarium)｜轨迹：baikal50.cn 实测　<a href="/license.html">使用条款</a></div>
 
 <script type="importmap">
@@ -151,7 +154,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const KMX = 36.1, KMZ = 24.1;      // 覆盖公里数（6×4 块 z12 瓦片）
-const VEX = 8.0;                    // 高程夸张倍数（36km 场景内要让 150m 崖体可见）
+const VEX = 3.0;                    // 高程夸张倍数（回到第一稿 ×3）
 const BASE = 456;                   // 湖面基准
 
 const data = await (await fetch('baik3d-data.json')).json();
@@ -184,7 +187,7 @@ scene.background = new THREE.Color(0x07090c);
 scene.fog = new THREE.FogExp2(0x07090c, 0.010);
 
 const camera = new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 0.2, 400);
-camera.position.set(-21, 17, 21);
+camera.position.set(-24, 26, 24);
 if (camera.aspect < 1) camera.position.multiplyScalar(1.7);
 
 const renderer = new THREE.WebGLRenderer({ antialias:true });
@@ -197,34 +200,57 @@ controls.enableDamping = true; controls.dampingFactor = 0.07;
 controls.target.set(0, 1.5, 0);
 controls.maxPolarAngle = Math.PI/2 - 0.04;
 controls.minDistance = 8; controls.maxDistance = 90;
+controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
 
-scene.add(new THREE.HemisphereLight(0x93a7bd, 0x05070a, 0.85));
-const sun = new THREE.DirectionalLight(0xf2f6ff, 1.55);
+scene.add(new THREE.HemisphereLight(0xa9cbe8, 0x22261d, 0.85));
+const sun = new THREE.DirectionalLight(0xfff3e0, 1.85);
 sun.position.set(-18, 26, 12); scene.add(sun);
-const fillLight = new THREE.DirectionalLight(0x7d93ad, 0.5);
+const fillLight = new THREE.DirectionalLight(0x8fb4d4, 0.45);
 fillLight.position.set(20, 10, -16); scene.add(fillLight);
 
 // ---------- 地形 ----------
-const SEG = 520;
+const IS_MOBILE = Math.min(innerWidth, innerHeight) < 700;
+const SEG = IS_MOBILE ? 320 : 520;   // 手机降密度保帧率
 const geo = new THREE.PlaneGeometry(KMX, KMZ, SEG, SEG);
 geo.rotateX(-Math.PI/2);
 const pos = geo.attributes.position;
-const colors = [];
-const cLow  = new THREE.Color(0x2b3a33);   // 低处（林地）
-const cMid  = new THREE.Color(0x4a4f56);   // 中坡
-const cHigh = new THREE.Color(0xa8b2bd);   // 高处（岩/雪）
+const colors = new Float32Array(pos.count * 3);
+// 第一遍：位移
 for (let i = 0; i < pos.count; i++) {
   const x = pos.getX(i), z = pos.getZ(i);
   const px = (x/KMX + 0.5) * gw, py = (z/KMZ + 0.5) * gh;
   const e = elevAt(px, py);
-  const y = isLake(px, py) ? (BASE - 3) : e;
+  const y = isLake(px, py) ? (BASE - 40) : e;
   pos.setY(i, (y - BASE) / 1000 * VEX);
-  const t = Math.max(0, Math.min(1, (e - EMIN) / (EMAX - EMIN)));
-  const c = t < 0.5 ? cLow.clone().lerp(cMid, t*2) : cMid.clone().lerp(cHigh, (t-0.5)*2);
-  colors.push(c.r, c.g, c.b);
 }
-geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 geo.computeVertexNormals();
+
+// 第二遍：按「高程 + 坡度」上色 —— 贴近实地（湖岸砾石／针叶林／崖壁裸岩）
+const nrm = geo.attributes.normal;
+const C_BEACH  = new THREE.Color(0x9c9689);   // 湖岸砾石滩
+const C_FOREST = new THREE.Color(0x2a4230);   // 针叶林
+const C_FOREST2= new THREE.Color(0x1e3324);   // 密林阴面
+const C_MIX    = new THREE.Color(0x4c5546);   // 林岩过渡
+const C_ROCK   = new THREE.Color(0x6e7274);   // 崖壁裸岩
+const C_ROCK2  = new THREE.Color(0x9aa0a2);   // 高处浅色岩
+const tmp = new THREE.Color();
+function hash(i){ const v = Math.sin(i * 12.9898) * 43758.5453; return v - Math.floor(v); }
+for (let i = 0; i < pos.count; i++) {
+  const x = pos.getX(i), z = pos.getZ(i);
+  const px = (x/KMX + 0.5) * gw, py = (z/KMZ + 0.5) * gh;
+  const e = elevAt(px, py);
+  const j = hash(i) * 0.45;                                  // 确定性噪声，避免色带
+  if (isLake(px, py) || e < 478) tmp.copy(C_BEACH);
+  else if (e < 600) tmp.copy(C_FOREST).lerp(C_FOREST2, 0.25 + j);
+  else if (e < 780) tmp.copy(C_FOREST2).lerp(C_MIX, (e-600)/180 + j*0.4);
+  else if (e < 900) tmp.copy(C_MIX).lerp(C_ROCK, (e-780)/120 + j*0.3);
+  else tmp.copy(C_ROCK).lerp(C_ROCK2, Math.min(1, (e-900)/160 + j*0.3));
+  const slope = 1 - Math.abs(nrm.getY(i));                   // 越陡越露岩
+  const sBlend = Math.max(0, Math.min(1, (slope - 0.16) / 0.32));
+  tmp.lerp(C_ROCK, sBlend * 0.85);
+  colors[i*3] = tmp.r; colors[i*3+1] = tmp.g; colors[i*3+2] = tmp.b;
+}
+geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 const terrain = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
   vertexColors:true, roughness:0.94, metalness:0.04, flatShading:false
 }));
@@ -232,11 +258,11 @@ scene.add(terrain);
 
 // ---------- 湖面 ----------
 const water = new THREE.Mesh(
-  new THREE.PlaneGeometry(KMX*3.2, KMZ*3.2),
-  new THREE.MeshStandardMaterial({ color:0x05090d, roughness:0.62, metalness:0.18 })
+  new THREE.PlaneGeometry(KMX*9, KMZ*9),   // 大幅外扩，水面边缘移出画面
+  new THREE.MeshStandardMaterial({ color:0x18485f, roughness:0.34, metalness:0.42 })
 );
 water.rotation.x = -Math.PI/2;
-water.position.y = (BASE - BASE) / 1000 * VEX - 0.012;
+water.position.y = -0.004;
 scene.add(water);
 
 // ---------- 路线 ----------
@@ -249,13 +275,13 @@ const curve = new THREE.CatmullRomCurve3(route, false, 'catmullrom', 0.15);
 
 // 底光晕（粗淡线）
 const halo = new THREE.Mesh(
-  new THREE.TubeGeometry(curve, 1400, 0.028, 6, false),
-  new THREE.MeshBasicMaterial({ color:0xffffff, transparent:true, opacity:0.11 })
+  new THREE.TubeGeometry(curve, IS_MOBILE ? 700 : 1400, 0.085, 6, false),
+  new THREE.MeshBasicMaterial({ color:0xffffff, transparent:true, opacity:0.20 })
 );
 scene.add(halo);
 // 主线
 const lineMat = new THREE.MeshBasicMaterial({ color:0xffffff, transparent:true, opacity:0.95 });
-const line = new THREE.Mesh(new THREE.TubeGeometry(curve, 1400, 0.011, 6, false), lineMat);
+const line = new THREE.Mesh(new THREE.TubeGeometry(curve, IS_MOBILE ? 700 : 1400, 0.026, 6, false), lineMat);
 scene.add(line);
 
 // ---------- 进度光点 ----------
@@ -267,28 +293,33 @@ const glow = new THREE.Mesh(new THREE.SphereGeometry(0.42, 18, 18),
 scene.add(glow);
 
 // ---------- 标签 ----------
-const LABELS = [
-  { t:'利斯特维扬卡（起点）', p: data.waypoints.find(w=>w.n.includes('Начало')) || data.waypoints[1], main:true },
-  { t:'大戈洛（终点）',       p: data.waypoints.find(w=>w.n.includes('Окончание')) || data.waypoints[2], main:true },
-  { t:'Листвянка', p:null },
+// ---------- 关键点标注（按累计里程定位，中文＋俄文）----------
+const LABEL_SPEC = [
+  { km:  0.0, t: '利斯特维扬卡（起点）',               main: true  },
+  { km: 14.8, t: '黑谷营地（第 1 夜）· Падь Чёрная',   main: false },
+  { km: 17.9, t: '大科特 · Большие Коты',             main: false },
+  { km: 22.4, t: '斯克佩瑞尔悬崖 · Утёс Скрипер',      main: false },
+  { km: 30.5, t: '卡迪利石灰岩（第 2 夜）',            main: false },
+  { km: 45.8, t: '大戈洛（终点）',                     main: true  },
 ];
-const chosen = [];
-const mainNames = ['Начало маршрута','Окончание маршрута'];
-data.waypoints.forEach(w => { if (mainNames.some(m => w.n.includes(m.split(' ')[0]))) chosen.push({...w, main:true}); });
-// 途中只挑「短名、有地名指向」的景点，避开 стоянка 长串
-const mids = data.waypoints.filter(w =>
-  !mainNames.some(m => w.n.includes(m.split(' ')[0])) &&
-  !/стоянка/i.test(w.n) && w.n.length <= 30);
-mids.slice(0, 4).forEach(w => chosen.push({...w, main:false}));
+
+// 里程 → 路线点（x,y 归一化 + 高程）
+function pointAtKm(km) {
+  const cum = data.cumKm;
+  let lo = 0, hi = cum.length - 1;
+  while (lo < hi - 1) { const mid = (lo + hi) >> 1; if (cum[mid] <= km) lo = mid; else hi = mid; }
+  const r = data.route[lo];
+  return { x: r[0], y: r[1], e: r[2] };
+}
+const chosen = LABEL_SPEC.map(sp => ({ ...pointAtKm(sp.km), n: sp.t, main: sp.main }));
 
 const labelEls = chosen.map((w, idx) => {
   const d = document.createElement('div');
   d.className = 'lbl' + (w.main ? ' main' : '');
-  d.textContent = w.n.replace('Начало маршрута','利斯特维扬卡（起点）')
-                    .replace('Окончание маршрута','大戈洛（终点）');
+  d.textContent = w.n;
   document.body.appendChild(d);
   const p = new THREE.Vector3((w.x-0.5)*KMX, (w.e-BASE)/1000*VEX + 0.6, (w.y-0.5)*KMZ);
-  return { el:d, p, off:(idx % 3) * 16 };
+  return { el:d, p, off:(idx % 4) * 22 };
 });
 
 // ---------- 播放控制 ----------
@@ -317,7 +348,7 @@ function tick(){
   if (camMode !== 'free') {
     const ahead = curve.getPointAt(Math.min(u + 0.035, 1));
     const adj = camera.aspect < 1 ? 1.85 : 1.0;   // 窄屏（手机竖屏）自动拉远
-    const want = ahead.clone().add(new THREE.Vector3(-7.5*adj, 5.2*adj, 7.5*adj));
+    const want = ahead.clone().add(new THREE.Vector3(-9.5*adj, 12.0*adj, 9.5*adj));
     camera.position.lerp(want, 2.4*dt);
     controls.target.lerp(pt, 3.0*dt);
   }
@@ -333,7 +364,12 @@ function tick(){
     const pxRaw = (v.x*0.5+0.5)*innerWidth;
     const pxClamped = Math.max(halfW, Math.min(innerWidth - halfW, pxRaw));
     el.style.left = pxClamped + 'px';
-    el.style.top  = (-v.y*0.5+0.5)*innerHeight - (off||0) + 'px';
+    // 纵向安全区：落在 HUD 区或进度条区时「暂时隐藏」，不硬挤成一条线
+    const safeTop = innerWidth < 700 ? 268 : 168;
+    const safeBottom = innerHeight - 96;
+    const pyRaw = (-v.y*0.5+0.5)*innerHeight - (off||0);
+    if (pyRaw < safeTop || pyRaw > safeBottom) { el.style.display = 'none'; return; }
+    el.style.top = pyRaw + 'px';
   });
   requestAnimationFrame(tick);
 }
