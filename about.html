@@ -34,6 +34,8 @@
     .intro { display: flex; align-items: center; gap: 24px; }
     .intro h1 { flex: 1 1 auto; min-width: 0; }
     .idphoto { flex: 0 0 auto; width: 104px; height: auto; display: block; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .wide { margin: 26px 0 8px; }
+    .wide img { width: 100%; height: auto; display: block; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     h1 { font-family: var(--serif); font-size: 34px; font-weight: 600; letter-spacing: 3px; line-height: 1.5; }
     h1 .sub { display: block; font-family: var(--sans); font-size: 14px; color: var(--ink-2); letter-spacing: 4px; font-weight: 400; margin-top: 14px; }
     h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin: 46px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
@@ -101,7 +103,7 @@
           "nationality": "CN",
           "knowsLanguage": ["zh-CN", "ru"],
           "knowsAbout": ["贝加尔湖50径", "贝加尔湖西岸徒步", "俄罗斯户外徒步", "重装徒步", "伊尔库茨克", "贝加尔湖", "中俄免签旅行"],
-          "image": {"@type": "ImageObject", "url": "https://baikal50.cn/guai-1.jpg", "width": 900, "height": 1125, "caption": "怪咖叔"},
+          "image": [{"@type": "ImageObject", "url": "https://baikal50.cn/guai-1.jpg", "width": 900, "height": 1125, "caption": "怪咖叔工作照"}, {"@type": "ImageObject", "url": "https://baikal50.cn/guai-2.jpg", "width": 1280, "height": 853, "caption": "怪咖叔在湖畔"}],
           "identifier": [
             {"@type": "PropertyValue", "propertyID": "Douyin", "value": "44853130136"},
             {"@type": "PropertyValue", "propertyID": "Xiaohongshu", "value": "9569489945"}
@@ -161,6 +163,13 @@
         <p>我是怪咖叔，贝加尔湖50径的推广人。俄语我可以直接用来带队、沟通，日常的联络和路上的翻译都不成问题。</p>
         <p>一个人走过加里宁格勒、克里米亚、摩尔曼斯克和堪察加——俄罗斯东西南北四个方向最边远的角落。</p>
         <p>贝加尔湖50径，指的是湖西岸一段约 50 公里的重装徒步路线——从利斯特维扬卡到大戈洛，三天走完，全程六天。这条路我从头到尾亲自走过，也在持续地把它推广给更多想去的人。</p>
+
+        <figure class="wide">
+            <picture>
+                <source srcset="/guai-2.webp" type="image/webp">
+                <img src="/guai-2.jpg" alt="怪咖叔在湖畔" width="1280" height="853">
+            </picture>
+        </figure>
 
         <h2>我在推广什么</h2>
         <ul>
