@@ -1,15 +1,17 @@
 /* 贝加尔湖50径 · 环境音播放器
-   点击才播，绝不自动播。不加载音频文件直到首次点击(lazy)，
-   因此对页面体积、加载速度、SEO、AI 爬虫均零影响。 */
+   点击才播，绝不自动播。不加载音频文件直到首次点击（lazy），
+   因此对页面体积、加载速度、SEO、AI 爬虫均零影响。
+
+   2026-10-19 修复：原实现用 <source> 子元素 + preload='none'，
+   点击 play() 后 Chrome 不发起请求（readyState 一直 0、无网络请求、Promise 永不落定）。
+   改为：点击时才创建 src（直接设 src 属性，兼容 iOS/微信内置浏览器），
+   失败自动回退到 mp3，并显式调用 load()。 */
+
 (function () {
   'use strict';
 
-  var SRC = [
-    { src: '/audio/ambience-loop.m4a', type: 'audio/mp4' },
-    { src: '/audio/ambience-loop.mp3', type: 'audio/mpeg' }
-  ];
+  var SOURCES = ['/audio/ambience-loop.m4a', '/audio/ambience-loop.mp3'];
 
-  // 尊重"减少动态效果"偏好的同时保留功能; 无 JS 环境直接不显示按钮
   function build() {
     var btn = document.createElement('button');
     btn.className = 'baikal-amb';
@@ -28,76 +30,114 @@
       '<span class="baikal-amb__label">贝加尔湖　环境音</span>';
 
     var audio = null;
-    var ready = false;
+    var srcIndex = 0;
+    var fadeTimer = null;
 
-    function initAudio() {
-      if (audio) return;
-      audio = new Audio();
-      for (var i = 0; i < SRC.length; i++) {
-        var s = document.createElement('source');
-        s.src = SRC[i].src;
-        s.type = SRC[i].type;
-        audio.appendChild(s);
-      }
-      audio.loop = true;        // 循环播放
-      audio.preload = 'none';   // 关键：不点不加载
-      audio.volume = 0.55;      // 温和,不抢戏
-      // 淡入,避免突兀
-      audio.addEventListener('playing', function () {
-        fadeIn(audio);
-      });
-      audio.addEventListener('error', function () {
-        btn.style.display = 'none';  // 播放失败就藏起来,不留死按钮
-      });
+    function setVol(el, v) {
+      try { el.volume = v; } catch (e) { /* iOS 忽略 volume，不报错 */ }
     }
 
-    var fadeTimer = null;
     function fadeIn(el) {
       if (fadeTimer) clearInterval(fadeTimer);
-      el.volume = 0;
-      var target = 0.55, step = 0.05;
+      setVol(el, 0);
+      var target = 0.55;
       fadeTimer = setInterval(function () {
-        if (el.volume + step >= target) { el.volume = target; clearInterval(fadeTimer); fadeTimer = null; }
-        else { el.volume = Math.min(target, el.volume + step); }
+        var v = 0;
+        try { v = el.volume; } catch (e) { v = target; }
+        if (v + 0.05 >= target) { setVol(el, target); clearInterval(fadeTimer); fadeTimer = null; }
+        else { setVol(el, Math.min(target, v + 0.05)); }
       }, 60);
     }
+
     function fadeOut(el, cb) {
       if (fadeTimer) clearInterval(fadeTimer);
-      var step = 0.06;
       fadeTimer = setInterval(function () {
-        if (el.volume - step <= 0) {
-          el.volume = 0; clearInterval(fadeTimer); fadeTimer = null;
+        var v = 0;
+        try { v = el.volume; } catch (e) { v = 0.06; }
+        if (v - 0.06 <= 0) {
+          setVol(el, 0);
+          clearInterval(fadeTimer); fadeTimer = null;
           el.pause();
           if (cb) cb();
-        } else { el.volume = Math.max(0, el.volume - step); }
+        } else { setVol(el, Math.max(0, v - 0.06)); }
       }, 45);
     }
 
-    btn.addEventListener('click', function () {
-      initAudio();
-      if (!ready) { ready = true; }
-      // 已播完的,再点从头开始
-      if (audio.ended) { audio.currentTime = 0; }
-      var playing = !audio.paused;
-      if (playing) {
+    /* 首次点击时才创建 audio 并赋 src —— 保证未点击前零请求 */
+    function ensureAudio() {
+      if (audio) return audio;
+      audio = new Audio();
+      audio.loop = true;
+      audio.preload = 'auto';          // 此时用户已点击，允许加载
+      setVol(audio, 0.55);
+      audio.setAttribute('playsinline', '');
+      audio.setAttribute('webkit-playsinline', '');
+
+      audio.addEventListener('playing', function () {
+        btn.classList.add('is-playing');
+        btn.setAttribute('aria-pressed', 'true');
+        btn.title = '暂停　贝加尔湖西岸环境音';
+        fadeIn(audio);
+      });
+      audio.addEventListener('pause', function () {
         btn.classList.remove('is-playing');
         btn.setAttribute('aria-pressed', 'false');
         btn.title = '播放　贝加尔湖西岸环境音';
-        fadeOut(audio);
-      } else {
-        var p = audio.play();
-        if (p && p.catch) {
+      });
+      audio.addEventListener('error', function () {
+        // m4a 不行就退到 mp3；两个都不行才隐藏按钮
+        if (srcIndex < SOURCES.length - 1) {
+          srcIndex++;
+          loadSrc();
+          var p = audio.play();
+          if (p && p.catch) { p.catch(function () {}); }
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+
+      loadSrc();
+      return audio;
+    }
+
+    function loadSrc() {
+      audio.src = SOURCES[srcIndex];
+      try { audio.load(); } catch (e) {}
+    }
+
+    btn.addEventListener('click', function () {
+      var a = ensureAudio();
+      if (!a.paused) { fadeOut(a); return; }
+
+      /* 微信内置浏览器（iOS）需要在 WeixinJSBridge 就绪后播放 */
+      var play = function () {
+        var p = a.play();
+        if (p && p.then) {
           p.then(function () {
             btn.classList.add('is-playing');
             btn.setAttribute('aria-pressed', 'true');
             btn.title = '暂停　贝加尔湖西岸环境音';
-          }).catch(function () {
-            /* 播放被拒(极少见,用户已点击不受自动播放策略限制) */
+          }).catch(function (err) {
+            // 被拒（无手势/策略）→ 再试一次 load + play
+            try { a.load(); } catch (e) {}
+            var p2 = a.play();
+            if (p2 && p2.catch) { p2.catch(function () {}); }
           });
         } else {
           btn.classList.add('is-playing');
           btn.setAttribute('aria-pressed', 'true');
         }
+      };
+
+      if (typeof window.WeixinJSBridge !== 'undefined' && window.WeixinJSBridge.invoke) {
+        play();
+      } else if (document.addEventListener && /MicroMessenger/i.test(navigator.userAgent)) {
+        var done = false;
+        var once = function () { if (done) return; done = true; play(); };
+        document.addEventListener('WeixinJSBridgeReady', once, false);
+        setTimeout(once, 600);   // 兜底：桥一直不来也照常播
+      } else {
+        play();
       }
     });
 
