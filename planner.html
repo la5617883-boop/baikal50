@@ -122,7 +122,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <h1>贝加尔湖50径行程规划器</h1>
 <p class="sub">按你的出发月份、行程天数、体能和重装经验，算出这条线怎么分成几天走。<br>
-数据来自 2025 年 7 月我自己走完全程时记录的实测轨迹：<b>GPS 累计 45.8 公里，按路书和实际行走算 50 公里</b>（累计爬升 2433 米）。不是拼接、不是网上下载的。<br>
+数据来自 2025 年 7 月我自己走完全程时记录的实测轨迹：<b>GPS 累计 45.8 公里，按路书和实际行走算 50 公里</b>（累计爬升 2433 米）。<br>
 下面一律按 <b>50 公里</b>口径算天数。
 
 <hr>
@@ -176,6 +176,14 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
   <div id="gearNote"></div>
   <div id="permitNote"></div>
 
+  <div class="share">
+    <button class="btn ghost" id="saveimg">保存成图片（PNG）</button>
+    <div id="imgwrap" style="display:none;">
+      <p class="small" style="margin:14px 0 8px;">长按图片可保存到相册（手机上），或在电脑上点上面的按钮直接下载。</p>
+      <img id="shareImg" alt="贝加尔湖50径 我的行程" style="width:100%;height:auto;display:block;border:1px solid var(--line);">
+    </div>
+  </div>
+
   <div class="cta">
     <h3>完整行程与带队服务</h3>
     <p>上面这些是按实测轨迹算出来的骨架。真正走的时候还有营地选点、天气窗口、渡河判断、补给安排这些变量，每一年的情况都不一样。</p>
@@ -185,8 +193,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
 </div>
 
 <footer>
-  数据来源:2025 年 7 月实地记录的 GPS 轨迹（1064 个轨迹点）。轨迹累计 45.8 公里，本页按实际行走 50 公里口径分配天数，累计爬升 2433 米、海拔 452–869 米。<br>
-  里程与爬升按实测轨迹计算，实际行走受季节、水位和绕行影响。季节与许可信息仅供规划参考，以国家公园与官方发布为准。
+    里程与爬升按实测轨迹计算，实际行走受季节、水位和绕行影响。季节与许可信息仅供规划参考，以国家公园与官方发布为准。
 </footer>
 
 </div>
@@ -314,6 +321,95 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
     document.getElementById("result").classList.add("show");
     document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
   }
+
+
+  // ===== 保存成图片：纯 Canvas 绘制，无第三方库 =====
+  function drawCard(){
+    var m=val("month"), d=val("days"), f=val("fit"), x=val("exp");
+    var groups=PLANS[d], rows=[];
+    groups.forEach(function(g,i){
+      var a=segAgg(g[0],g[1]);
+      rows.push({n:"第 "+(i+1)+" 天", r:a.from+" → "+a.to,
+                 v:a.dist+" km　⬆"+a.up+" m　⬇"+a.down+" m", h:hrs(a.dist,a.up)+" 小时",
+                 c:(a.camp ? "第 "+(i+1)+" 夜 · "+a.camp : (g[1]===50.0 ? "" : "营地自选"))});
+    });
+    var W=1080, H=0, pad=72, dpr=2;
+    var bodyH = 300 + rows.length*150 + 200;
+    H = bodyH;
+    var cv=document.createElement("canvas");
+    cv.width=W*dpr; cv.height=H*dpr;
+    var g2=cv.getContext("2d"); g2.scale(dpr,dpr);
+
+    // 背景
+    g2.fillStyle="#faf9f7"; g2.fillRect(0,0,W,H);
+    // 顶部
+    g2.fillStyle="#1a1a1a";
+    g2.font='600 46px "Noto Serif SC","Songti SC",serif';
+    g2.fillText("贝加尔湖50径 · 我的行程", pad, pad+40);
+    g2.font='400 24px "PingFang SC",sans-serif';
+    g2.fillStyle="#555";
+    var sub = MONTH[m].t+"　·　"+(d==="3"?"3 天 · 硬档":"4 天 · 稳档")+"　·　"+FITN[f]+"　·　"+EXPN[x];
+    g2.fillText(sub, pad, pad+92);
+
+    // 分隔线
+    g2.strokeStyle="#e8e6e1"; g2.lineWidth=2;
+    g2.beginPath(); g2.moveTo(pad, pad+126); g2.lineTo(W-pad, pad+126); g2.stroke();
+
+    // 每日
+    var y=pad+186;
+    rows.forEach(function(r){
+      g2.fillStyle="#1a1a1a";
+      g2.font='600 30px "PingFang SC",sans-serif';
+      g2.fillText(r.n, pad, y);
+      g2.font='700 30px "PingFang SC",sans-serif';
+      var w=g2.measureText(r.n).width;
+      g2.font='400 26px "PingFang SC",sans-serif';
+      g2.fillStyle="#555"; g2.fillText(r.h, pad + w + 22, y);
+      if(r.c){
+        g2.fillStyle="#999"; g2.font='400 24px "PingFang SC",sans-serif';
+        var cw=g2.measureText(r.c).width;
+        g2.fillText(r.c, W-pad-cw, y);
+      }
+      g2.fillStyle="#1a1a1a";
+      g2.font='400 28px "PingFang SC",sans-serif';
+      g2.fillText(r.r, pad, y+44);
+      g2.fillStyle="#555";
+      g2.font='400 24px "PingFang SC",sans-serif';
+      g2.fillText(r.v, pad, y+84);
+      g2.strokeStyle="#e8e6e1";
+      g2.beginPath(); g2.moveTo(pad, y+112); g2.lineTo(W-pad, y+112); g2.stroke();
+      y+=150;
+    });
+
+    // 合计
+    var totD=0; groups.forEach(function(g){totD+=segAgg(g[0],g[1]).dist;});
+    g2.fillStyle="#1a1a1a";
+    g2.font='600 30px "PingFang SC",sans-serif';
+    g2.fillText("合计 "+Math.round(totD*10)/10+" km　·　累计爬升 2433 m　·　海拔 452–869 m", pad, y+50);
+
+    // 页脚
+    var by=H-96;
+    g2.strokeStyle="#1a1a1a"; g2.lineWidth=2;
+    g2.beginPath(); g2.moveTo(pad, by-40); g2.lineTo(W-pad, by-40); g2.stroke();
+    g2.fillStyle="#1a1a1a";
+    g2.font='600 28px "PingFang SC",sans-serif';
+    g2.fillText("baikal50.cn", pad, by+4);
+    g2.fillStyle="#999";
+    g2.font='400 22px "PingFang SC",sans-serif';
+    g2.fillText("怪咖叔 · 贝加尔湖西岸徒步", pad, by+44);
+    return cv;
+  }
+
+  document.getElementById("saveimg").addEventListener("click", function(){
+    var cv=drawCard();
+    var url=cv.toDataURL("image/png");
+    var img=document.getElementById("shareImg");
+    img.src=url;
+    document.getElementById("imgwrap").style.display="block";
+    var a=document.createElement("a");
+    a.href=url; a.download="baikal50-我的行程.png"; a.click();
+    img.scrollIntoView({behavior:"smooth",block:"center"});
+  });
 
   document.getElementById("go").addEventListener("click", render);
 })();
