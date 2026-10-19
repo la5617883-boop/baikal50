@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贝加尔湖50径行程规划器 | 怪咖叔 · 贝加尔湖西岸徒步</title>
+<meta name="description" content="按出发月份、行程天数、体能和重装经验，用 2025 年 7 月实测轨迹（50 公里、累计爬升 2433 米）生成贝加尔湖50径的分段行程、营地安排与风险提示。">
+<link rel="canonical" href="https://baikal50.cn/planner.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="贝加尔湖50径行程规划器">
+<meta property="og:description" content="用实测轨迹生成你的分段行程：里程、累计爬升、营地、季节与许可提示。">
+<meta property="og:url" content="https://baikal50.cn/planner.html">
+<style>
+:root{
+  --ink:#1a1a1a; --ink-2:#555; --ink-3:#999;
+  --paper:#faf9f7; --card:#fff; --line:#e8e6e1; --line-strong:#1a1a1a;
+  --warn-bg:#fdf6e8; --warn-line:#e6c98a;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Segoe UI","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);line-height:1.9;color:var(--ink);background:var(--paper)}
+.page{max-width:720px;margin:0 auto;padding:56px 24px 72px}
+.crumb{font-size:.82em;color:var(--ink-3);margin-bottom:26px}
+.crumb a{color:var(--ink-3);text-decoration:none;border-bottom:1px solid var(--line)}
+h1{font-family:var(--serif);font-size:1.9em;line-height:1.45;font-weight:600;letter-spacing:.01em}
+.sub{color:var(--ink-2);font-size:.94em;margin-top:14px}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+h2{font-family:var(--serif);font-size:1.18em;font-weight:600;margin:34px 0 14px}
+p{margin-bottom:14px}
+em{color:var(--ink-2)}
+.small{font-size:.86em;color:var(--ink-3)}
+
+/* 表单 */
+.field{margin-bottom:22px}
+.label{font-size:.9em;color:var(--ink-2);margin-bottom:9px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;width:0;height:0}
+.opt span{display:inline-block;padding:9px 16px;border:1px solid var(--line);background:var(--card);
+  font-size:.92em;cursor:pointer;user-select:none;transition:.15s}
+.opt input:checked+span{border-color:var(--line-strong);background:var(--ink);color:#fff}
+.opt input:focus-visible+span{outline:2px solid var(--ink-3);outline-offset:2px}
+
+.btn{display:inline-block;width:100%;padding:15px;margin-top:10px;border:1px solid var(--line-strong);
+  background:var(--ink);color:#fff;font-size:1em;font-family:var(--sans);cursor:pointer;transition:.15s}
+.btn:hover{background:#333}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:#f0eeea}
+
+/* 结果 */
+#result{display:none}
+#result.show{display:block}
+.day{border:1px solid var(--line);background:var(--card);padding:18px 20px;margin-bottom:14px}
+.day-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.day-t{font-family:var(--serif);font-size:1.04em;font-weight:600}
+.day-k{font-size:.84em;color:var(--ink-3);white-space:nowrap}
+.route-line{font-size:.94em;color:var(--ink);margin-bottom:6px}
+.nums{font-size:.86em;color:var(--ink-2)}
+.nums b{color:var(--ink);font-weight:600}
+.tag{display:inline-block;font-size:.76em;padding:2px 8px;border:1px solid var(--line);color:var(--ink-2);margin-left:8px;vertical-align:1px}
+.note{border-left:3px solid var(--line-strong);background:var(--card);padding:12px 16px;font-size:.92em;color:var(--ink-2);margin:16px 0}
+.warn{border-left:3px solid var(--warn-line);background:var(--warn-bg);padding:12px 16px;font-size:.92em;margin:16px 0}
+.warn b{color:var(--ink)}
+ul{margin:0 0 14px 20px}
+li{margin-bottom:7px;font-size:.94em}
+.cta{border:1px solid var(--line-strong);padding:24px 22px;margin-top:34px;background:var(--card)}
+.cta h3{font-family:var(--serif);font-size:1.06em;font-weight:600;margin-bottom:10px}
+.cta p{font-size:.94em;color:var(--ink-2);margin-bottom:10px}
+.cta .contact{font-size:.94em}
+a.inline{color:var(--ink);border-bottom:1px solid var(--line-strong);text-decoration:none}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:.8em;color:var(--ink-3);line-height:1.8}
+@media(max-width:600px){
+  .page{padding:36px 18px 56px}
+  h1{font-size:1.55em}
+  .day{padding:15px 16px}
+  .opt span{padding:8px 13px;font-size:.9em}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://baikal50.cn/planner.html#app",
+      "name": "贝加尔湖50径行程规划器",
+      "url": "https://baikal50.cn/planner.html",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "任意（网页版）",
+      "inLanguage": "zh-CN",
+      "description": "按出发月份、行程天数、体能和重装经验，用 2025 年 7 月实测轨迹生成贝加尔湖50径（贝加尔湖西岸 50 公里重装徒步）的分段行程：每日里程、累计爬升、营地、季节与许可提示。行程分 3 天硬档与 4 天稳档两种。",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"},
+      "isPartOf": {"@id": "https://baikal50.cn/#website"},
+      "provider": {"@id": "https://baikal50.cn/#promoter"},
+      "about": {"@type": "TouristAttraction", "name": "贝加尔湖50径（贝加尔湖西岸 50 公里重装徒步）"}
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://baikal50.cn/planner.html#howto",
+      "name": "如何规划贝加尔湖50径的行程天数",
+      "inLanguage": "zh-CN",
+      "totalTime": "P3D",
+      "estimatedCost": {"@type": "MonetaryAmount", "currency": "CNY", "value": "0"},
+      "tool": [{"@type": "HowToTool", "name": "本站行程规划器"}],
+      "step": [
+        {"@type": "HowToStep", "position": 1, "name": "确定出发月份", "text": "6 月融雪渡河风险高；7–8 月为最佳窗口；9 月降温快、日照变短。"},
+        {"@type": "HowToStep", "position": 2, "name": "确定行程天数", "text": "3 天为硬档（每天约 16 公里、行走 8.5–9 小时）；4 天为稳档（每天 8–17 公里、8–8.5 小时）。"},
+        {"@type": "HowToStep", "position": 3, "name": "对照体能和重装经验", "text": "无重装经验或平时运动较少者，按 4 天走更稳。"},
+        {"@type": "HowToStep", "position": 4, "name": "查看营地与关键点", "text": "第 1 夜黑谷营地 16.2 公里；斯克佩瑞尔悬崖 24.5 公里（走崖顶）；卡迪利石灰岩 33.3 公里。"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="page">
+
+<p class="crumb"><a href="/">贝加尔湖50径</a> · <a href="/route.html">路线详情</a> · 行程规划器</p>
+
+<h1>贝加尔湖50径行程规划器</h1>
+<p class="sub">按你的出发月份、行程天数、体能和重装经验，算出这条线怎么分成几天走。<br>
+数据来自 2025 年 7 月我自己走完全程时记录的实测轨迹：<b>GPS 累计 45.8 公里，按路书和实际行走算 50 公里</b>（累计爬升 2433 米）。不是拼接、不是网上下载的。<br>
+下面一律按 <b>50 公里</b>口径算天数。
+
+<hr>
+
+<h2>先回答四个问题</h2>
+
+<div class="field">
+  <div class="label">1. 计划哪个月出发</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="month" value="6"><span>6 月</span></label>
+    <label class="opt"><input type="radio" name="month" value="7" checked><span>7 月</span></label>
+    <label class="opt"><input type="radio" name="month" value="8"><span>8 月</span></label>
+    <label class="opt"><input type="radio" name="month" value="9"><span>9 月</span></label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="label">2. 想走几天（徒步天数）</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="days" value="3" checked><span>3 天 · 硬档</span></label>
+    <label class="opt"><input type="radio" name="days" value="4"><span>4 天 · 稳档</span></label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="label">3. 体能</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="fit" value="low" checked><span>新手 · 平时运动不多</span></label>
+    <label class="opt"><input type="radio" name="fit" value="mid"><span>一般 · 每周运动</span></label>
+    <label class="opt"><input type="radio" name="fit" value="high"><span>强 · 常爬山</span></label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="label">4. 重装徒步经验（背 12 公斤以上走多日）</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="exp" value="none" checked><span>没有</span></label>
+    <label class="opt"><input type="radio" name="exp" value="some"><span>1–2 次</span></label>
+    <label class="opt"><input type="radio" name="exp" value="many"><span>多次</span></label>
+  </div>
+</div>
+
+<button class="btn" id="go">生成我的行程</button>
+
+<div id="result">
+  <hr>
+  <div id="advice"></div>
+  <h2 id="planTitle"></h2>
+  <div id="days"></div>
+  <div id="monthNote"></div>
+  <div id="gearNote"></div>
+  <div id="permitNote"></div>
+
+  <div class="cta">
+    <h3>完整行程与带队服务</h3>
+    <p>上面这些是按实测轨迹算出来的骨架。真正走的时候还有营地选点、天气窗口、渡河判断、补给安排这些变量，每一年的情况都不一样。</p>
+    <p><b>完整行程安排、营地选择和带队服务由我本人提供。</b>俄语沟通、路上的翻译和突发处理我都能直接处理。</p>
+    <p class="contact">微信 youla7982　｜　电话 18618375879　｜　邮箱 chq324@126.com　｜　<a class="inline" href="/about.html">关于我</a></p>
+  </div>
+</div>
+
+<footer>
+  数据来源:2025 年 7 月实地记录的 GPS 轨迹（1064 个轨迹点）。轨迹累计 45.8 公里，本页按实际行走 50 公里口径分配天数，累计爬升 2433 米、海拔 452–869 米。<br>
+  里程与爬升按实测轨迹计算，实际行走受季节、水位和绕行影响。季节与许可信息仅供规划参考，以国家公园与官方发布为准。
+</footer>
+
+</div>
+
+<script>
+(function(){
+  // ===== 实测分段数据（由 baikal50-trail-full.gpx 计算）=====
+  var SEGS = [
+    {k1:0.0,  k2:16.2, dist:16.2, up:1205, down:1286, from:"利斯特维扬卡(起点)", to:"黑谷营地 · Падь Чёрная", camp:"黑谷营地"},
+    {k1:16.2, k2:19.5, dist:3.3,  up:123,  down:136,  from:"黑谷营地", to:"大科特 · Большие Коты", camp:""},
+    {k1:19.5, k2:24.5, dist:5.0,  up:327,  down:186,  from:"大科特", to:"斯克佩瑞尔悬崖 · Утёс Скрипер", camp:""},
+    {k1:24.5, k2:33.3, dist:8.8,  up:496,  down:634,  from:"斯克佩瑞尔悬崖", to:"卡迪利石灰岩", camp:"卡迪利石灰岩"},
+    {k1:33.3, k2:50.0, dist:16.7, up:281,  down:274,  from:"卡迪利石灰岩", to:"大戈洛 · Большие Голоустное(终点)", camp:""}
+  ];
+  // 合并区间为"每日段"
+  var PLANS = {
+    "3":[ [0.0,16.2], [16.2,33.3], [33.3,50.0] ],
+    "4":[ [0.0,16.2], [16.2,24.5], [24.5,33.3], [33.3,50.0] ]
+  };
+  var MONTH = {
+    "6":{t:"6 月",n:"高处可能还有残雪,融雪使溪流水量大、渡河是这段最需要判断的环节;蚊虫开始出现。白昼长,容错时间多。"},
+    "7":{t:"7 月",n:"通常是最好的窗口:花期、白昼最长、路况干爽。代价是蚊虫和小咬最多,午后阵雨要备好防水。"},
+    "8":{t:"8 月",n:"也是最稳的月份,但走的人最多。午后雷雨要避开暴露的崖边路段(斯克佩瑞尔悬崖一带)。"},
+    "9":{t:"9 月",n:"降温快、日照明显变短,夜间可能接近 0℃。风景最好,但必须把行程压缩、每天早出发,并带上更厚的睡袋。"}
+  };
+  var FITN = {low:"新手 · 平时运动不多", mid:"一般 · 每周运动", high:"强 · 常爬山"};
+  var EXPN = {none:"没有重装经验", some:"1–2 次重装经验", many:"多次重装经验"};
+
+  function segAgg(k1,k2){
+    var dist=0,up=0,down=0,from="",to="",camp="";
+    SEGS.forEach(function(s){
+      if(s.k1>=k1-0.01 && s.k2<=k2+0.01){ dist+=s.dist; up+=s.up; down+=s.down; if(!from)from=s.from; to=s.to; if(s.camp)camp=s.camp; }
+    });
+    return {dist:Math.round(dist*10)/10, up:up, down:down, from:from, to:to, camp:camp};
+  }
+
+  // 行走时间按本人实测节奏：重装、含休息，每天 8 小时以上。
+  // 依据:第 1 天 16.2 公里 / 爬升 1205 米,实际走了 8 小时出头。
+  function hrs(dist,up){
+    // 以本人实测节奏为基准：重装、含休息，约 2 公里/小时，爬升多的日子再慢一点；不足 8 小时按 8 小时算。
+    var h = Math.max(8, dist/2.0 + up/2000);
+    return Math.round(h*2)/2;
+  }
+
+  function val(n){
+    var e=document.querySelector('input[name="'+n+'"]:checked');
+    return e?e.value:"";
+  }
+
+  function render(){
+    var m=val("month"), d=val("days"), f=val("fit"), x=val("exp");
+    var groups = PLANS[d];
+    var totalUp=0, totalDist=0;
+    groups.forEach(function(g){var a=segAgg(g[0],g[1]);totalUp+=a.up;totalDist+=a.dist;});
+
+    // ---- 建议与警告 ----
+    var adv="";
+    if((f==="low"||x==="none") && d==="3"){
+      adv+='<div class="warn"><b>先说一句实话:</b>以你填的体能和重装经验,3 天是硬档,不建议直接上。这条路第一天就是 16 公里、累计爬升 1205 米、下降 1286 米——不是平路,是一直在上下,每天走在路上 8 小时以上。按 <b>4 天</b>走,每天压到 8–9 公里,是更稳的选择。</div>';
+    }
+    if(f==="high" && x==="many" && d==="4"){
+      adv+='<div class="note">你的条件走 4 天会偏松:每天 8–9 公里、3–4 个小时就到位。想紧凑一点就选 3 天,把时间和体力留给天气和拍摄。</div>';
+    }
+    if(f==="high" && x==="many" && d==="3"){
+      adv+='<div class="note">你的条件走 3 天是紧的但不勉强:每天 16 公里上下、爬升 900–1200 米、走在路上 8 小时以上。</div>';
+    }
+    if(m==="6"){
+      adv+='<div class="warn"><b>6 月提醒:</b>融雪期溪流水量大,渡河是这条线上最需要经验和判断的环节。结伴走、别单独过水。</div>';
+    }
+    if(m==="9"){
+      adv+='<div class="warn"><b>9 月提醒:</b>日照变短,按 10 小时白天算行程;夜间可能到 0℃,睡袋和保暖要按低温配。</div>';
+    }
+    document.getElementById("advice").innerHTML = adv;
+
+    // ---- 标题 ----
+    var titleMap = {"3":"3 天 · 硬档(利斯特维扬卡 → 大戈洛)","4":"4 天 · 稳档(三个营地)"};
+    document.getElementById("planTitle").textContent = "你的行程:"+titleMap[d];
+
+    // ---- 每日明细 ----
+    var html="";
+    groups.forEach(function(g,i){
+      var a=segAgg(g[0],g[1]);
+      var h=hrs(a.dist,a.up);
+      var tag = (i===0&&g[0]===0.0)?'<span class="tag">起步日</span>':"";
+      if(g[1]===50.0) tag='<span class="tag">到达终点</span>';
+      html+='<div class="day">'
+        + '<div class="day-h"><div class="day-t">第 '+(i+1)+' 天'+tag+'</div>'
+        + '<div class="day-k">'+(a.camp ? ('第 '+(i+1)+' 夜 · '+a.camp) : (g[1]===50.0 ? '' : '营地自选'))+'</div></div>' 
+        + '<div class="route-line">'+a.from+' → '+a.to+'</div>'
+        + '<div class="nums">里程 <b>'+a.dist+' km</b>　累计爬升 <b>'+a.up+' m</b>　下降 <b>'+a.down+' m</b>　行走 <b>'+h+' 小时</b></div>'
+        + '</div>';
+    });
+    if(d==="4"){
+      html+='<div class="note">为什么中间两天只有 8–9 公里:第 2、3 天要过斯克佩瑞尔崖一带,'
+        + '上下反复、路面碎石,耗时不按里程算。把这两天压短,第四天 16.7 公里才有余力。'
+        + '<br>第 2 夜没有固定营地,在斯克佩瑞尔一带自选(风大,扎营要避风口)。</div>';
+    }
+    html+='<div class="note">合计:徒步 <b>'+ (Math.round(totalDist*10)/10) +' km</b>,全程累计爬升 <b>2433 m</b>,海拔 452–869 m,湖面 456 m。<br>'
+      + '关键点里程:黑谷营地 16.2 km、大科特 19.5 km、斯克佩瑞尔悬崖 24.5 km(走崖顶不走山腰)、卡迪利石灰岩 33.3 km。</div>';
+    document.getElementById("days").innerHTML = html;
+
+    // ---- 季节 ----
+    document.getElementById("monthNote").innerHTML =
+      '<div class="note"><b>'+MONTH[m].t+'的情况:</b>'+MONTH[m].n+'</div>';
+
+    // ---- 装备 ----
+    var gear="";
+    if(x==="none"){
+      gear='<div class="note"><b>装备上最该补的三样:</b>合脚的登山鞋(先穿旧鞋走两次 15 公里)、'
+        + '背负合适的 50–60 升背包(试背装满)、防水层(贝加尔湖的雨来得快)。带 12 公斤走不动的话,先练两周再定行程。</div>';
+    } else if(x==="some"){
+      gear='<div class="note"><b>你已有重装经验,重点放在:</b>防水(这一带午后阵雨)、防蚊(7 月最凶)、'
+        + '以及把每日口粮按实际消耗准备——沿途没有补给点。</div>';
+    } else {
+      gear='<div class="note"><b>多次重装经验的走法:</b>可以按 3 天压紧,把时间留给天气和拍摄。'
+        + '但别省营地判断:卡迪利一带的风比看上去大。</div>';
+    }
+    document.getElementById("gearNote").innerHTML = gear;
+
+    // ---- 许可 ----
+    document.getElementById("permitNote").innerHTML =
+      '<div class="note">这条线穿过<b>国家公园辖区</b>,需要提前办手续。具体怎么办、多少钱、几天能下来,'
+      + '写在<a class="inline" href="/permit.html">通行与许可须知</a>里。</div>';
+
+    document.getElementById("result").classList.add("show");
+    document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
+  document.getElementById("go").addEventListener("click", render);
+})();
+</script>
+</body>
+</html>
