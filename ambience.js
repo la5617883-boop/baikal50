@@ -109,36 +109,59 @@
       var a = ensureAudio();
       if (!a.paused) { fadeOut(a); return; }
 
-      /* 微信内置浏览器（iOS）需要在 WeixinJSBridge 就绪后播放 */
-      var play = function () {
-        var p = a.play();
-        if (p && p.then) {
-          p.then(function () {
-            btn.classList.add('is-playing');
-            btn.setAttribute('aria-pressed', 'true');
-            btn.title = '暂停　贝加尔湖西岸环境音';
-          }).catch(function (err) {
-            // 被拒（无手势/策略）→ 再试一次 load + play
-            try { a.load(); } catch (e) {}
-            var p2 = a.play();
-            if (p2 && p2.catch) { p2.catch(function () {}); }
-          });
-        } else {
-          btn.classList.add('is-playing');
-          btn.setAttribute('aria-pressed', 'true');
-        }
-      };
-
-      if (typeof window.WeixinJSBridge !== 'undefined' && window.WeixinJSBridge.invoke) {
-        play();
-      } else if (document.addEventListener && /MicroMessenger/i.test(navigator.userAgent)) {
-        var done = false;
-        var once = function () { if (done) return; done = true; play(); };
-        document.addEventListener('WeixinJSBridgeReady', once, false);
-        setTimeout(once, 600);   // 兜底：桥一直不来也照常播
-      } else {
-        play();
+      var marked = false;
+      function mark() {
+        if (marked) return;
+        marked = true;
+        btn.classList.add('is-playing');
+        btn.setAttribute('aria-pressed', 'true');
+        btn.title = '暂停　贝加尔湖西岸环境音';
       }
+
+      /* 微信内 iOS：WeixinJSBridge.invoke('getNetworkType') 是官方推荐的“解锁音频”手法，
+         必须在 click 回调的同步栈里发起，否则会丢掉用户手势上下文（NotAllowedError）。 */
+      function wxUnlock(next) {
+        try {
+          if (window.WeixinJSBridge && window.WeixinJSBridge.invoke) {
+            window.WeixinJSBridge.invoke('getNetworkType', {}, function () { next(); });
+            return true;
+          }
+        } catch (e) {}
+        return false;
+      }
+
+      function attempt(depth) {
+        var p;
+        try {
+          p = a.play();
+        } catch (e) {
+          return fallback(depth);
+        }
+        if (p && p.then) {
+          p.then(mark).catch(function () { fallback(depth); });
+        } else {
+          mark();
+        }
+      }
+
+      function fallback(depth) {
+        if (depth === 0) {
+          /* 首次被拒：走微信解锁，成功后立刻再播一次 */
+          if (wxUnlock(function () { attempt(1); })) return;
+          try { a.load(); } catch (e) {}
+          setTimeout(function () { attempt(2); }, 120);
+          return;
+        }
+        if (depth === 1) {
+          try { a.load(); } catch (e) {}
+          attempt(2);
+          return;
+        }
+        /* 兜底：保持按钮可再次点击，不隐藏 */
+      }
+
+      /* ① 第一件事：在同步栈里直接播，抢住用户手势 */
+      attempt(0);
     });
 
     document.body.appendChild(btn);
