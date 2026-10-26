@@ -95,3 +95,6 @@ gpx/resize_alpha.py
 badge-medal-round.orig_*
 __pycache__/
 *.pyc
+
+# 内部笔记（不上线）
+待办-*.md
