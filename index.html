@@ -980,6 +980,11 @@ var _hmt = _hmt || [];
 #bai-log .me{ align-self:flex-end; background:#1a1a1a; color:#fff; border-radius:2px; }
 #bai-log .it{ align-self:flex-start; background:#fff; border:1px solid #e8e6e1; color:#333; border-radius:2px; }
 #bai-log .th{ align-self:flex-start; color:#999; font-size:13px; padding:8px 4px; }
+#bai-log .m.wide{ max-width:100%; }
+#bai-log .m.wide div + div{ margin-top:2px; }
+#bai-log .m a{ color:#1a1a1a; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px; text-decoration-color:#b8933f; }
+#bai-log .m a:hover{ color:#8a6a1f; }
+#bai-log .m a:active{ color:#8a6a1f; }
 #bai-tips{ display:flex; flex-wrap:wrap; gap:6px; padding:0 14px 10px; }
 #bai-tips button{
   border:1px solid #e8e6e1; background:#fff; color:#555; font-size:12px;
@@ -1000,6 +1005,9 @@ var _hmt = _hmt || [];
 #bai-foot{ padding:0 14px 12px; font-size:11px; color:#aaa; line-height:1.6; background:#fff; }
 #bai-foot a{ color:#888; text-decoration:underline; text-underline-offset:2px; }
 
+@media (max-width:380px){
+  #bai-log .m.wide{ font-size:13px; }
+}
 @media (max-width:520px){
   #bai-walker{ bottom:64px; right:8px; width:78px; height:78px; }
   #bai-btn{ width:78px; height:78px; }
@@ -1066,6 +1074,14 @@ var _hmt = _hmt || [];
     log.scrollTop=log.scrollHeight;
     return d;
   }
+  function bubbleHTML(cls, html){
+    var d=document.createElement('div');
+    d.className='m '+cls;
+    d.innerHTML=html;
+    log.appendChild(d);
+    log.scrollTop=log.scrollHeight;
+    return d;
+  }
   function setBusy(v){ busy=v; send.disabled=v; send.textContent=v?'…':'发送'; }
 
   function open(){
@@ -1074,7 +1090,9 @@ var _hmt = _hmt || [];
     if(!opened){
       opened=true;
       bubble('it','我是这条线自己的 AI 替身。路线、难度、季节、装备、许可、价格、退改，都可以问我。\n价格和条款我会逐字照官方说；我掌握不了的，会告诉你去找怪咖叔本人。');
-      bubble('it','欢迎大家跟着云上 3D走一遍贝加尔湖 50 径\n如果您对难度有疑虑，可以试下行程规划器呦');
+      bubbleHTML('it wide',
+        '<div><a href="/route-3d.html">欢迎大家跟着云上 3D走一遍贝加尔湖 50 径</a></div>' +
+        '<div><a href="/planner.html">如果您对难度有疑虑，可以试下行程规划器呦</a></div>');
     }
     setTimeout(function(){ q.focus(); }, 200);
   }
