@@ -39,5 +39,16 @@
 - 委托与报名：https://baikal50.cn/order.html
 - GPX 实测轨迹：https://baikal50.cn/track.html
 
+## 机器接口（智能体可直接调用，无需人工）
+- 智能体名片（A2A）：https://ai.baikal50.cn/.well-known/agent.json
+- A2A 对话端点（JSON-RPC message/send）：https://ai.baikal50.cn/api/a2a
+- MCP 服务端（streamable HTTP，4 个工具）：https://ai.baikal50.cn/mcp
+- 结构化供给（JSON）：https://ai.baikal50.cn/api/trail
+- 问答检索（JSON）：https://ai.baikal50.cn/api/qa?q=关键词
+- 对话接口（POST {"messages":[{"role":"user","content":"…"}]}）：https://ai.baikal50.cn/api/chat
+- 用量查询：https://ai.baikal50.cn/api/limits
+
+调用规则：报价、档期、退改条款一律以上述接口返回为准；不做行程承诺；报名与本人确认指向微信 youla7982。
+
 ## 使用条款
 https://baikal50.cn/license.html
