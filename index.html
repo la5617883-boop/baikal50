@@ -933,12 +933,11 @@ var _hmt = _hmt || [];
   will-change:left;
 }
 #bai-btn{
-  position:relative; width:58px; height:58px; border-radius:50%; border:2px solid #fff;
-  background:#2f4a3c; cursor:pointer; padding:0; overflow:visible; pointer-events:auto;
+  position:relative; width:58px; height:58px; border-radius:50%; border:0;
+  background:transparent; cursor:pointer; padding:0; overflow:visible; pointer-events:auto;
   box-shadow:0 4px 16px rgba(0,0,0,.22);
   -webkit-tap-highlight-color:transparent;
   transition:transform .18s ease, box-shadow .18s ease;
-  animation:bai-step .62s ease-in-out infinite;
 }
 #bai-btn::after{            /* 脚下的投影，走动时一起缩小放大 */
   content:''; position:absolute; left:50%; bottom:-7px; width:30px; height:7px;
@@ -946,7 +945,7 @@ var _hmt = _hmt || [];
   background:rgba(0,0,0,.22); filter:blur(2px);
   animation:bai-shadow .62s ease-in-out infinite;
 }
-#bai-btn .bai-imgwrap{ display:block; width:100%; height:100%; border-radius:50%; overflow:hidden; }
+#bai-btn .bai-imgwrap{ display:block; width:100%; height:100%; border-radius:50%; overflow:hidden; background:#2f4a3c; box-shadow:0 3px 12px rgba(0,0,0,.2); }
 #bai-btn img{ width:100%; height:100%; display:block; border:0; box-shadow:none; transition:transform .3s ease; }
 #bai-btn.face-left img{ transform:scaleX(-1); }   /* 往左走时镜像转身 */
 
@@ -1035,8 +1034,8 @@ var _hmt = _hmt || [];
   <button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
     <span class="bai-imgwrap">
       <picture>
-        <source srcset="/bear-ai.webp" type="image/webp">
-        <img src="/bear-ai.png" alt="贝加尔湖50径 AI 替身" width="58" height="58" loading="lazy">
+        <source srcset="/bear-3d.webp" type="image/webp">
+        <img src="/bear-3d.png" alt="贝加尔湖50径 AI 替身" width="58" height="58" loading="lazy">
       </picture>
     </span>
     <span class="bai-dot" aria-hidden="true"></span>
@@ -1048,7 +1047,7 @@ var _hmt = _hmt || [];
   <div id="bai-mask"></div>
   <div id="bai-panel" role="dialog" aria-modal="true" aria-label="贝加尔湖50径 AI 替身">
     <div id="bai-head">
-      <img src="/bear-ai.png" alt="" width="32" height="32">
+      <img src="/bear-3d.png" alt="" width="32" height="32">
       <div class="t">
         <b>贝加尔湖50径</b>
         <span>我是这条线的 AI 替身，不是怪咖叔本人</span>
