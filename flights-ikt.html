@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>国内飞伊尔库茨克航班表 | 贝加尔湖50径</title>
-<meta name="description" content="从国内各城市直飞伊尔库茨克（IKT）的航线一览：北京首都、北京大兴、哈尔滨、上海浦东、广州白云、三亚凤凰。执行航司包括国航、S7 西伯利亚航空、伊尔航空、俄罗斯航空。2026—2027 冬春航季，班期以航司实际执行为准。">
+<meta name="description" content="国内直飞伊尔库茨克（IKT）航线一览：北京首都、北京大兴、哈尔滨、满洲里、上海浦东、广州白云、三亚凤凰。航司含国航、S7 西伯利亚航空、伊尔航空、俄罗斯航空。2026—2027 冬春航季，班期以航司实际执行为准。">
 <link rel="canonical" href="https://baikal50.cn/flights-ikt.html">
 <link rel="stylesheet" href="/ambience.css">
 <style>
@@ -17,7 +17,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:var(--sans);line-height:1.9;color:var(--ink);background:var(--paper)}
-.page{max-width:860px;margin:0 auto;padding:0 20px 60px}
+.page{max-width:900px;margin:0 auto;padding:0 20px 60px}
 header.top{display:flex;justify-content:space-between;align-items:center;
   padding:22px 0 18px;border-bottom:1px solid var(--line);margin-bottom:34px;font-size:.9em}
 header.top a{color:var(--ink-2);text-decoration:none}
@@ -25,16 +25,24 @@ header.top .brand{font-family:var(--serif);font-size:1.05em;letter-spacing:1.5px
 h1{font-family:var(--serif);font-size:1.5em;font-weight:600;letter-spacing:1px;margin-bottom:8px}
 h1 .sub{display:block;font-family:var(--sans);font-size:.5em;font-weight:400;
   color:var(--ink-3);letter-spacing:.5px;margin-top:8px}
-.figure{margin:26px 0 18px;background:var(--card);border:1px solid var(--line);padding:14px}
-.figure a{display:block}
-.figure img{width:100%;height:auto;display:block}
-.cap{font-size:.82em;color:var(--ink-3);margin-top:10px;line-height:1.75}
-.note{font-size:.86em;color:var(--ink-2);border-left:2px solid #d8d5cf;padding-left:14px;margin:20px 0}
+.map{margin:26px 0 6px;background:var(--card);border:1px solid var(--line);padding:12px 8px 4px}
+.map svg{width:100%;height:auto;display:block}
+.cap{font-size:.82em;color:var(--ink-3);margin:8px 0 26px;text-align:center;line-height:1.75}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.88em;background:var(--card);
+  border:1px solid var(--line)}
+caption{caption-side:top;text-align:left;font-size:.82em;color:var(--ink-3);padding:0 0 8px}
+th,td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--ink);background:#f6f4f0;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.c{white-space:nowrap}
+td.no{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:.86em;color:#8a6a1f;background:#f7f1e2;
+  border:1px solid #e8dcc0;border-radius:2px;padding:1px 6px;margin-left:4px;white-space:nowrap}
+.note{font-size:.86em;color:var(--ink-2);border-left:2px solid #d8d5cf;padding-left:14px;margin:22px 0}
 .note strong{color:var(--ink)}
-.rows{list-style:none;margin:22px 0}
-.rows li{font-size:.9em;color:var(--ink-2);padding:9px 0;border-bottom:1px dashed var(--line)}
-.rows li:last-child{border-bottom:0}
-.rows b{color:var(--ink);font-weight:600;margin-right:6px}
+.note ul{margin:8px 0 0 18px}
+.note li{margin:5px 0}
 a.lnk{color:var(--ink);text-decoration:underline;text-decoration-color:#c9a961;
   text-decoration-thickness:1px;text-underline-offset:3px}
 footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
@@ -42,8 +50,9 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
 footer a{color:var(--ink-2);text-decoration:none}
 @media (max-width:640px){
   h1{font-size:1.25em}
-  .figure{padding:8px}
   .page{padding:0 14px 44px}
+  table{font-size:.78em}
+  th,td{padding:9px 6px}
 }
 </style>
 </head>
@@ -56,31 +65,116 @@ footer a{color:var(--ink-2);text-decoration:none}
 
     <main>
         <h1>国内飞伊尔库茨克航班表
-            <span class="sub">2026—2027 冬春航季 · 班期以航司实际执行为准</span>
+            <span class="sub">2026—2027 冬春航季 · 班期以航司实际执行为准 · 校核于 2026-10-27</span>
         </h1>
 
-        <div class="figure">
-            <a href="flights-ikt-v2.jpg" target="_blank" rel="noopener">
-                <picture>
-                    <source srcset="/flights-ikt-v2.webp" type="image/webp">
-                    <img src="/flights-ikt-v2.jpg" alt="国内直飞伊尔库茨克（IKT）航线一览：北京首都、北京大兴、哈尔滨、上海浦东、广州白云、三亚凤凰六地直飞，航司包括国航、S7 西伯利亚航空、伊尔航空、俄罗斯航空" width="1560" height="1280" loading="lazy">
-                </picture>
-            </a>
-            <p class="cap">点击图片可查看大图。数据截至 2026-10-27，新增或调整以航司公告为准。</p>
+        <div class="map">
+        <svg viewBox="0 0 820 430" role="img" aria-label="国内七个城市直飞伊尔库茨克的航线示意图">
+            <defs>
+                <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#b08b4f"/>
+                </marker>
+            </defs>
+            <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',sans-serif">
+                <circle cx="676" cy="215" r="48" fill="#2f4a3c"/>
+                <text x="676" y="206" text-anchor="middle" fill="#fff" font-size="15" font-weight="600">伊尔库茨克</text>
+                <text x="676" y="229" text-anchor="middle" fill="#cfd8d2" font-size="13" letter-spacing="1.5">IKT</text>
+
+                <g stroke="#b08b4f" stroke-width="1.4" fill="none" opacity=".85" marker-end="url(#arw)">
+                    <path d="M198,44 C400,44 500,120 632,196"/>
+                    <path d="M198,102 C400,102 490,140 634,207"/>
+                    <path d="M198,160 C390,160 490,178 634,214"/>
+                    <path d="M198,218 C380,218 480,220 632,219"/>
+                    <path d="M198,276 C390,276 490,254 634,226"/>
+                    <path d="M198,334 C400,334 500,284 634,234"/>
+                    <path d="M198,392 C420,392 520,320 636,244"/>
+                </g>
+
+                <g fill="#b08b4f">
+                    <circle cx="196" cy="44" r="3.2"/><circle cx="196" cy="102" r="3.2"/>
+                    <circle cx="196" cy="160" r="3.2"/><circle cx="196" cy="218" r="3.2"/>
+                    <circle cx="196" cy="276" r="3.2"/><circle cx="196" cy="334" r="3.2"/>
+                    <circle cx="196" cy="392" r="3.2"/>
+                </g>
+
+                <g font-size="14" fill="#1a1a1a">
+                    <text x="18" y="40">北京首都</text><text x="18" y="57" font-size="11.5" fill="#999">PEK</text>
+                    <text x="18" y="98">北京大兴</text><text x="18" y="115" font-size="11.5" fill="#999">PKX</text>
+                    <text x="18" y="156">哈尔滨</text><text x="18" y="173" font-size="11.5" fill="#999">HRB</text>
+                    <text x="18" y="214">满洲里</text><text x="18" y="231" font-size="11.5" fill="#999">NZH</text>
+                    <text x="18" y="272">上海浦东</text><text x="18" y="289" font-size="11.5" fill="#999">PVG</text>
+                    <text x="18" y="330">广州白云</text><text x="18" y="347" font-size="11.5" fill="#999">CAN</text>
+                    <text x="18" y="388">三亚凤凰</text><text x="18" y="405" font-size="11.5" fill="#999">SYX</text>
+                </g>
+
+                <g font-size="11" fill="#8a6a1f">
+                    <text x="300" y="80">约 3h</text>
+                    <text x="300" y="124">约 3h10m</text>
+                    <text x="300" y="182">约 2h40m</text>
+                    <text x="300" y="240">直飞</text>
+                    <text x="300" y="294">约 4h45m</text>
+                    <text x="300" y="348">约 5h15m</text>
+                    <text x="300" y="396">约 6h</text>
+                </g>
+            </g>
+        </svg>
+        </div>
+        <p class="cap">七个城市直飞伊尔库茨克（IKT）· 示意图；班期与航班号以下表为准</p>
+
+        <div class="tbl-wrap">
+        <table>
+            <caption>班期明细（2026—2027 冬春航季）</caption>
+            <thead>
+                <tr>
+                    <th>出发城市</th><th>代码</th><th>航空公司</th><th>航班号</th>
+                    <th>班期</th><th>机型</th><th>直飞时长</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="c">北京首都</td><td class="c">PEK</td><td>中国国际航空</td>
+                    <td class="no">CA869 / CA870</td><td class="c">每日</td><td class="c">737-800</td><td class="c">约 3h</td>
+                </tr>
+                <tr>
+                    <td class="c">北京大兴</td><td class="c">PKX</td><td>S7 西伯利亚航空</td>
+                    <td class="no">S76314 等</td><td class="c">每周 9 班</td><td class="c">A320 / 737-800</td><td class="c">约 3h10m</td>
+                </tr>
+                <tr>
+                    <td class="c">哈尔滨</td><td class="c">HRB</td><td>伊尔航空 IrAero</td>
+                    <td class="no">IO-892 / IO-891</td><td class="c">每周二<span class="pill">季节性</span></td><td class="c">SSJ-100</td><td class="c">约 2h40m</td>
+                </tr>
+                <tr>
+                    <td class="c">满洲里</td><td class="c">NZH</td><td>伊尔航空 IrAero</td>
+                    <td class="no">IO-779 / IO-780</td><td class="c">每周四</td><td class="c">CRJ200</td><td class="c">直飞</td>
+                </tr>
+                <tr>
+                    <td class="c">上海浦东</td><td class="c">PVG</td><td>S7 西伯利亚航空</td>
+                    <td class="no">S76326</td><td class="c">周三、五、日</td><td class="c">737-800</td><td class="c">约 4h45m</td>
+                </tr>
+                <tr>
+                    <td class="c">广州白云</td><td class="c">CAN</td><td>S7 西伯利亚航空</td>
+                    <td class="no">S76320</td><td class="c">每周 2 班</td><td class="c">737-800</td><td class="c">约 5h15m</td>
+                </tr>
+                <tr>
+                    <td class="c" rowspan="2">三亚凤凰</td><td class="c" rowspan="2">SYX</td><td>俄罗斯航空</td>
+                    <td class="no">SU867 / SU866</td><td class="c">周二、五、日<span class="pill">待核</span></td><td class="c">A320</td><td class="c">约 6h</td>
+                </tr>
+                <tr>
+                    <td>S7 西伯利亚航空</td><td class="no">S76333 / S76334</td>
+                    <td class="c">12/30 起每周 2 班</td><td class="c">—</td><td class="c">—</td>
+                </tr>
+            </tbody>
+        </table>
         </div>
 
-        <ul class="rows">
-            <li><b>北京首都 PEK</b>国航 CA869/870，每周约 7 班（每日），波音 737，约 3 小时</li>
-            <li><b>北京大兴 PKX</b>S7 航空 S76314 等，每周数班，A320，约 3 小时 10 分</li>
-            <li><b>哈尔滨 HRB</b>伊尔航空 IO2892，每周 1 班（季节性），约 2 小时 40 分至 3 小时</li>
-            <li><b>上海浦东 PVG</b>S7 航空 S76326，每周二、四，波音 737-800，约 4 小时 45 分</li>
-            <li><b>广州白云 CAN</b>S7 航空 S76320，每周 2 班，A320，约 5 小时 15 分</li>
-            <li><b>三亚凤凰 SYX</b>俄罗斯航空 SU867/866，每周二、五、日，A320，约 6 小时</li>
-        </ul>
-
         <div class="note">
-            <strong>说明</strong>：以上为直飞航线与班期概览，用于规划出行时间。<strong>票价不在本页列出</strong>——机票价格随舱位与时间波动，任何写死的数字都会很快过期，请以购票平台实时报价为准。
-            行程内往返机票已包含在团费中，具体以<a class="lnk" href="/order.html">委托与报名</a>时的《出行服务确认单》为准。
+            <strong>说明</strong>
+            <ul>
+                <li><strong>票价不在本页列出</strong>——机票价格随舱位与时间波动，写死的数字很快过期，请以购票平台实时报价为准。行程内往返机票已包含在团费中，具体以<a class="lnk" href="/order.html">委托与报名</a>时的《出行服务确认单》为准。</li>
+                <li>班期与航班号依据航司官网与机场时刻表校核（2026-10-27）。<strong>冬春航季中途调整频繁</strong>，出行前请再向航司确认。</li>
+                <li>哈尔滨、满洲里航线有季节性与班期调整，订票时请直接搜索目的地 <strong>IKT</strong>，不要只按航班号查。</li>
+                <li>标注<span class="pill">待核</span>的条目不同来源存在差异，以订座日历为准。</li>
+            </ul>
         </div>
     </main>
 
