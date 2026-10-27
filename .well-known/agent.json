@@ -1,0 +1,139 @@
+{
+ "protocolVersion": "0.3.0",
+ "name": "小贝",
+ "description": "我叫小贝，是「贝加尔湖50径」这条线的 AI 替身——贝加尔湖西岸利斯特维扬卡到大戈洛那段约 50 公里的重装徒步路线。我不是人。 这条线的中文推广人、领队是怪咖叔。他本人从头到尾走过这条线，俄语可以直接带队、沟通和翻译。",
+ "url": "https://ai.baikal50.cn/api/a2a",
+ "preferredTransport": "JSONRPC",
+ "version": "1.0.0",
+ "provider": {
+  "organization": "贝加尔湖50径",
+  "url": "https://baikal50.cn/"
+ },
+ "documentationUrl": "https://baikal50.cn/ask.html",
+ "capabilities": {
+  "streaming": false,
+  "pushNotifications": false,
+  "stateTransitionHistory": false
+ },
+ "defaultInputModes": [
+  "text/plain"
+ ],
+ "defaultOutputModes": [
+  "text/plain"
+ ],
+ "skills": [
+  {
+   "id": "trail-facts",
+   "name": "路线事实",
+   "description": "贝加尔湖50径的里程、天数、沿线节点、累计爬升与海拔",
+   "tags": [
+    "route",
+    "distance",
+    "waypoints",
+    "hiking"
+   ],
+   "examples": [
+    "这条线多长？",
+    "三天怎么分配？",
+    "沿途有哪些营地？"
+   ]
+  },
+  {
+   "id": "difficulty",
+   "name": "难度与体能",
+   "description": "负重强度、每日行走时长、适合人群与体能门槛",
+   "tags": [
+    "difficulty",
+    "fitness"
+   ],
+   "examples": [
+    "我体能一般能走吗？",
+    "每天要走几个小时？"
+   ]
+  },
+  {
+   "id": "season",
+   "name": "季节与批次",
+   "description": "可出行月份、最佳季节、气温区间与成团规则",
+   "tags": [
+    "season",
+    "weather",
+    "schedule"
+   ],
+   "examples": [
+    "几月去最好？",
+    "5 月能走吗？",
+    "几人才成团？"
+   ]
+  },
+  {
+   "id": "price",
+   "name": "价格与退改",
+   "description": "价格、包含与不含项、付款节点、退改规则",
+   "tags": [
+    "price",
+    "payment",
+    "refund",
+    "booking"
+   ],
+   "examples": [
+    "多少钱一个人？",
+    "包含机票吗？",
+    "定金能退吗？"
+   ]
+  },
+  {
+   "id": "gear-permit",
+   "name": "装备与许可",
+   "description": "必备装备清单、可租赁项、国家公园手续与签证要求",
+   "tags": [
+    "gear",
+    "permit",
+    "visa"
+   ],
+   "examples": [
+    "要自己带帐篷吗？",
+    "国家公园手续谁办？"
+   ]
+  },
+  {
+   "id": "free-ask",
+   "name": "自由问答",
+   "description": "以上主题之外的自然语言提问，按官方知识库回答",
+   "tags": [
+    "qa"
+   ],
+   "examples": [
+    "一个人可以报名吗？",
+    "路上有信号吗？"
+   ]
+  }
+ ],
+ "additionalInterfaces": [
+  {
+   "url": "https://ai.baikal50.cn/api/trail",
+   "transport": "http-json",
+   "description": "结构化供给，GET，机器直读路线/价格/包含项"
+  },
+  {
+   "url": "https://ai.baikal50.cn/api/qa?q=关键词",
+   "transport": "http-json",
+   "description": "问答检索，GET，返回匹配的官方问答"
+  },
+  {
+   "url": "https://ai.baikal50.cn/api/chat",
+   "transport": "http-json",
+   "description": "对话，POST {messages:[{role,content}]}"
+  },
+  {
+   "url": "https://baikal50.cn/llms.txt",
+   "transport": "text",
+   "description": "面向大模型的纯文本概览"
+  },
+  {
+   "url": "https://baikal50.cn/ask.html",
+   "transport": "text/html",
+   "description": "73 条官方问答"
+  }
+ ]
+}
