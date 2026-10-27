@@ -925,27 +925,58 @@ var _hmt = _hmt || [];
     <script src="/ambience.js" defer></script>
 <!-- 贝加尔湖50径 · AI 替身（小熊浮动入口 + 弹窗） -->
 <style>
-#bai-btn{
-  position:fixed; right:18px; bottom:18px; z-index:9000;
-  width:58px; height:58px; border-radius:50%; border:2px solid #fff;
-  background:#2f4a3c; cursor:pointer; padding:0; overflow:hidden;
-  box-shadow:0 4px 16px rgba(0,0,0,.22); transition:transform .18s ease, box-shadow .18s ease;
-  -webkit-tap-highlight-color:transparent;
+/* 小熊会走动：外层负责水平位移，内层负责步伐颠动与转身 */
+#bai-walker{
+  position:fixed; bottom:78px; left:50%; z-index:9000;
+  width:58px; height:58px; pointer-events:none;
+  transition:left 3.4s cubic-bezier(.42,0,.58,1);
+  will-change:left;
 }
-#bai-btn:hover{ transform:translateY(-2px) scale(1.04); box-shadow:0 6px 22px rgba(0,0,0,.28); }
+#bai-btn{
+  position:relative; width:58px; height:58px; border-radius:50%; border:2px solid #fff;
+  background:#2f4a3c; cursor:pointer; padding:0; overflow:visible; pointer-events:auto;
+  box-shadow:0 4px 16px rgba(0,0,0,.22);
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .18s ease, box-shadow .18s ease;
+  animation:bai-step .62s ease-in-out infinite;
+}
+#bai-btn::after{            /* 脚下的投影，走动时一起缩小放大 */
+  content:''; position:absolute; left:50%; bottom:-7px; width:30px; height:7px;
+  transform:translateX(-50%); border-radius:50%;
+  background:rgba(0,0,0,.22); filter:blur(2px);
+  animation:bai-shadow .62s ease-in-out infinite;
+}
+#bai-btn .bai-imgwrap{ display:block; width:100%; height:100%; border-radius:50%; overflow:hidden; }
+#bai-btn img{ width:100%; height:100%; display:block; border:0; box-shadow:none; transition:transform .3s ease; }
+#bai-btn.face-left img{ transform:scaleX(-1); }   /* 往左走时镜像转身 */
+
+@keyframes bai-step{
+  0%,100%{ transform:translateY(0) rotate(-2deg); }
+  50%{ transform:translateY(-4px) rotate(2deg); }
+}
+@keyframes bai-shadow{
+  0%,100%{ transform:translateX(-50%) scaleX(1); opacity:.22; }
+  50%{ transform:translateX(-50%) scaleX(.82); opacity:.14; }
+}
+#bai-btn.resting{ animation:none; }
+#bai-btn:hover{ transform:scale(1.06); box-shadow:0 6px 22px rgba(0,0,0,.28); }
 #bai-btn:active{ transform:scale(.96); }
-#bai-btn img{ width:100%; height:100%; display:block; border:0; box-shadow:none; }
+@media (prefers-reduced-motion: reduce){
+  #bai-walker{ transition:none; }
+  #bai-btn, #bai-btn::after{ animation:none; }
+}
 #bai-btn .bai-dot{
   position:absolute; top:2px; right:2px; width:10px; height:10px; border-radius:50%;
   background:#e8c05a; border:1.5px solid #fff;
 }
-#bai-btn .bai-tip{
-  position:absolute; right:66px; top:50%; transform:translateY(-50%);
+#bai-walker .bai-tip{
+  position:absolute; left:50%; bottom:66px; transform:translateX(-50%);
   background:#1a1a1a; color:#fff; font-size:12px; line-height:1.5; padding:6px 10px;
   border-radius:3px; white-space:nowrap; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
   opacity:0; pointer-events:none; transition:opacity .2s;
 }
-#bai-btn:hover .bai-tip{ opacity:1; }
+#bai-walker:hover .bai-tip{ opacity:1; }
+#bai-btn.resting ~ .bai-tip{ opacity:0 !important; }
 
 #bai-wrap{ position:fixed; inset:0; z-index:9100; display:none; }
 #bai-wrap.on{ display:block; }
@@ -992,20 +1023,26 @@ var _hmt = _hmt || [];
 #bai-foot a{ color:#888; text-decoration:underline; text-underline-offset:2px; }
 
 @media (max-width:520px){
-  #bai-btn{ width:52px; height:52px; right:14px; bottom:14px; }
+  #bai-walker{ bottom:74px; }
+  #bai-btn{ width:52px; height:52px; }
   #bai-panel{ right:0; bottom:0; width:100%; max-width:100%; height:86vh; border-left:0; border-right:0; }
-  #bai-btn .bai-tip{ display:none; }
+  #bai-walker .bai-tip{ display:none; }
+  #bai-walker{ width:52px; height:52px; }
 }
 </style>
 
-<button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
-  <picture>
-    <source srcset="/bear-ai.webp" type="image/webp">
-    <img src="/bear-ai.png" alt="贝加尔湖50径 AI 替身" width="58" height="58" loading="lazy">
-  </picture>
-  <span class="bai-dot" aria-hidden="true"></span>
+<div id="bai-walker">
+  <button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
+    <span class="bai-imgwrap">
+      <picture>
+        <source srcset="/bear-ai.webp" type="image/webp">
+        <img src="/bear-ai.png" alt="贝加尔湖50径 AI 替身" width="58" height="58" loading="lazy">
+      </picture>
+    </span>
+    <span class="bai-dot" aria-hidden="true"></span>
+  </button>
   <span class="bai-tip">有问题？问一句</span>
-</button>
+</div>
 
 <div id="bai-wrap" aria-hidden="true">
   <div id="bai-mask"></div>
@@ -1043,7 +1080,7 @@ var _hmt = _hmt || [];
   var q=document.getElementById('bai-q');
   var send=document.getElementById('bai-send');
   var closeBtn=document.getElementById('bai-close');
-  var hist=[], busy=false, opened=false;
+  var hist=[], busy=false, opened=false, roaming=true, roamTimer=null;
 
   function bubble(cls, text){
     var d=document.createElement('div');
@@ -1056,6 +1093,10 @@ var _hmt = _hmt || [];
   function setBusy(v){ busy=v; send.disabled=v; send.textContent=v?'…':'发送'; }
 
   function open(){
+    roaming = false;                       // 面板打开时站住不动
+    clearTimeout(roamTimer);
+    btn.classList.add('resting');
+    btn.classList.remove('face-left');
     wrap.classList.add('on'); wrap.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
     if(!opened){
@@ -1067,6 +1108,11 @@ var _hmt = _hmt || [];
   function close(){
     wrap.classList.remove('on'); wrap.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
+    if (!roaming) {
+      roaming = true;
+      btn.classList.remove('resting');
+      roamTimer = setTimeout(function(){ if (typeof roam === 'function') roam(); }, 1200);
+    }
   }
 
   function ask(text){
@@ -1099,6 +1145,44 @@ var _hmt = _hmt || [];
       })
       .then(function(){ setBusy(false); });
   }
+
+  /* ---------- 小熊走动 ---------- */
+  var walker = document.getElementById('bai-walker');
+  var curPct = 88;
+
+  function place(pct){
+    walker.style.left = pct + '%';
+    btn.classList.toggle('face-left', pct < curPct);
+    curPct = pct;
+  }
+
+  function roam(){
+    if (!roaming) return;
+    var narrow = window.innerWidth < 520;
+    // 小屏只在右下角小范围溜达，避免挡内容
+    var lo = narrow ? 78 : 6;
+    var hi = narrow ? 92 : 88;
+    var target = lo + Math.random() * (hi - lo);
+    if (Math.abs(target - curPct) < (narrow ? 4 : 14)) {
+      target = target > 50 ? lo : hi;
+    }
+    place(target);
+    var moveMs = 2600 + Math.random() * 1800;
+    roamTimer = setTimeout(function(){
+      if (!roaming) return;
+      btn.classList.add('resting');            // 站住，停止颠动
+      var restMs = 2200 + Math.random() * 3200;
+      roamTimer = setTimeout(function(){
+        if (!roaming) return;
+        btn.classList.remove('resting');
+        roam();
+      }, restMs);
+    }, moveMs);
+  }
+
+  // 初始位置：右下
+  place(88);
+  setTimeout(roam, 1800);
 
   btn.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
