@@ -927,33 +927,28 @@ var _hmt = _hmt || [];
 <style>
 /* 小熊会走动：外层负责水平位移，内层负责步伐颠动与转身 */
 #bai-walker{
-  position:fixed; bottom:78px; right:20px; z-index:9000;
-  width:58px; height:58px; pointer-events:none;
+  position:fixed; bottom:70px; right:12px; z-index:9000;
+  width:92px; height:92px; pointer-events:none;
 }
 #bai-btn{
-  position:relative; width:58px; height:58px; border-radius:50%; border:0;
+  position:relative; width:92px; height:92px; border:0;
   background:transparent; cursor:pointer; padding:0; overflow:visible; pointer-events:auto;
-  box-shadow:0 4px 16px rgba(0,0,0,.22);
   -webkit-tap-highlight-color:transparent;
-  transition:transform .18s ease, box-shadow .18s ease;
+  filter:drop-shadow(0 5px 10px rgba(0,0,0,.16));
+  transition:transform .18s ease, filter .18s ease;
 }
-#bai-btn::after{            /* 脚下的投影，走动时一起缩小放大 */
-  content:''; position:absolute; left:50%; bottom:-7px; width:30px; height:7px;
-  transform:translateX(-50%); border-radius:50%;
-  background:rgba(0,0,0,.22); filter:blur(2px);
-  animation:bai-shadow .62s ease-in-out infinite;
+#bai-btn::after{            /* 脚下投影 */
+  content:''; position:absolute; left:50%; bottom:2px; width:52%;
+  height:9px; transform:translateX(-50%); border-radius:50%;
+  background:rgba(0,0,0,.16); filter:blur(3px);
 }
-#bai-btn .bai-imgwrap{ display:block; width:100%; height:100%; border-radius:50%; overflow:hidden; background:#2f4a3c; box-shadow:0 3px 12px rgba(0,0,0,.2); }
+#bai-btn .bai-imgwrap{ display:block; width:100%; height:100%; }
 #bai-btn img{ width:100%; height:100%; display:block; border:0; box-shadow:none; transition:transform .3s ease; }
-#bai-btn:hover{ transform:scale(1.06); box-shadow:0 6px 22px rgba(0,0,0,.28); }
+#bai-btn:hover{ transform:translateY(-3px) scale(1.04); filter:drop-shadow(0 8px 16px rgba(0,0,0,.2)); }
 #bai-btn:active{ transform:scale(.96); }
 
-#bai-btn .bai-dot{
-  position:absolute; top:2px; right:2px; width:10px; height:10px; border-radius:50%;
-  background:#e8c05a; border:1.5px solid #fff;
-}
 #bai-walker .bai-tip{
-  position:absolute; left:50%; bottom:66px; transform:translateX(-50%);
+  position:absolute; right:0; bottom:96px;
   background:#1a1a1a; color:#fff; font-size:12px; line-height:1.5; padding:6px 10px;
   border-radius:3px; white-space:nowrap; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
   opacity:0; pointer-events:none; transition:opacity .2s;
@@ -965,8 +960,8 @@ var _hmt = _hmt || [];
 #bai-wrap.on{ display:block; }
 #bai-mask{ position:absolute; inset:0; background:rgba(20,20,18,.42); }
 #bai-panel{
-  position:absolute; right:18px; bottom:88px; width:370px; max-width:calc(100vw - 36px);
-  height:min(560px, calc(100vh - 120px)); background:#faf9f7;
+  position:absolute; right:18px; bottom:172px; width:370px; max-width:calc(100vw - 36px);
+  height:min(560px, calc(100vh - 200px)); background:#faf9f7;
   border:1px solid #e8e6e1; box-shadow:0 10px 40px rgba(0,0,0,.26);
   display:flex; flex-direction:column; overflow:hidden;
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
@@ -975,7 +970,7 @@ var _hmt = _hmt || [];
   display:flex; align-items:center; gap:10px; padding:12px 14px;
   border-bottom:1px solid #e8e6e1; background:#fff;
 }
-#bai-head img{ width:32px; height:32px; border-radius:50%; display:block; border:0; box-shadow:none; }
+#bai-head img{ width:34px; height:34px; display:block; border:0; box-shadow:none; }
 #bai-head .t{ flex:1; }
 #bai-head .t b{ display:block; font-size:14px; color:#1a1a1a; font-weight:600; }
 #bai-head .t span{ display:block; font-size:11px; color:#999; }
@@ -1006,11 +1001,10 @@ var _hmt = _hmt || [];
 #bai-foot a{ color:#888; text-decoration:underline; text-underline-offset:2px; }
 
 @media (max-width:520px){
-  #bai-walker{ bottom:74px; right:14px; width:52px; height:52px; }
-  #bai-btn{ width:52px; height:52px; }
+  #bai-walker{ bottom:64px; right:8px; width:78px; height:78px; }
+  #bai-btn{ width:78px; height:78px; }
   #bai-panel{ right:0; bottom:0; width:100%; max-width:100%; height:86vh; border-left:0; border-right:0; }
   #bai-walker .bai-tip{ display:none; }
-  #bai-walker{ width:52px; height:52px; }
 }
 </style>
 
@@ -1018,11 +1012,10 @@ var _hmt = _hmt || [];
   <button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
     <span class="bai-imgwrap">
       <picture>
-        <source srcset="/badge-3d.webp" type="image/webp">
-        <img src="/badge-3d.png" alt="贝加尔湖50径 · 纪念章" width="58" height="58" loading="lazy">
+        <source srcset="/bear-walk.webp" type="image/webp">
+        <img src="/bear-walk.png" alt="贝加尔湖50径 · 徒步熊" width="144" height="144" loading="lazy">
       </picture>
     </span>
-    <span class="bai-dot" aria-hidden="true"></span>
   </button>
   <span class="bai-tip">有问题？问一句</span>
 </div>
@@ -1031,7 +1024,7 @@ var _hmt = _hmt || [];
   <div id="bai-mask"></div>
   <div id="bai-panel" role="dialog" aria-modal="true" aria-label="贝加尔湖50径 AI 替身">
     <div id="bai-head">
-      <img src="/badge-3d.png" alt="" width="32" height="32">
+      <img src="/bear-walk.png" alt="" width="32" height="32">
       <div class="t">
         <b>贝加尔湖50径</b>
         <span>我是这条线的 AI 替身，不是怪咖叔本人</span>
