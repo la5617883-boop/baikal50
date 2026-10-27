@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问一句 · 贝加尔湖50径 AI 替身</title>
+<meta name="description" content="向贝加尔湖50径提问：路线、难度、季节、装备、许可、价格、退改。回答由这条线自己的 AI 替身提供，费用与条款逐字引用官方口径。">
+<link rel="canonical" href="https://baikal50.cn/ai.html">
+<meta property="og:title" content="问一句 · 贝加尔湖50径 AI 替身">
+<meta property="og:url" content="https://baikal50.cn/ai.html">
+<meta name="robots" content="index, follow">
+<style>
+:root{
+  --ink:#1a1a1a; --ink-2:#555; --ink-3:#999;
+  --paper:#faf9f7; --card:#fff; --line:#e8e6e1; --line-strong:#1a1a1a;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Segoe UI","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);line-height:1.85;color:var(--ink);background:var(--paper);
+  max-width:720px;margin:0 auto;padding:24px 20px 40px}
+h1{font-family:var(--serif);font-size:1.32em;font-weight:600;letter-spacing:1px;margin-bottom:8px}
+.sub{color:var(--ink-3);font-size:.86em;margin-bottom:22px}
+.sub a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+#log{display:flex;flex-direction:column;gap:16px;margin-bottom:18px}
+.msg{max-width:88%;padding:14px 16px;border-radius:2px;font-size:.95em;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.me{align-self:flex-end;background:#1a1a1a;color:#fff}
+.it{align-self:flex-start;background:var(--card);border:1px solid var(--line)}
+.it .who{font-size:.76em;color:var(--ink-3);letter-spacing:1px;margin-bottom:6px}
+.thinking{color:var(--ink-3);font-size:.9em}
+
+.tips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tip{border:1px solid var(--line);background:var(--card);color:var(--ink-2);
+  padding:7px 12px;font-size:.84em;cursor:pointer;font-family:inherit;border-radius:2px}
+.tip:hover{border-color:var(--line-strong);color:var(--ink)}
+
+#bar{display:flex;gap:10px;align-items:flex-end}
+#q{flex:1;border:1px solid var(--line);background:var(--card);padding:12px 14px;
+  font-size:16px;font-family:inherit;color:var(--ink);line-height:1.6;resize:none;min-height:50px;max-height:160px}
+#q:focus{outline:none;border-color:var(--line-strong)}
+#send{border:1px solid var(--line-strong);background:var(--line-strong);color:#fff;
+  padding:12px 20px;font-size:.95em;font-family:inherit;cursor:pointer;border-radius:2px;white-space:nowrap}
+#send:disabled{opacity:.4;cursor:default}
+
+.foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:.8em;line-height:1.8}
+.foot a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+<h1>问一句 · 贝加尔湖50径</h1>
+<p class="sub">我是这条线自己的 AI 替身，不是怪咖叔本人。价格与条款逐字引用官方口径；我不掌握的事，会告诉你去找本人。<a href="https://baikal50.cn/">← 回官网</a></p>
+
+<div class="tips">
+  <button class="tip" type="button">这条线多难？</button>
+  <button class="tip" type="button">三天和四天怎么选？</button>
+  <button class="tip" type="button">多少钱，包含什么？</button>
+  <button class="tip" type="button">要办许可吗？</button>
+  <button class="tip" type="button">装备要自己带什么？</button>
+  <button class="tip" type="button">取消怎么退？</button>
+</div>
+
+<div id="log"></div>
+
+<div id="bar">
+  <textarea id="q" rows="1" placeholder="问点什么，比如：一个人能报名吗？" aria-label="输入问题"></textarea>
+  <button id="send" type="button">发送</button>
+</div>
+
+<p class="foot">
+  回答由 AI 生成，可能不完整。价格、退改、许可等条款以官网与《出行服务确认单》为准。<br>
+  要报名或需要本人确认：微信 youla7982 ｜ 电话 18618375879 ｜ <a href="https://baikal50.cn/order.html">委托与报名</a>
+</p>
+
+<script>
+(function(){
+  var API = 'https://ai.baikal50.cn/api/chat';
+  var log = document.getElementById('log');
+  var box = document.getElementById('q');
+  var send = document.getElementById('send');
+  var history = [];
+  var busy = false;
+
+  function bubble(cls, text){
+    var d = document.createElement('div');
+    d.className = 'msg ' + cls;
+    if (cls === 'it') {
+      var w = document.createElement('div');
+      w.className = 'who';
+      w.textContent = '贝加尔湖50径';
+      d.appendChild(w);
+    }
+    var s = document.createElement('div');
+    s.textContent = text;
+    d.appendChild(s);
+    log.appendChild(d);
+    d.scrollIntoView({block:'end', behavior:'smooth'});
+    return d;
+  }
+
+  function setBusy(v){
+    busy = v;
+    send.disabled = v;
+    send.textContent = v ? '思考中' : '发送';
+  }
+
+  function ask(text){
+    text = (text || '').trim();
+    if (!text || busy) return;
+    box.value = '';
+    bubble('me', text);
+    history.push({role:'user', content:text});
+    if (history.length > 8) history = history.slice(-8);
+
+    setBusy(true);
+    var wait = bubble('it thinking', '正在想…');
+
+    var ctrl = new AbortController();
+    var timer = setTimeout(function(){ ctrl.abort(); }, 45000);
+
+    fetch(API, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({messages: history}),
+      signal: ctrl.signal
+    }).then(function(r){
+      clearTimeout(timer);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function(d){
+      wait.remove();
+      var a = d.answer || '我没能组织出答案。可以直接问领队：微信 youla7982。';
+      bubble('it', a);
+      history.push({role:'assistant', content:a});
+      if (history.length > 8) history = history.slice(-8);
+    }).catch(function(e){
+      clearTimeout(timer);
+      wait.remove();
+      if (e && e.name === 'AbortError') {
+        bubble('it', '这一步等了太久没回来（网络慢）。可以直接问领队：微信 youla7982，或者再发一次。');
+      } else {
+        bubble('it', '连接出了点问题。可以直接问领队：微信 youla7982 ｜ 电话 18618375879。');
+      }
+    }).then(function(){
+      setBusy(false);
+      box.focus();
+    });
+  }
+
+  send.addEventListener('click', function(){ ask(box.value); });
+
+  box.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
+      ask(box.value);
+    }
+  });
+
+  box.addEventListener('input', function(){
+    box.style.height = 'auto';
+    box.style.height = Math.min(box.scrollHeight, 160) + 'px';
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.tip'), function(b){
+    b.addEventListener('click', function(){ ask(b.textContent); });
+  });
+
+  if (location.hash === '#ask') box.focus();
+})();
+</script>
+
+</body>
+</html>
