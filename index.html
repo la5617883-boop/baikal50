@@ -980,9 +980,10 @@ var _hmt = _hmt || [];
 #bai-log .me{ align-self:flex-end; background:#1a1a1a; color:#fff; border-radius:2px; }
 #bai-log .it{ align-self:flex-start; background:#fff; border:1px solid #e8e6e1; color:#333; border-radius:2px; }
 #bai-log .th{ align-self:flex-start; color:#999; font-size:13px; padding:8px 4px; }
-#bai-log .m.wide{ max-width:100%; }
+#bai-log .m.wide{ max-width:100%; font-size:12.5px; }
 #bai-log .m.wide div + div{ margin-top:2px; }
-#bai-log .m a{ color:#1a1a1a; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px; text-decoration-color:#b8933f; }
+#bai-log .m a{ color:#1a1a1a; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px; text-decoration-color:#b8933f; text-underline-offset:2px; }
+#bai-log .m.wide a{ font-weight:500; }
 #bai-log .m a:hover{ color:#8a6a1f; }
 #bai-log .m a:active{ color:#8a6a1f; }
 #bai-tips{ display:flex; flex-wrap:wrap; gap:6px; padding:0 14px 10px; }
@@ -1006,7 +1007,7 @@ var _hmt = _hmt || [];
 #bai-foot a{ color:#888; text-decoration:underline; text-underline-offset:2px; }
 
 @media (max-width:380px){
-  #bai-log .m.wide{ font-size:13px; }
+  #bai-log .m.wide{ font-size:12px; }
 }
 @media (max-width:520px){
   #bai-walker{ bottom:64px; right:8px; width:78px; height:78px; }
@@ -1090,8 +1091,8 @@ var _hmt = _hmt || [];
     if(!opened){
       opened=true;
       bubbleHTML('it wide',
-        '<div><a href="/route-3d.html">欢迎大家跟着云上 3D走一遍贝加尔湖 50 径</a></div>' +
-        '<div><a href="/planner.html">如果您对难度有疑虑，可以试下行程规划器呦</a></div>');
+        '<div>欢迎大家跟着<a href="/route-3d.html">云上 3D</a>走一遍贝加尔湖 50 径</div>' +
+        '<div>如果您对难度有疑虑，可以试下<a href="/planner.html">行程规划器</a>呦</div>');
     }
     setTimeout(function(){ q.focus(); }, 200);
   }
