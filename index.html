@@ -937,13 +937,24 @@ var _hmt = _hmt || [];
   filter:drop-shadow(0 5px 10px rgba(0,0,0,.16));
   transition:transform .18s ease, filter .18s ease;
 }
-#bai-btn::after{            /* 脚下投影 */
+#bai-btn::after{            /* 脚下投影，随呼吸微微伸缩 */
   content:''; position:absolute; left:50%; bottom:2px; width:52%;
   height:9px; transform:translateX(-50%); border-radius:50%;
   background:rgba(0,0,0,.16); filter:blur(3px);
+  animation:bai-shadow-breathe 3.8s ease-in-out infinite;
+}
+@keyframes bai-shadow-breathe{
+  0%,100%{ transform:translateX(-50%) scale(1);   opacity:.16; }
+  50%    { transform:translateX(-50%) scale(.94); opacity:.12; }
 }
 #bai-btn .bai-imgwrap{ display:block; width:100%; height:100%; }
-#bai-btn img{ width:100%; height:100%; display:block; border:0; box-shadow:none; transition:transform .3s ease; }
+#bai-btn img{ width:100%; height:100%; display:block; border:0; box-shadow:none;
+  transform-origin:50% 62%;                 /* 以脸部中心为缩放原点，像在喘气 */
+  animation:bai-breathe 3.8s ease-in-out infinite; }
+@keyframes bai-breathe{
+  0%,100%{ transform:translateY(0) scale(1); }
+  50%    { transform:translateY(-2px) scale(1.028); }
+}
 #bai-btn:hover{ transform:translateY(-3px) scale(1.04); filter:drop-shadow(0 8px 16px rgba(0,0,0,.2)); }
 #bai-btn:active{ transform:scale(.96); }
 
@@ -1006,6 +1017,9 @@ var _hmt = _hmt || [];
 #bai-foot{ padding:0 14px 12px; font-size:11px; color:#aaa; line-height:1.6; background:#fff; }
 #bai-foot a{ color:#888; text-decoration:underline; text-underline-offset:2px; }
 
+@media (prefers-reduced-motion: reduce){
+  #bai-btn img, #bai-btn::after{ animation:none; }
+}
 @media (max-width:380px){
   #bai-log .m.wide{ font-size:10.5px; }
 }
