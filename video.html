@@ -153,6 +153,31 @@
   ]
 }
     </script>
+    <!-- 补全本页引用的实体节点：JSON-LD 的 @id 只在本页解析，跨页引用不成立 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://baikal50.cn/#promoter",
+          "name": "怪咖叔",
+          "alternateName": [
+            "贝加尔湖50径推广人"
+          ],
+          "url": "https://baikal50.cn/about.html",
+          "jobTitle": "贝加尔湖50径推广人 · 领队"
+        },
+        {
+          "@type": "TouristTrip",
+          "@id": "https://baikal50.cn/#trail",
+          "name": "贝加尔湖50径",
+          "description": "贝加尔湖西岸50公里重装徒步：从利斯特维扬卡（Листвянка）到大戈洛（Большое Голоустное），3天徒步、全程6天（含1天人文历史行程），每天16-18公里，位于贝加尔国家公园（Прибайкальский национальный парк）内，中俄互免签证。",
+          "url": "https://baikal50.cn/route.html"
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="/ambience.css">
 <script>
 var _hmt = _hmt || [];
@@ -179,7 +204,7 @@ var _hmt = _hmt || [];
         <!-- 视频列表：后续新视频依次往这里加 -->
         <div class="video-card" id="video-1">
             <div class="video-wrap">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1p1pJ6XETJ&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <iframe src="https://player.bilibili.com/player.html?bvid=BV1p1pJ6XETJ&page=1&high_quality=1&danmaku=0" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
             <h2>眼睛在天堂，身体在地狱，灵魂在路上</h2>
             <p class="vdesc">走得最累的时候，心里反而最安静。</p>
@@ -187,7 +212,7 @@ var _hmt = _hmt || [];
 
         <div class="video-card" id="video-2">
             <div class="video-wrap">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1sep465EBV&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <iframe src="https://player.bilibili.com/player.html?bvid=BV1sep465EBV&page=1&high_quality=1&danmaku=0" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
             <h2>一个人的湖岸</h2>
             <p class="vdesc">一个人沿湖岸行走，湖面开阔、岸线绵长。</p>
@@ -195,7 +220,7 @@ var _hmt = _hmt || [];
 
         <div class="video-card" id="video-3">
             <div class="video-wrap">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1nfpv6FEqD&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <iframe src="https://player.bilibili.com/player.html?bvid=BV1nfpv6FEqD&page=1&high_quality=1&danmaku=0" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
             <h2>仿佛被世界遗忘的角落</h2>
             <p class="vdesc">贝加尔湖沿岸，空旷寂寥，仿佛被世界遗忘。</p>
@@ -203,7 +228,7 @@ var _hmt = _hmt || [];
 
         <div class="video-card" id="video-4">
             <div class="video-wrap">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1y3pv6wEcA&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <iframe src="https://player.bilibili.com/player.html?bvid=BV1y3pv6wEcA&page=1&high_quality=1&danmaku=0" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
             <h2>贝加尔湖的日出</h2>
             <p class="vdesc">天光从湖面上铺开，晨雾慢慢散去，湖岸在晨光中显现。</p>
@@ -211,7 +236,7 @@ var _hmt = _hmt || [];
 
         <div class="video-card" id="video-5">
             <div class="video-wrap">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1oRpb6qEtF&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <iframe src="https://player.bilibili.com/player.html?bvid=BV1oRpb6qEtF&page=1&high_quality=1&danmaku=0" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
             <h2>在沥沥的晨雨中从利镇出发</h2>
             <p class="vdesc">在沥沥的晨雨中从利斯特维扬卡出发，踏上50公里的湖岸徒步。</p>

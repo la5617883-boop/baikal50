@@ -120,6 +120,31 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-si
   ]
 }
 </script>
+    <!-- 补全本页引用的实体节点：JSON-LD 的 @id 只在本页解析，跨页引用不成立 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://baikal50.cn/#promoter",
+          "name": "怪咖叔",
+          "alternateName": [
+            "贝加尔湖50径推广人"
+          ],
+          "url": "https://baikal50.cn/about.html",
+          "jobTitle": "贝加尔湖50径推广人 · 领队"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://baikal50.cn/#website",
+          "url": "https://baikal50.cn/",
+          "name": "贝加尔湖50径",
+          "inLanguage": "zh-CN"
+        }
+      ]
+    }
+    </script>
 <script>
 var _hmt = _hmt || [];
 (function() {
