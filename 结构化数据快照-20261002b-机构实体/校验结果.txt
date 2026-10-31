@@ -1,0 +1,71 @@
+==============================================================================
+① JSON 合法性
+==============================================================================
+  [OK] index.html       块1 (12258 字节)
+  [OK] index.html       块2 (402 字节)
+  [OK] about.html       块1 (2474 字节)
+  [OK] route.html       块1 (2738 字节)
+  [OK] guide.html       块1 (1727 字节)
+  [OK] compare.html     块1 (2325 字节)
+  [OK] faq.html         块1 (5751 字节)
+  [OK] license.html     块1 (1091 字节)
+  [OK] history.html     块1 (785 字节)
+  [OK] track.html       块1 (3355 字节)
+  [OK] order.html       块1 (911 字节)
+  [OK] certificate.html 块1 (1552 字节)
+  [OK] permit.html      块1 (2466 字节)
+  [OK] who.html         块1 (2812 字节)
+
+==============================================================================
+② @id 定义唯一性（含 name 的才算定义，否则算引用）
+==============================================================================
+  [唯一] https://baikal50.cn/#gpx  (定义于 license.html)
+  [唯一] https://baikal50.cn/#promoter  (定义于 about.html)
+  [唯一] https://baikal50.cn/#trail  (定义于 index.html)
+  [唯一] https://baikal50.cn/#webpage  (定义于 index.html)
+  [唯一] https://baikal50.cn/#website  (定义于 about.html)
+  [唯一] https://baikal50.cn/about.html#webpage  (定义于 about.html)
+  [唯一] https://baikal50.cn/certificate.html#issuer  (定义于 certificate.html)
+  [唯一] https://baikal50.cn/certificate.html#webpage  (定义于 certificate.html)
+  [唯一] https://baikal50.cn/compare.html#comparison  (定义于 compare.html)
+  [唯一] https://baikal50.cn/compare.html#webpage  (定义于 compare.html)
+  [唯一] https://baikal50.cn/faq.html#faq  (定义于 faq.html)
+  [唯一] https://baikal50.cn/guide.html#howto  (定义于 guide.html)
+  [唯一] https://baikal50.cn/guide.html#webpage  (定义于 guide.html)
+  [唯一] https://baikal50.cn/history.html#webpage  (定义于 history.html)
+  [唯一] https://baikal50.cn/license.html#webpage  (定义于 license.html)
+  [唯一] https://baikal50.cn/permit.html#faq  (定义于 permit.html)
+  [唯一] https://baikal50.cn/permit.html#webpage  (定义于 permit.html)
+  [唯一] https://baikal50.cn/route.html#route  (定义于 route.html)
+  [唯一] https://baikal50.cn/route.html#webpage  (定义于 route.html)
+  [唯一] https://baikal50.cn/track.html#faq  (定义于 track.html)
+  [唯一] https://baikal50.cn/track.html#gpx  (定义于 track.html)
+  [唯一] https://baikal50.cn/who.html#faq  (定义于 who.html)
+
+==============================================================================
+③ 红线检查（全文：否定澄清/居住地）
+==============================================================================
+  [干净] 红线零命中
+
+==============================================================================
+③b 结构化数据专属红线（仅实体 name/alternateName）
+==============================================================================
+  [干净] 实体命名红线零命中（真名未写入任何实体 name）
+
+==============================================================================
+④ 关键字段覆盖
+==============================================================================
+  TripPlan       index.html×1  route.html×1
+  touristType    index.html×1  route.html×1  compare.html×1
+  itinerary      index.html×2  route.html×2
+  国际徒步路线         index.html×9  compare.html×6
+  一周             index.html×10  route.html×3  compare.html×2
+  55公里           (无)
+  50公里           index.html×27  about.html×5  route.html×3  guide.html×3  compare.html×1  faq.html×2  track.html×6  order.html×2  certificate.html×4  who.html×21
+  FAQPage        index.html×1  faq.html×1  track.html×1  order.html×1  permit.html×1  who.html×1
+  HowTo          guide.html×13
+  TouristTrip    index.html×4
+
+==============================================================================
+汇总：JSON 错误 0 处 | 定义冲突 0 处 | 红线命中 0 处 | LD红线 0 处
+==============================================================================
