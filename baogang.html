@@ -110,6 +110,24 @@
       ]
     }
     </script>
+    <!-- 补全本页引用的实体节点：JSON-LD 的 @id 只在本页解析，跨页引用不成立 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://baikal50.cn/#promoter",
+          "name": "怪咖叔",
+          "alternateName": [
+            "贝加尔湖50径推广人"
+          ],
+          "url": "https://baikal50.cn/about.html",
+          "jobTitle": "贝加尔湖50径推广人 · 领队"
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="/ambience.css">
 <script>
 var _hmt = _hmt || [];

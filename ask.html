@@ -834,6 +834,21 @@
  ]
 }
 </script>
+    <!-- 补全本页引用的实体节点：JSON-LD 的 @id 只在本页解析，跨页引用不成立 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://baikal50.cn/#website",
+          "url": "https://baikal50.cn/",
+          "name": "贝加尔湖50径",
+          "inLanguage": "zh-CN"
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="/ambience.css">
 <script>
 var _hmt = _hmt || [];

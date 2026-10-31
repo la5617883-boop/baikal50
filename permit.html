@@ -119,6 +119,44 @@
       ]
     }
     </script>
+    <!-- 补全本页引用的实体节点：JSON-LD 的 @id 只在本页解析，跨页引用不成立 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://baikal50.cn/#promoter",
+          "name": "怪咖叔",
+          "alternateName": [
+            "贝加尔湖50径推广人"
+          ],
+          "url": "https://baikal50.cn/about.html",
+          "jobTitle": "贝加尔湖50径推广人 · 领队"
+        },
+        {
+          "@type": "GovernmentOrganization",
+          "@id": "https://baikal50.cn/certificate.html#issuer",
+          "name": "贝加尔国家公园管理局",
+          "alternateName": [
+            "ФГБУ «Заповедное Прибайкалье»",
+            "Заповедное Прибайкалье",
+            "Прибайкальский национальный парк",
+            "贝加尔国家公园",
+            "Pribaikalsky National Park"
+          ],
+          "description": "俄罗斯联邦国有机构，管辖贝加尔国家公园（Прибайкальский национальный парк）。贝加尔湖50径线路的大部分路段位于该国家公园范围内；完成全程者由该机构颁发线路毕业证书。",
+          "url": "https://baikal-1.ru/",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Байкальская, 291Б",
+            "addressLocality": "Иркутск",
+            "addressCountry": "RU"
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="/ambience.css">
 <script>
 var _hmt = _hmt || [];
