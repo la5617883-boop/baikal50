@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>贝加尔湖50径行程规划器 | 怪咖叔 · 贝加尔湖西岸徒步</title>
-<meta name="description" content="按出发月份、行程天数、体能和重装经验，用 2025 年 7 月实测轨迹（50 公里、累计爬升 2433 米）生成贝加尔湖50径的分段行程、营地安排与风险提示。">
+<meta name="description" content="按出发月份、行程天数、体能和重装经验，用 2025 年 7 月实测轨迹（50 公里、累计爬升 2432 米）生成贝加尔湖50径的分段行程、营地安排与风险提示。">
 <link rel="canonical" href="https://baikal50.cn/planner.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="贝加尔湖50径行程规划器">
@@ -162,7 +162,7 @@ var _hmt = _hmt || [];
 
 <h1>贝加尔湖50径行程规划器</h1>
 <p class="sub">按你的出发月份、行程天数、体能和重装经验，算出这条线怎么分成几天走。<br>
-数据来自 2025 年 7 月我自己走完全程时记录的实测轨迹：<b>GPS 累计 45.8 公里，按路书和实际行走算 50 公里</b>（累计爬升 2433 米）。<br>
+数据来自 2025 年 7 月我自己走完全程时记录的实测轨迹：<b>GPS 累计 45.8 公里，按路书和实际行走算 50 公里</b>（累计爬升 2432 米）。<br>
 下面一律按 <b>50 公里</b>口径算天数。</p>
 
 <hr>
@@ -242,7 +242,7 @@ var _hmt = _hmt || [];
 
   <h2>沿线的四个节点</h2>
   <p>利斯特维扬卡（起点）→ <b>黑谷营地 · Падь Чёрная</b>（16.2 公里，第 1 夜）→ <b>大科特 · Большие Коты</b>（19.5 公里）→ <b>斯克佩瑞尔悬崖 · Утёс Скрипер</b>（24.5 公里）→ <b>卡迪利石灰岩</b>（33.3 公里，第 2 夜）→ <b>大戈洛</b>（50 公里，终点）。</p>
-  <p>全程累计爬升约 2433 米，沿线海拔在 452–869 米之间，湖面 456 米。</p>
+  <p>全程累计爬升约 2432 米，沿线海拔在 452–869 米之间，湖面 456 米。</p>
 
   <h2>什么时候能走</h2>
   <p>最佳季节是 6–9 月，日间 15–25℃、夜间 5–10℃。<b>5 月和 10 月受天气影响变化大，可能会临时调整。</b>5 月底仍可能下雨夹雪，防雨装备要备齐。西伯利亚天气多变，夜间温度可降到 5℃ 以下，保暖层必须带够。</p>
@@ -350,7 +350,7 @@ var _hmt = _hmt || [];
         + '上下反复、路面碎石,耗时不按里程算。把这两天压短,第四天 16.7 公里才有余力。'
         + '<br>第 2 夜没有固定营地,在斯克佩瑞尔一带自选(风大,扎营要避风口)。</div>';
     }
-    html+='<div class="note">合计:徒步 <b>'+ (Math.round(totalDist*10)/10) +' km</b>,全程累计爬升 <b>2433 m</b>,海拔 452–869 m,湖面 456 m。<br>'
+    html+='<div class="note">合计:徒步 <b>'+ (Math.round(totalDist*10)/10) +' km</b>,全程累计爬升 <b>2432 m</b>,海拔 452–869 m,湖面 456 m。<br>'
       + '关键点里程:黑谷营地 16.2 km、大科特 19.5 km、斯克佩瑞尔悬崖 24.5 km(走崖顶不走山腰)、卡迪利石灰岩 33.3 km。</div>';
     document.getElementById("days").innerHTML = html;
 
@@ -444,7 +444,7 @@ var _hmt = _hmt || [];
     var totD=0; groups.forEach(function(g){totD+=segAgg(g[0],g[1]).dist;});
     g2.fillStyle="#1a1a1a";
     g2.font='600 30px "PingFang SC",sans-serif';
-    g2.fillText("合计 "+Math.round(totD*10)/10+" km　·　累计爬升 2433 m　·　海拔 452–869 m", pad, y+50);
+    g2.fillText("合计 "+Math.round(totD*10)/10+" km　·　累计爬升 2432 m　·　海拔 452–869 m", pad, y+50);
 
     // 页脚
     var by=H-96;
