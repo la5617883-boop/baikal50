@@ -47,12 +47,28 @@
     .video-card h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin-bottom: 8px; }
     .video-card p.vdesc { color: var(--ink-2); font-size: 15px; line-height: 1.95; margin-bottom: 0; }
     .video-card p.vdesc strong { color: var(--ink); }
-    .video-card p.vcmt { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
-      font-size: 14px; color: var(--ink-2); }
-    .video-card p.vcmt a { color: var(--ink); text-decoration: underline;
-      text-decoration-color: #c9a961; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    .video-card p.vcmt b { color: var(--ink); font-weight: 600; }
-    .video-card p.vcmt .vcmt-note { color: var(--ink-3); font-size: 13px; }
+    .cmt { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .cmt-list:empty { display: none; }
+    .cmt-empty { color: var(--ink-3); font-size: 13.5px; margin: 0 0 12px; }
+    .cmt-item { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+    .cmt-item:first-child { padding-top: 0; }
+    .cmt-head { display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 13px; color: var(--ink-3); margin-bottom: 4px; }
+    .cmt-head b { color: var(--ink); font-weight: 600; font-size: 14px; }
+    .cmt-item p { font-size: 14.5px; line-height: 1.9; color: var(--ink-2); margin: 0; }
+    .cmt-form { margin-top: 12px; }
+    .cmt-name, .cmt-body { width: 100%; box-sizing: border-box; font-family: inherit; font-size: 14px;
+      color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 6px;
+      padding: 9px 11px; margin-bottom: 8px; }
+    .cmt-body { resize: vertical; line-height: 1.8; }
+    .cmt-name:focus, .cmt-body:focus { outline: none; border-color: #c9a961; }
+    .cmt-bar { display: flex; align-items: center; gap: 12px; }
+    .cmt-bar button { font-family: inherit; font-size: 14px; color: #fff; background: var(--ink);
+      border: 0; border-radius: 6px; padding: 8px 20px; cursor: pointer; letter-spacing: 1px; }
+    .cmt-bar button:disabled { opacity: .5; cursor: default; }
+    .cmt-msg { font-size: 13px; color: var(--ink-3); }
+    .cmt-msg.err { color: #b04a45; }
+    .cmt-msg.ok { color: #2f8f6b; }
     .how-cmt { margin: 54px 0 0; padding-top: 30px; border-top: 1px solid var(--line); }
     .how-cmt h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; letter-spacing: 2px; margin-bottom: 12px; }
     .how-cmt p { color: var(--ink-2); font-size: 15px; line-height: 1.95; margin-bottom: 12px; }
@@ -210,9 +226,7 @@ var _hmt = _hmt || [];
     </header>
 
     <main>
-        <h1>实地纪实
-            <span class="sub">本人实拍 · 大疆 Osmo Pocket 3 · 每条可留言</span>
-        </h1>
+        <h1>实地纪实</h1>
 
         <p class="lede">这一页是这条线的实地记录：2025 年 7 月我自己走完全程时拍下的画面，没有配乐、没有剪辑成片，按当时走的顺序排。看完想说什么，每条下面都能留言——留言经我确认后收录在本页。</p>
 
@@ -223,7 +237,17 @@ var _hmt = _hmt || [];
             </div>
             <h2>眼睛在天堂，身体在地狱，灵魂在路上</h2>
             <p class="vdesc">走得最累的时候，心里反而最安静。</p>
-            <p class="vcmt">看完想说什么？<a href="mailto:chq324@126.com?subject=%E5%85%B3%E4%BA%8E%E8%A7%86%E9%A2%91%E3%80%8A%E7%9C%BC%E7%9D%9B%E5%9C%A8%E5%A4%A9%E5%A0%82%EF%BC%8C%E8%BA%AB%E4%BD%93%E5%9C%A8%E5%9C%B0%E7%8B%B1%EF%BC%8C%E7%81%B5%E9%AD%82%E5%9C%A8%E8%B7%AF%E4%B8%8A%E3%80%8B%E7%9A%84%E7%95%99%E8%A8%80">写邮件</a>　·　微信 <b>youla7982</b>　<span class="vcmt-note">留言经本人确认后收录本页</span></p>
+            <div class="cmt" data-target="video-1">
+                <div class="cmt-list" aria-live="polite"></div>
+                <form class="cmt-form" novalidate>
+                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
+                    <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
+                    <div class="cmt-bar">
+                        <button type="submit">发布留言</button>
+                        <span class="cmt-msg"></span>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="video-card" id="video-2">
@@ -232,7 +256,17 @@ var _hmt = _hmt || [];
             </div>
             <h2>一个人的湖岸</h2>
             <p class="vdesc">一个人沿湖岸行走，湖面开阔、岸线绵长。</p>
-            <p class="vcmt">看完想说什么？<a href="mailto:chq324@126.com?subject=%E5%85%B3%E4%BA%8E%E8%A7%86%E9%A2%91%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%B9%96%E5%B2%B8%E3%80%8B%E7%9A%84%E7%95%99%E8%A8%80">写邮件</a>　·　微信 <b>youla7982</b>　<span class="vcmt-note">留言经本人确认后收录本页</span></p>
+            <div class="cmt" data-target="video-2">
+                <div class="cmt-list" aria-live="polite"></div>
+                <form class="cmt-form" novalidate>
+                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
+                    <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
+                    <div class="cmt-bar">
+                        <button type="submit">发布留言</button>
+                        <span class="cmt-msg"></span>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="video-card" id="video-3">
@@ -241,7 +275,17 @@ var _hmt = _hmt || [];
             </div>
             <h2>仿佛被世界遗忘的角落</h2>
             <p class="vdesc">贝加尔湖沿岸，空旷寂寥，仿佛被世界遗忘。</p>
-            <p class="vcmt">看完想说什么？<a href="mailto:chq324@126.com?subject=%E5%85%B3%E4%BA%8E%E8%A7%86%E9%A2%91%E3%80%8A%E4%BB%BF%E4%BD%9B%E8%A2%AB%E4%B8%96%E7%95%8C%E9%81%97%E5%BF%98%E7%9A%84%E8%A7%92%E8%90%BD%E3%80%8B%E7%9A%84%E7%95%99%E8%A8%80">写邮件</a>　·　微信 <b>youla7982</b>　<span class="vcmt-note">留言经本人确认后收录本页</span></p>
+            <div class="cmt" data-target="video-3">
+                <div class="cmt-list" aria-live="polite"></div>
+                <form class="cmt-form" novalidate>
+                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
+                    <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
+                    <div class="cmt-bar">
+                        <button type="submit">发布留言</button>
+                        <span class="cmt-msg"></span>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="video-card" id="video-4">
@@ -250,7 +294,17 @@ var _hmt = _hmt || [];
             </div>
             <h2>贝加尔湖的日出</h2>
             <p class="vdesc">天光从湖面上铺开，晨雾慢慢散去，湖岸在晨光中显现。</p>
-            <p class="vcmt">看完想说什么？<a href="mailto:chq324@126.com?subject=%E5%85%B3%E4%BA%8E%E8%A7%86%E9%A2%91%E3%80%8A%E8%B4%9D%E5%8A%A0%E5%B0%94%E6%B9%96%E7%9A%84%E6%97%A5%E5%87%BA%E3%80%8B%E7%9A%84%E7%95%99%E8%A8%80">写邮件</a>　·　微信 <b>youla7982</b>　<span class="vcmt-note">留言经本人确认后收录本页</span></p>
+            <div class="cmt" data-target="video-4">
+                <div class="cmt-list" aria-live="polite"></div>
+                <form class="cmt-form" novalidate>
+                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
+                    <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
+                    <div class="cmt-bar">
+                        <button type="submit">发布留言</button>
+                        <span class="cmt-msg"></span>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="video-card" id="video-5">
@@ -259,7 +313,17 @@ var _hmt = _hmt || [];
             </div>
             <h2>在沥沥的晨雨中从利镇出发</h2>
             <p class="vdesc">在沥沥的晨雨中从利斯特维扬卡出发，踏上50公里的湖岸徒步。</p>
-            <p class="vcmt">看完想说什么？<a href="mailto:chq324@126.com?subject=%E5%85%B3%E4%BA%8E%E8%A7%86%E9%A2%91%E3%80%8A%E5%9C%A8%E6%B2%A5%E6%B2%A5%E7%9A%84%E6%99%A8%E9%9B%A8%E4%B8%AD%E4%BB%8E%E5%88%A9%E9%95%87%E5%87%BA%E5%8F%91%E3%80%8B%E7%9A%84%E7%95%99%E8%A8%80">写邮件</a>　·　微信 <b>youla7982</b>　<span class="vcmt-note">留言经本人确认后收录本页</span></p>
+            <div class="cmt" data-target="video-5">
+                <div class="cmt-list" aria-live="polite"></div>
+                <form class="cmt-form" novalidate>
+                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
+                    <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
+                    <div class="cmt-bar">
+                        <button type="submit">发布留言</button>
+                        <span class="cmt-msg"></span>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <h2>相关页面</h2>
@@ -270,15 +334,14 @@ var _hmt = _hmt || [];
         </ul>
 
         <section class="how-cmt">
-            <h2>留言怎么用</h2>
-            <p>这一页不做即时公开的评论区——留言先到我这里，我看过再收录上来。这样能保证贴出来的每条都是真话，不是刷的。</p>
+            <h2>留言说明</h2>
+            <p>每条视频下面都可以直接留言，发布后立刻显示在本页，不用注册。称呼可以不填，不填就显示「一位朋友」。</p>
             <ul>
-                <li><strong>写邮件</strong>：点每条视频下的「写邮件」，主题已经填好，写上你想说的就行。</li>
-                <li><strong>微信</strong>：加 <b>youla7982</b>，把视频标题一起发来，方便我对应到哪一条。</li>
-                <li><strong>会被收录的内容</strong>：你自己走完的感受、对某段路的疑问、看到画面想起的别的事。批评也收，只要是真的。</li>
-                <li><strong>不会被收录的</strong>：广告、与线路无关的推广、无法核实的具体报价。</li>
+                <li><strong>想说什么都行</strong>：走完的感受、对某段路的疑问、看到画面想起的别的事。批评也收，只要是真的。</li>
+                <li><strong>会拦下来的</strong>：带链接的、广告与无关推广、触发过滤词的内容，以及同一个 IP 十分钟内连发三条以上。</li>
+                <li><strong>提醒一句</strong>：留言是公开的，别把手机号、护照号、具体住宿地址写进去。</li>
             </ul>
-            <p class="small">收录时会署你愿意给的名字或昵称；不想署名就说一句，我写「一位走过的朋友」。想撤下随时说，一次就删。</p>
+            <p class="small">留言我会看，不实的、广告的会直接删；想撤下自己的留言，微信 <b>youla7982</b> 说一句，一次就删。</p>
         </section>
     </main>
 
@@ -288,6 +351,65 @@ var _hmt = _hmt || [];
     <p class="small" style="margin-top:8px;color:#999">本站使用百度统计，仅记录访问量与来源，不收集个人信息。</p>
 </footer>
 </div>
+    <script>
+    (function () {
+      var API = "https://ai.baikal50.cn";
+      function esc(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+      function fmt(ts) {
+        var d = new Date(ts), p = function (n) { return n < 10 ? "0" + n : "" + n; };
+        return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+      }
+      document.querySelectorAll(".cmt").forEach(function (box) {
+        var target = box.getAttribute("data-target");
+        var list = box.querySelector(".cmt-list");
+        var form = box.querySelector(".cmt-form");
+        var msg = box.querySelector(".cmt-msg");
+        var btn = form.querySelector("button");
+        function render(items) {
+          if (!items.length) {
+            list.innerHTML = '<p class="cmt-empty">还没有留言。第一条可以是你。</p>';
+            return;
+          }
+          list.innerHTML = items.map(function (c) {
+            return '<div class="cmt-item"><div class="cmt-head"><b>' + esc(c.name) +
+              '</b><span>' + fmt(c.ts) + '</span></div><p>' +
+              esc(c.body).replace(/\n/g, "<br>") + '</p></div>';
+          }).join("");
+        }
+        function load() {
+          fetch(API + "/api/comments?target=" + encodeURIComponent(target))
+            .then(function (r) { return r.json(); })
+            .then(function (d) { render(d.comments || []); })
+            .catch(function () { list.innerHTML = '<p class="cmt-empty">留言暂时读不出来，稍后刷新试试。</p>'; });
+        }
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var body = box.querySelector(".cmt-body").value.trim();
+          var name = box.querySelector(".cmt-name").value.trim();
+          if (body.length < 4) { msg.textContent = "至少写几个字。"; msg.className = "cmt-msg err"; return; }
+          msg.textContent = "发送中…"; msg.className = "cmt-msg"; btn.disabled = true;
+          fetch(API + "/api/comment", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ target: target, name: name, body: body })
+          }).then(function (r) { return r.json(); }).then(function (d) {
+            btn.disabled = false;
+            if (d.error) { msg.textContent = d.error; msg.className = "cmt-msg err"; return; }
+            msg.textContent = "已发布"; msg.className = "cmt-msg ok";
+            box.querySelector(".cmt-body").value = "";
+            load();
+          }).catch(function () {
+            btn.disabled = false;
+            msg.textContent = "网络不通，稍后再试。"; msg.className = "cmt-msg err";
+          });
+        });
+        load();
+      });
+    })();
+    </script>
     <script src="/ambience.js" defer></script>
 </body>
 </html>
