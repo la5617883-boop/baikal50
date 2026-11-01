@@ -57,11 +57,11 @@
     .cmt-head b { color: var(--ink); font-weight: 600; font-size: 14px; }
     .cmt-item p { font-size: 14.5px; line-height: 1.9; color: var(--ink-2); margin: 0; }
     .cmt-form { margin-top: 12px; }
-    .cmt-name, .cmt-body { width: 100%; box-sizing: border-box; font-family: inherit; font-size: 14px;
+    .cmt-body { width: 100%; box-sizing: border-box; font-family: inherit; font-size: 14px;
       color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 6px;
       padding: 9px 11px; margin-bottom: 8px; }
     .cmt-body { resize: vertical; line-height: 1.8; }
-    .cmt-name:focus, .cmt-body:focus { outline: none; border-color: #c9a961; }
+    .cmt-body:focus { outline: none; border-color: #c9a961; }
     .cmt-bar { display: flex; align-items: center; gap: 12px; }
     .cmt-bar button { font-family: inherit; font-size: 14px; color: #fff; background: var(--ink);
       border: 0; border-radius: 6px; padding: 8px 20px; cursor: pointer; letter-spacing: 1px; }
@@ -228,8 +228,6 @@ var _hmt = _hmt || [];
     <main>
         <h1>实地纪实</h1>
 
-        <p class="lede">这一页是这条线的实地记录：2025 年 7 月我自己走完全程时拍下的画面，没有配乐、没有剪辑成片，按当时走的顺序排。看完想说什么，每条下面都能留言——留言经我确认后收录在本页。</p>
-
         <!-- 视频列表：后续新视频依次往这里加 -->
         <div class="video-card" id="video-1">
             <div class="video-wrap">
@@ -240,7 +238,6 @@ var _hmt = _hmt || [];
             <div class="cmt" data-target="video-1">
                 <div class="cmt-list" aria-live="polite"></div>
                 <form class="cmt-form" novalidate>
-                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
                     <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
                     <div class="cmt-bar">
                         <button type="submit">发布留言</button>
@@ -259,7 +256,6 @@ var _hmt = _hmt || [];
             <div class="cmt" data-target="video-2">
                 <div class="cmt-list" aria-live="polite"></div>
                 <form class="cmt-form" novalidate>
-                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
                     <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
                     <div class="cmt-bar">
                         <button type="submit">发布留言</button>
@@ -278,7 +274,6 @@ var _hmt = _hmt || [];
             <div class="cmt" data-target="video-3">
                 <div class="cmt-list" aria-live="polite"></div>
                 <form class="cmt-form" novalidate>
-                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
                     <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
                     <div class="cmt-bar">
                         <button type="submit">发布留言</button>
@@ -297,7 +292,6 @@ var _hmt = _hmt || [];
             <div class="cmt" data-target="video-4">
                 <div class="cmt-list" aria-live="polite"></div>
                 <form class="cmt-form" novalidate>
-                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
                     <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
                     <div class="cmt-bar">
                         <button type="submit">发布留言</button>
@@ -316,7 +310,6 @@ var _hmt = _hmt || [];
             <div class="cmt" data-target="video-5">
                 <div class="cmt-list" aria-live="polite"></div>
                 <form class="cmt-form" novalidate>
-                    <input class="cmt-name" type="text" maxlength="20" placeholder="称呼（可不填）" autocomplete="nickname">
                     <textarea class="cmt-body" maxlength="600" rows="3" required placeholder="看完想说什么？点「发布」就显示在本页。"></textarea>
                     <div class="cmt-bar">
                         <button type="submit">发布留言</button>
@@ -335,7 +328,7 @@ var _hmt = _hmt || [];
 
         <section class="how-cmt">
             <h2>留言说明</h2>
-            <p>每条视频下面都可以直接留言，发布后立刻显示在本页，不用注册。称呼可以不填，不填就显示「一位朋友」。</p>
+            <p>每条视频下面都可以直接留言，发布后立刻显示在本页，不用注册、不用填称呼。</p>
             <ul>
                 <li><strong>想说什么都行</strong>：走完的感受、对某段路的疑问、看到画面想起的别的事。批评也收，只要是真的。</li>
                 <li><strong>会拦下来的</strong>：带链接的、广告与无关推广、触发过滤词的内容，以及同一个 IP 十分钟内连发三条以上。</li>
@@ -375,8 +368,9 @@ var _hmt = _hmt || [];
             return;
           }
           list.innerHTML = items.map(function (c) {
-            return '<div class="cmt-item"><div class="cmt-head"><b>' + esc(c.name) +
-              '</b><span>' + fmt(c.ts) + '</span></div><p>' +
+            var who = (c.name && c.name !== "一位朋友") ? '<b>' + esc(c.name) + '</b>' : '';
+            return '<div class="cmt-item"><div class="cmt-head">' + who +
+              '<span>' + fmt(c.ts) + '</span></div><p>' +
               esc(c.body).replace(/\n/g, "<br>") + '</p></div>';
           }).join("");
         }
@@ -389,7 +383,7 @@ var _hmt = _hmt || [];
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           var body = box.querySelector(".cmt-body").value.trim();
-          var name = box.querySelector(".cmt-name").value.trim();
+          var name = "";
           if (body.length < 4) { msg.textContent = "至少写几个字。"; msg.className = "cmt-msg err"; return; }
           msg.textContent = "发送中…"; msg.className = "cmt-msg"; btn.disabled = true;
           fetch(API + "/api/comment", {
