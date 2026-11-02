@@ -1,0 +1,88 @@
+/* 贝加尔湖50径 · 小贝（AI 替身）浮动入口 + 弹窗 —— 共用样式
+   入口用 /xiaobei-lakeside.mp4（湖边小熊，静音循环） */
+
+#bai-walker{
+  position:fixed; bottom:70px; right:14px; z-index:9000;
+  width:132px; height:132px; pointer-events:none;
+}
+#bai-btn{
+  position:relative; width:132px; height:132px; border:0; padding:0;
+  background:#fff; cursor:pointer; overflow:hidden; pointer-events:auto;
+  border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,.16), 0 1px 3px rgba(0,0,0,.10);
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+#bai-btn video, #bai-btn img{
+  width:100%; height:100%; display:block; object-fit:cover;
+  border:0; box-shadow:none; background:#fbf9f5;
+}
+#bai-btn:hover{ transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.22), 0 1px 3px rgba(0,0,0,.10); }
+#bai-btn:active{ transform:scale(.97); }
+
+#bai-walker .bai-tip{
+  position:absolute; right:0; bottom:140px;
+  background:#1a1a1a; color:#fff; font-size:12px; line-height:1.5; padding:6px 10px;
+  border-radius:3px; white-space:nowrap; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  opacity:0; pointer-events:none; transition:opacity .2s;
+}
+#bai-walker:hover .bai-tip{ opacity:1; }
+
+#bai-wrap{ position:fixed; inset:0; z-index:9100; display:none; }
+#bai-wrap.on{ display:block; }
+#bai-mask{ position:absolute; inset:0; background:rgba(20,20,18,.42); }
+#bai-panel{
+  position:absolute; right:18px; bottom:172px; width:370px; max-width:calc(100vw - 36px);
+  height:min(560px, calc(100vh - 200px)); background:#faf9f7;
+  border:1px solid #e8e6e1; box-shadow:0 10px 40px rgba(0,0,0,.26);
+  display:flex; flex-direction:column; overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+}
+#bai-head{
+  display:flex; align-items:center; gap:10px; padding:12px 14px;
+  border-bottom:1px solid #e8e6e1; background:#fff;
+}
+#bai-head img{ width:36px; height:36px; display:block; border:0; box-shadow:none; border-radius:50%; flex:0 0 auto; }
+#bai-head .t{ flex:1; }
+#bai-head .t b{ display:block; font-size:14px; color:#1a1a1a; font-weight:600; }
+#bai-head .t span{ display:block; font-size:11px; color:#999; }
+#bai-close{ border:0; background:transparent; font-size:22px; line-height:1; color:#999; cursor:pointer; padding:2px 6px; }
+#bai-log{ flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:12px; -webkit-overflow-scrolling:touch; }
+#bai-log .m{ max-width:88%; padding:10px 13px; font-size:14px; line-height:1.75; white-space:pre-wrap; word-break:break-word; }
+#bai-log .me{ align-self:flex-end; background:#1a1a1a; color:#fff; border-radius:2px; }
+#bai-log .it{ align-self:flex-start; background:#fff; border:1px solid #e8e6e1; color:#333; border-radius:2px; }
+#bai-log .th{ align-self:flex-start; color:#999; font-size:13px; padding:8px 4px; }
+#bai-log .m.wide{ max-width:100%; font-size:11px; line-height:1.8; }
+#bai-log .m.wide div + div{ margin-top:2px; }
+#bai-log .m a{ color:#1a1a1a; text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1.5px; text-decoration-color:#b8933f; }
+#bai-log .m.wide a{ font-weight:500; text-decoration-thickness:1px; }
+#bai-log .m a:hover{ color:#8a6a1f; }
+#bai-log .m a:active{ color:#8a6a1f; }
+#bai-tips{ display:flex; flex-wrap:wrap; gap:6px; padding:0 14px 10px; }
+#bai-tips button{
+  border:1px solid #e8e6e1; background:#fff; color:#555; font-size:12px;
+  padding:5px 9px; cursor:pointer; border-radius:2px; font-family:inherit;
+}
+#bai-tips button:hover{ border-color:#1a1a1a; color:#1a1a1a; }
+#bai-bar{ display:flex; gap:8px; padding:10px 14px 14px; border-top:1px solid #e8e6e1; background:#fff; }
+#bai-q{
+  flex:1; border:1px solid #e8e6e1; padding:9px 11px; font-size:15px; font-family:inherit;
+  color:#1a1a1a; resize:none; min-height:40px; max-height:90px; border-radius:2px;
+}
+#bai-q:focus{ outline:none; border-color:#1a1a1a; }
+#bai-send{
+  border:1px solid #1a1a1a; background:#1a1a1a; color:#fff; padding:9px 15px;
+  font-size:14px; font-family:inherit; cursor:pointer; border-radius:2px; white-space:nowrap;
+}
+#bai-send:disabled{ opacity:.4; cursor:default; }
+#bai-foot{ padding:0 14px 12px; font-size:11px; color:#aaa; line-height:1.6; background:#fff; }
+#bai-foot a{ color:#888; text-decoration:underline; text-underline-offset:2px; }
+
+@media (max-width:380px){
+  #bai-log .m.wide{ font-size:10.5px; }
+}
+@media (max-width:520px){
+  #bai-walker{ bottom:64px; right:8px; width:104px; height:104px; }
+  #bai-btn{ width:104px; height:104px; border-radius:12px; }
+  #bai-walker .bai-tip{ bottom:112px; }
+  #bai-panel{ right:0; bottom:0; width:100%; max-width:100%; height:86vh; border-left:0; border-right:0; }
+}
