@@ -414,8 +414,11 @@ var _hmt = _hmt || [];
     <!-- 小贝 · AI 替身（湖边小熊入口 + 弹窗） -->
     <div id="bai-walker">
       <button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
-        <video src="/xiaobei-lakeside.mp4" poster="/xiaobei-lakeside.jpg"
-               autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <video poster="/xiaobei-lakeside.jpg" autoplay muted loop playsinline
+               preload="metadata" aria-hidden="true">
+          <source src="/xiaobei-lakeside.webm" type="video/webm">
+          <source src="/xiaobei-lakeside.mp4" type="video/mp4">
+        </video>
       </button>
       <span class="bai-tip">有问题？问一句</span>
     </div>

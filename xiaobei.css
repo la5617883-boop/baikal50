@@ -14,9 +14,6 @@
 #bai-btn video, #bai-btn img{
   width:100%; height:100%; display:block; object-fit:cover;
   border:0; box-shadow:none; background:transparent; border-radius:0;
-  /* 底边淡淡淡出：避免岩石在卡片下沿被切出直边 */
-  -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
 }
 #bai-btn:hover{ transform:translateY(-3px); }
 #bai-btn:active{ transform:scale(.97); }
