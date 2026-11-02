@@ -416,7 +416,11 @@ var _hmt = _hmt || [];
       <button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
         <video poster="/xiaobei-lakeside.jpg" autoplay muted loop playsinline
                preload="metadata" aria-hidden="true">
+          <!-- Safari/iPhone：HEVC + alpha，真透明 -->
+          <source src="/xiaobei-lakeside.mov" type="video/quicktime">
+          <!-- Chrome / Edge / 安卓：VP9 + alpha，真透明 -->
           <source src="/xiaobei-lakeside.webm" type="video/webm">
+          <!-- 老浏览器兜底：画面底色已做成页面色 -->
           <source src="/xiaobei-lakeside.mp4" type="video/mp4">
         </video>
       </button>
