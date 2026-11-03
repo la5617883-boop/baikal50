@@ -1,5 +1,5 @@
 /* 贝加尔湖50径 · 小贝（AI 替身）浮动入口 + 弹窗 —— 共用样式
-   入口用 /xiaobei-lakeside.mp4（湖边小熊，静音循环） */
+   入口用 /xiaobei-lakeside.webp（湖边小熊＋海鸥，带 alpha 的动画图，不依赖视频自动播放） */
 
 #bai-walker{
   position:fixed; bottom:70px; right:14px; z-index:9000;
