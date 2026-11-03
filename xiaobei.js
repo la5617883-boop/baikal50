@@ -28,7 +28,6 @@
     if(!opened){
       opened=true;
       bubbleHTML('it wide',
-        '<div>这一页是这条线的实地记录，想细看线路可以走<a href="/route-3d.html">云上 3D</a></div>' +
         '<div>如果您对难度有疑虑，可以试下<a href="/planner.html">行程规划器</a>呦</div>');
     }
     setTimeout(function(){ q.focus(); }, 200);
