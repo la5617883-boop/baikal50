@@ -15,12 +15,6 @@
   width:100%; height:100%; display:block; object-fit:cover;
   border:0; box-shadow:none; background:transparent; border-radius:0;
 }
-/* 视频底色已做成页面色（误差 1–2 级，肉眼不可辨）；再用页面色内阴影把四周吃掉，
-   任何浏览器都不会出现方框边 */
-#bai-btn::after{
-  content:''; position:absolute; inset:0; pointer-events:none;
-  box-shadow: inset 0 0 10px 5px #faf9f7;
-}
 #bai-btn:hover{ transform:translateY(-3px); }
 #bai-btn:active{ transform:scale(.97); }
 
