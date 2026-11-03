@@ -141,6 +141,7 @@
     }
     </script>
     <link rel="stylesheet" href="/ambience.css">
+    <link rel="stylesheet" href="/xiaobei.css?v=20261103k">
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -366,6 +367,42 @@ var _hmt = _hmt || [];
     <p class="small" style="margin-top:8px;color:#999">本站使用百度统计，仅记录访问量与来源，不收集个人信息。</p>
 </footer>
 </div>
+    <!-- 小贝 · AI 替身（林间小熊入口 + 弹窗） -->
+    <div id="bai-walker">
+      <button id="bai-btn" type="button" aria-label="问贝加尔湖50径" title="有问题问它">
+        <img src="/xiaobei-forest-blob.webp?v=20261103j" width="320" height="320"
+             alt="小贝背着背包走进贝加尔湖岸的松林" aria-hidden="true">
+      </button>
+      <span class="bai-tip">有问题？问一句</span>
+    </div>
+
+    <div id="bai-wrap" aria-hidden="true">
+      <div id="bai-mask"></div>
+      <div id="bai-panel" role="dialog" aria-modal="true" aria-label="小贝 · 贝加尔湖50径 AI 替身">
+        <div id="bai-head">
+          <img src="/bear-face-sm.png" alt="小贝" width="36" height="36">
+          <div class="t">
+            <b>小贝</b>
+            <span>嗨！关于这条线，有什么想问我的吗？</span>
+          </div>
+          <button id="bai-close" type="button" aria-label="关闭">×</button>
+        </div>
+        <div id="bai-log"></div>
+        <div id="bai-tips">
+          <button type="button">多难？</button>
+          <button type="button">多少钱？</button>
+          <button type="button">几月能走？</button>
+          <button type="button">要办许可吗？</button>
+        </div>
+        <div id="bai-bar">
+          <textarea id="bai-q" rows="1" placeholder="问点什么…" aria-label="输入问题"></textarea>
+          <button id="bai-send" type="button">发送</button>
+        </div>
+        <div id="bai-foot">回答由 AI 生成，价格与条款以官网和《出行服务确认单》为准。要本人确认：微信 youla7982</div>
+      </div>
+    </div>
+
+    <script src="/xiaobei.js?v=20261103b" defer></script>
     <script src="/ambience.js" defer></script>
 </body>
 </html>
