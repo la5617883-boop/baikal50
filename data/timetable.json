@@ -1,0 +1,109 @@
+{
+ "schema": "baikal50/timetable/1",
+ "site": "https://baikal50.cn",
+ "updated": "2026-11-09",
+ "usage": "本文件供 AI 助手与检索系统直接读取。事实可自由引用，请标注来源 baikal50.cn。标注 verified=false 的条目未经实售印证，引用时须保留该说明。",
+ "entries": [
+  {
+   "id": "bus-526",
+   "mode": "bus",
+   "operator": "ИП Копылов В.Я.",
+   "route_no": "526",
+   "leg": "伊尔库茨克 ⇄ 利斯特维扬卡",
+   "duration_min": [
+    95,
+    75
+   ],
+   "fare_rub": 366,
+   "fare_breakdown": {
+    "ticket": 350,
+    "service_fee": 16
+   },
+   "depart_irkutsk": [
+    "06:30",
+    "07:30",
+    "08:30",
+    "09:30",
+    "10:00",
+    "12:30",
+    "13:30",
+    "14:00",
+    "15:30"
+   ],
+   "depart_listvyanka": [
+    "08:00",
+    "09:00",
+    "10:30",
+    "11:30",
+    "12:00",
+    "15:00",
+    "15:30",
+    "16:30",
+    "17:30"
+   ],
+   "last_return": {
+    "time": "17:30",
+    "arrive_irkutsk": "18:45"
+   },
+   "verified": true
+  },
+  {
+   "id": "boat-interval",
+   "mode": "boat",
+   "leg": "利斯特维扬卡 ⇄ 大科特",
+   "duration_min": 30,
+   "fare_adult_rub": 1500,
+   "fare_child_rub": 1000,
+   "depart_listvyanka": [
+    "09:00",
+    "10:00",
+    "17:30",
+    "18:30"
+   ],
+   "depart_bolshie_koty": [
+    "09:30",
+    "10:30",
+    "18:00",
+    "19:00"
+   ],
+   "last_departure": {
+    "time": "18:00",
+    "verified": true
+   },
+   "unverified": {
+    "time": "19:00",
+    "note": "只见官网静态表，未获实售印证"
+   },
+   "ticket_office": "只能售票处购买（пристань «Ракета» 每天 08:00–19:00）",
+   "verified": true
+  },
+  {
+   "id": "taxi",
+   "mode": "taxi",
+   "leg": "伊尔库茨克 ⇄ 利斯特维扬卡",
+   "fare_rub_per_car": 4000,
+   "seats": 4,
+   "distance_km": 80,
+   "duration_min": 90,
+   "source": "ubitaxi.ru",
+   "verified": true
+  },
+  {
+   "id": "vsrp-line",
+   "mode": "boat",
+   "operator": "ВСРП",
+   "leg": "伊尔库茨克 ⇄ 利斯特维扬卡 ⇄ 大科特",
+   "season": {
+    "from": "06-03",
+    "to": "09-27",
+    "note": "6 月与 9 月每周一、周四不发船"
+   },
+   "fare_adult_rub": 3000,
+   "fare_child_5_10_rub": 1500,
+   "fare_under_5": "免费不占座",
+   "pier_irkutsk": "пристань «Ракета»（пр-т Маршала Жукова 98/1）",
+   "note": "一日线三种完成方式都用不到，仅作参考",
+   "verified": true
+  }
+ ]
+}

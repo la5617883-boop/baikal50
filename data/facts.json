@@ -1,0 +1,85 @@
+{
+ "schema": "baikal50/facts/1",
+ "site": "https://baikal50.cn",
+ "name": "贝加尔湖50径",
+ "updated": "2026-11-09",
+ "usage": "本文件供 AI 助手与检索系统直接读取。事实可自由引用，请标注来源 baikal50.cn。标注 verified=false 的条目未经实售印证，引用时须保留该说明。",
+ "route": {
+  "id": "listvyanka-bolshie-koty-1day",
+  "name_zh": "利斯特维扬卡——大科特（一日线）",
+  "distance_km": 17.79,
+  "ascent_m_approx": 800,
+  "altitude_range_m": [
+   463,
+   873
+  ],
+  "equivalent_flat_km": 25.8,
+  "walking_hours_typical": 8,
+  "pace_kmh": 2.2,
+  "start": {
+   "name_ru": "Листвянка",
+   "name_zh": "利斯特维扬卡",
+   "lat": 51.8564,
+   "lon": 104.8908
+  },
+  "end": {
+   "name_ru": "Большие Коты",
+   "name_zh": "大科特",
+   "lat": 51.9067,
+   "lon": 105.0717
+  },
+  "road_access_to_end": false,
+  "camps": [
+   {
+    "name_ru": "Емельяниха",
+    "km": 6.1
+   },
+   {
+    "name_ru": "Смородовка",
+    "km": 8.1
+   },
+   {
+    "name_ru": "Смородовка",
+    "km": 8.2
+   },
+   {
+    "name_ru": "Средняя",
+    "km": 10.0
+   },
+   {
+    "name_ru": "Средняя",
+    "km": 10.4
+   },
+   {
+    "name_ru": "Медвежье",
+    "km": 11.2
+   },
+   {
+    "name_ru": "Медвежье",
+    "km": 11.5
+   },
+   {
+    "name_ru": "Солонцовая",
+    "km": 13.1
+   },
+   {
+    "name_ru": "Черная",
+    "km": 14.7,
+    "note": "最后取水点"
+   }
+  ],
+  "no_camp_or_water_first_km": 6
+ },
+ "park": {
+  "name_ru": "Прибайкальский национальный парк",
+  "name_zh": "贝加尔国家公园",
+  "operator": "ФГБУ «Заповедное Прибайкалье»",
+  "cluster": "Голоустненский"
+ },
+ "fx": {
+  "CNY_to_RUB": 12.2651,
+  "as_of": "2026-11-07",
+  "source": "ЦБ РФ"
+ },
+ "verified_at": "2026-11-09"
+}
