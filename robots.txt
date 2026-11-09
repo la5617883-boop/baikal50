@@ -125,6 +125,11 @@ Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
 
+User-agent: Bytespider
+Allow: /
+Disallow: /track-summary.json
+Disallow: /track-*.json
+
 # 上述未显式列出的 AI 爬虫（含未来的新爬虫）走此默认组，行为一致
 User-agent: CCBot
 Allow: /
