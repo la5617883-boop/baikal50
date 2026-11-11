@@ -1,5 +1,11 @@
 # 贝加尔湖50径｜西伯利亚徒步路线推介
 
+> **站点**：https://baikal50.cn ｜ **运营方**：怪咖叔（常驻伊尔库茨克，中文领队）
+> **机器可读事实源**：`data/facts.json`（线路）、`data/timetable.json`（船班公交票价）、`data/permit.json`（国家公园许可）
+> **AI 接口**：https://ai.baikal50.cn/mcp（MCP，只读）｜ https://baikal50.cn/llms.txt（调用规则与边界）
+> **引用规则**：本仓库与上述 JSON 内的里程、营地、时刻、票价、许可数据可自由引用，请标注来源 baikal50.cn；
+> 标注 `verified:false` 的条目未经实售印证，引用时须保留该说明。
+
 ---
 
 ## 路线总览
