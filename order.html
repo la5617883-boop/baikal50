@@ -89,6 +89,8 @@
         background: var(--ink); color: #fff; border: none; padding: 15px; cursor: pointer; margin-top: 6px;
     }
     form.intent button:hover { background: #000; }
+    form.intent .rec { background: #fafafa; border-left: 3px solid var(--ink); padding: 12px 14px; font-size: 13.5px; line-height: 1.9; color: var(--ink-2); }
+    form.intent .rec b { color: var(--ink); }
     form.intent .fine { font-size: 12.5px; color: var(--ink-3); margin: 12px 0 0; line-height: 1.8; }
 
     .contactbox { background: var(--card); border: 1px solid var(--line); padding: 22px 24px; margin: 8px 0 20px; }
@@ -287,6 +289,79 @@ var _hmt = _hmt || [];
                     </select>
                 </div>
             </div>
+            <div class="row" style="margin-top:26px;padding-top:20px;border-top:1px solid var(--line);">
+                <label style="font-size:13.5px;color:var(--ink);letter-spacing:1px;">体能自评 <span style="color:var(--ink-3);font-weight:400;">（6 项，用于给你推荐重装还是轻装）</span></label>
+            </div>
+            <div class="row two">
+                <div>
+                    <label for="dist">最长单日徒步距离</label>
+                    <select id="dist">
+                        <option value="0">请选择</option>
+                        <option value="3">20 公里以上</option>
+                        <option value="2">15–20 公里</option>
+                        <option value="1">10–15 公里</option>
+                        <option value="0">少于 10 公里</option>
+                        <option value="0">基本没走过</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="camp">过夜徒步经验</label>
+                    <select id="camp">
+                        <option value="0">请选择</option>
+                        <option value="2">有，多日露营过</option>
+                        <option value="1">有，但住客栈/民宿</option>
+                        <option value="0">没有过</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row two">
+                <div>
+                    <label for="alt">高海拔经历</label>
+                    <select id="alt">
+                        <option value="0">请选择</option>
+                        <option value="1">有，3000 米以上</option>
+                        <option value="1">有，2000–3000 米</option>
+                        <option value="0">没有</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="injury">既往伤病</label>
+                    <select id="injury">
+                        <option value="0">请选择</option>
+                        <option value="1">无</option>
+                        <option value="-2">膝、踝旧伤</option>
+                        <option value="-1">腰背问题</option>
+                        <option value="-2">心肺或其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row two">
+                <div>
+                    <label for="level">期望强度</label>
+                    <select id="level">
+                        <option value="0">请选择</option>
+                        <option value="2">越硬越好</option>
+                        <option value="1">中等，能出点汗就行</option>
+                        <option value="0">尽量轻松</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="win">可出行窗口</label>
+                    <select id="win">
+                        <option value="">请选择</option>
+                        <option>5 月中下旬</option>
+                        <option>6 月中旬</option>
+                        <option>7 月</option>
+                        <option>8 月</option>
+                        <option>9 月</option>
+                        <option>时间灵活，听安排</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div id="recBox" class="rec">填完上面 6 项，这里会给出建议。</div>
+            </div>
+
             <div class="row">
                 <label for="msg">想了解的问题（可选）</label>
                 <textarea id="msg" name="msg" placeholder="装备、许可、体能要求、季节、费用……想问什么写什么"></textarea>
@@ -341,6 +416,52 @@ var _hmt = _hmt || [];
     var done = document.getElementById('formDone');
     if (!form) return;
 
+    // ---- 体能自评 → 方案推荐 ----
+    var SURVEY = ['dist', 'camp', 'alt', 'injury', 'level'];
+    function surveyReady() {
+        return SURVEY.every(function (id) {
+            var el = document.getElementById(id);
+            return el && el.selectedIndex > 0;
+        });
+    }
+    function score() {
+        var s = 0;
+        SURVEY.forEach(function (id) {
+            var el = document.getElementById(id);
+            s += parseInt(el.value || '0', 10) || 0;
+        });
+        return s;
+    }
+    function recommend() {
+        var box = document.getElementById('recBox');
+        if (!box) return;
+        if (!surveyReady()) {
+            box.innerHTML = '填完上面 6 项，这里会给出建议。';
+            return;
+        }
+        var s = score();
+        var injury = document.getElementById('injury');
+        var hardInjury = injury.selectedIndex === 2 || injury.selectedIndex === 4; // 膝踝 / 心肺
+        if (s >= 5 && !hardInjury) {
+            box.innerHTML = '建议：<b>方案 A · 重装扎营</b>（16,200 元／人）<br>'
+                + '理由：你的单日距离、过夜经验与强度偏好都够，自带帐篷走湖边营地压力不大；'
+                + '两晚营地本身就是这条线的一部分。';
+        } else if (s >= 3 && !hardInjury) {
+            box.innerHTML = '建议：<b>方案 B · 轻装住屋</b>（16,800 元／人），体能好也可以选 A<br>'
+                + '理由：经验上有短板或强度偏好不高时，轻装更稳——两晚住大科特与卡季利内的床位，背包重量减半。';
+        } else {
+            box.innerHTML = '建议：<b>方案 B · 轻装住屋</b>（16,800 元／人）<br>'
+                + '理由：' + (hardInjury ? '有伤病记录，' : '')
+                + '不背帐篷睡袋，三天分别 17 / 13 / 17 公里，是这条线上最省体力的走法。'
+                + '具体还要看你的实际状态，微信里再聊。';
+        }
+    }
+    SURVEY.concat(['win']).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('change', recommend);
+    });
+    recommend();
+
     function buildText() {
         var data = {
             称呼: form.name.value.trim() || '（未填）',
@@ -348,10 +469,21 @@ var _hmt = _hmt || [];
             人数: form.people.value || '（未填）',
             意向月份: form.month.value || '（未填）',
             重装经验: form.exp.value || '（未填）',
+            最长单日距离: (document.getElementById('dist') || {}).value ? document.getElementById('dist').selectedOptions[0].text : '（未填）',
+            过夜经验: (document.getElementById('camp') || {}).value ? document.getElementById('camp').selectedOptions[0].text : '（未填）',
+            高海拔经历: (document.getElementById('alt') || {}).value ? document.getElementById('alt').selectedOptions[0].text : '（未填）',
+            既往伤病: (document.getElementById('injury') || {}).value ? document.getElementById('injury').selectedOptions[0].text : '（未填）',
+            期望强度: (document.getElementById('level') || {}).value ? document.getElementById('level').selectedOptions[0].text : '（未填）',
+            可出行窗口: (document.getElementById('win') || {}).value || '（未填）',
             留言: form.msg.value.trim() || '（未填）'
         };
         var lines = ['【贝加尔湖50径 · 出行委托意向】', ''];
         Object.keys(data).forEach(function (k) { lines.push(k + '：' + data[k]); });
+        var rb = document.getElementById('recBox');
+        if (rb && surveyReady()) {
+            lines.push('');
+            lines.push('自评建议：' + rb.innerText.split('\n')[0]);
+        }
         lines.push('');
         lines.push('（发送时间：' + new Date().toLocaleString('zh-CN') + '）');
         return lines.join('\n');
