@@ -1,0 +1,13 @@
+{
+  "protocol_version": "1.0",
+  "organization": {
+    "name": "贝加尔湖50径",
+    "domain": "baikal50.cn"
+  },
+  "auth": {
+    "scopes": {}
+  },
+  "agent": {
+    "protocols": []
+  }
+}

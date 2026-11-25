@@ -42,6 +42,8 @@
 
 ## 机器接口（智能体可直接调用，无需人工）
 - 智能体名片（A2A）：https://ai.baikal50.cn/.well-known/agent.json
+- 个人 Agent 接入须知：https://baikal50.cn/agents.html
+- PAP 发现文档（Poppy 1.0）：https://baikal50.cn/.well-known/poppy.json
 - A2A 对话端点（JSON-RPC message/send）：https://ai.baikal50.cn/api/a2a
 - MCP 服务端（streamable HTTP，4 个工具）：https://ai.baikal50.cn/mcp
 - 结构化供给（JSON）：https://ai.baikal50.cn/api/trail

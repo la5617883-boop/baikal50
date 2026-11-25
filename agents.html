@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人 Agent 接入须知 | 贝加尔湖50径</title>
+    <meta name="description" content="贝加尔湖50径对 Personal Agent Protocol（Poppy/PAP 1.0）的接入说明：发布 poppy.json 发现文档，声明为公开信息等级，不提供 OAuth 账号授权与用户数据访问。">
+    <meta name="keywords" content="Personal Agent Protocol,PAP,Poppy,poppy.json,个人agent接入,贝加尔湖50径,agent接入须知">
+    <meta name="author" content="怪咖叔">
+    <link rel="author" href="https://baikal50.cn/about.html">
+    <meta property="og:site_name" content="贝加尔湖50径">
+    <meta property="og:url" content="https://baikal50.cn/agents.html">
+    <meta property="og:title" content="个人 Agent 接入须知 | 贝加尔湖50径">
+    <meta property="og:description" content="本站在 Personal Agent Protocol 下的接入范围：公开信息可读，不提供账号与用户级授权。">
+    <meta property="og:type" content="article">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://baikal50.cn/agents.html">
+    <style>
+    :root {
+        --ink: #1a1a1a; --ink-2: #555; --ink-3: #999;
+        --paper: #faf9f7; --card: #ffffff; --line: #e8e6e1;
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); line-height: 2; color: var(--ink); background: var(--paper); }
+    .page { max-width: 760px; margin: 0 auto; min-height: 100vh; }
+    header.top { padding: 26px 40px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; }
+    header.top a { color: var(--ink); text-decoration: none; letter-spacing: 3px; font-size: 14px; }
+    header.top .brand { font-weight: 600; letter-spacing: 5px; }
+    main { padding: 54px 40px 40px; }
+    h1 { font-family: var(--serif); font-size: 28px; font-weight: 600; letter-spacing: 2px; line-height: 1.55; }
+    h1 .sub { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-3); letter-spacing: 3px; font-weight: 400; margin-top: 12px; }
+    h2 { font-family: var(--serif); font-size: 19px; font-weight: 600; letter-spacing: 2px; margin: 42px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    h3 { font-family: var(--sans); font-size: 15px; font-weight: 600; margin: 24px 0 8px; letter-spacing: 1px; }
+    p { margin: 0 0 14px; }
+    ul { margin: 0 0 16px 0; padding-left: 1.3em; }
+    li { margin-bottom: 7px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em;
+           background: #f2f0ec; padding: 1px 6px; border-radius: 2px; }
+    pre { background: #f2f0ec; padding: 16px 18px; overflow-x: auto; font-size: 13px;
+          line-height: 1.7; margin: 0 0 16px; border-left: 3px solid var(--ink); }
+    pre code { background: none; padding: 0; }
+    .note { background: var(--card); border: 1px solid var(--line); padding: 16px 20px; margin: 20px 0; font-size: 15px; }
+    .note strong { display: block; margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-weight: 600; background: #f6f4f0; }
+    .yes { color: #1a7a3e; font-weight: 600; }
+    .no { color: #a8321e; font-weight: 600; }
+    footer { padding: 30px 40px 50px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); letter-spacing: 2px; line-height: 2; }
+    footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 600px) {
+        header.top, main, footer { padding-left: 22px; padding-right: 22px; }
+        h1 { font-size: 22px; }
+        table { font-size: 13px; }
+        th, td { padding: 8px; }
+    }
+    </style>
+</head>
+<body>
+<div class="page">
+<header class="top">
+    <a class="brand" href="/">贝加尔湖50径</a>
+    <a href="/">← 返回首页</a>
+</header>
+
+<main>
+<h1>个人 Agent 接入须知<span class="sub">Personal Agent Protocol · Poppy 1.0</span></h1>
+
+<p>本页说明：当用户让个人 agent 代表自己来访问本站时，本站开放什么、不开放什么，以及为什么。</p>
+
+<div class="note">
+<strong>一句话结论</strong>
+本站已发布 <code>poppy.json</code> 发现文档，声明为<strong>公开信息等级</strong>。不使用 OAuth，不提供账号登录，不开放任何用户级数据——因为本站没有用户账号体系。
+</div>
+
+<h2>一、本站是什么</h2>
+<p><strong>贝加尔湖50径</strong>是一条线路的信息站：贝加尔湖西岸、利斯特维扬卡到大戈洛、约 50 公里的重装徒步路线，位于贝加尔国家公园（Прибайкальский национальный парк）内。</p>
+<p>本站提供的是<strong>公开事实</strong>：里程、海拔、分段、营地与取水点、季节、许可要求与价格、交通时刻表。全部对所有人公开，不需要注册，不需要登录。</p>
+<p><strong>行程由人带队。所有预订都需要运营者的书面确认。</strong>本站不代办预订、不收款、不产生订单。</p>
+
+<h2>二、发现文档</h2>
+<p>个人 agent 通过本站的 <code>poppy.json</code> 得知我们是谁、能提供什么：</p>
+<pre><code>GET https://baikal50.cn/.well-known/poppy.json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "protocol_version": "1.0",
+  "organization": {
+    "name": "贝加尔湖50径",
+    "domain": "baikal50.cn"
+  },
+  "auth": { "scopes": {} },
+  "agent": { "protocols": [] }
+}</code></pre>
+<p><code>auth.scopes</code> 为空，<code>agent.protocols</code> 为空——这是<strong>如实声明</strong>：本站没有需要授权的用户资源，也没有与个人 agent 直接对话的端点。</p>
+
+<h2>三、开放与不开放</h2>
+<table>
+<thead>
+<tr><th>项目</th><th>状态</th><th>说明</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>线路公开信息</td>
+<td class="yes">开放</td>
+<td>里程、海拔、分段、营地、季节、装备要求、许可价格。公开页面，无需授权。</td>
+</tr>
+<tr>
+<td>结构化参数接口</td>
+<td class="yes">开放</td>
+<td><code>GET https://ai.baikal50.cn/api/trail</code>，机器直读，无需授权。</td>
+</tr>
+<tr>
+<td>官方问答检索</td>
+<td class="yes">开放</td>
+<td><code>GET https://ai.baikal50.cn/api/qa?q=关键词</code>，返回既有问答条目。</td>
+</tr>
+<tr>
+<td>agent 能力名片</td>
+<td class="yes">开放</td>
+<td><code>/.well-known/agent.json</code>（A2A 格式），列出三项能力。</td>
+</tr>
+<tr>
+<td>账号登录 / OAuth</td>
+<td class="no">不提供</td>
+<td>本站没有用户账号。没有可供授权的用户资源。</td>
+</tr>
+<tr>
+<td>用户订单 / 个人数据</td>
+<td class="no">不提供</td>
+<td>本站不产生订单、不存储用户数据。</td>
+</tr>
+<tr>
+<td>代客下单 / 代付</td>
+<td class="no">不提供</td>
+<td>本站不做任何交易动作。预订须由运营者本人书面确认。</td>
+</tr>
+<tr>
+<td>与个人 agent 的直接对话端点</td>
+<td class="no">不提供</td>
+<td><code>agent.protocols</code> 为空，未开 PAP 对话端点。</td>
+</tr>
+</tbody>
+</table>
+
+<h2>四、为什么不提供 OAuth</h2>
+<p>PAP 的登录机制是：<strong>用户在企业自己的页面上通过 OAuth 登录，并选择授予个人 agent 哪些权限</strong>。这套机制的前提是<strong>企业有用户账号体系，且每个用户有属于自己的数据</strong>。</p>
+<p>本站没有这两样东西。我们提供的是对所有人一样的公开信息，不存在「你的订单」「你的行程」这类需要授权的私有资源。<strong>强行实现一个 OAuth，只会是一个空壳——登录之后没有任何东西可看。</strong></p>
+<p>所以这里的选择是如实声明支持的范围，而不是写一句「完全支持 PAP」。</p>
+
+<h2>五、如果用户想联系真人</h2>
+<p>本站的 A2A 名片里列了第三项能力：<strong>发起行前咨询</strong>——把用户的问题整理成一条咨询请求，转交人工回复。它<strong>不产生预订、不产生报价、不占位</strong>。</p>
+<p>任何个人 agent 读取本站信息后，如需向用户转述价格、剩余名额或预订流程，请注明：<strong>以运营者书面确认为准</strong>。</p>
+
+<h2>六、规范与许可</h2>
+<ul>
+<li>Personal Agent Protocol（昵称 Poppy）1.0，<a href="https://personalagentprotocol.org" rel="noopener" target="_blank">personalagentprotocol.org</a>，Apache License 2.0。</li>
+<li>本站的 <code>poppy.json</code> 已发布于 <code>https://baikal50.cn/.well-known/poppy.json</code>。</li>
+<li>本站对 PAP 的支持范围以本页所述为限，随协议演进可能调整。</li>
+</ul>
+
+<div class="note">
+<strong>Human-led expedition</strong>
+All bookings require the operator's written confirmation.<br>
+行程由人带队，所有预订须经运营者书面确认。
+</div>
+
+<p style="margin-top:30px;font-size:14px;color:var(--ink-3)">
+最后更新：2026-11-23
+</p>
+</main>
+
+<footer>
+<a href="https://baikal50.cn/" style="letter-spacing:4px;">← 返回首页 · 贝加尔湖50径</a>
+<span style="display:block;margin-top:10px;letter-spacing:2px;opacity:.75;">贝加尔湖50径 推广人 · <a href="https://baikal50.cn/about.html">怪咖叔</a></span>
+<br />
+<p style="letter-spacing:0;font-size:.92em;line-height:1.7;opacity:.8;margin:14px 0 0;">
+<a href="/license.html" style="text-decoration:underline;text-underline-offset:3px;">使用条款</a>　© 2026 贝加尔湖50径 · baikal50.cn　保留所有权利。
+</p>
+</footer>
+</div>
+</body>
+</html>
