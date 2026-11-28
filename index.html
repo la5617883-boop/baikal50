@@ -326,6 +326,30 @@
         th, td { padding: 10px 10px; }
     }
     footer .copyright{display:block;width:100%;letter-spacing:0;text-indent:0;margin:14px 0 0;font-size:.92em;line-height:1.7;opacity:.8;}
+
+/* 动画入口卡 */
+.anim-card{display:flex;align-items:center;gap:18px;margin:24px 0 8px;
+  padding:14px;border:1px solid var(--line);background:var(--card);
+  text-decoration:none;color:inherit;border-radius:12px;
+  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.anim-card:hover{border-color:var(--line-strong);box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-1px)}
+.anim-thumb{position:relative;flex:0 0 152px;width:152px;height:86px;border-radius:8px;overflow:hidden;background:#f4f2ee;border:1px solid var(--line)}
+.anim-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.anim-card:hover .anim-thumb img{transform:scale(1.06)}
+.anim-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.35);backdrop-filter:blur(1px);color:var(--ink)}
+.anim-card:hover .anim-play{background:rgba(255,255,255,.15)}
+.anim-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.anim-meta strong{font-size:15px;letter-spacing:.5px}
+.anim-meta span{font-size:12.5px;color:var(--ink-3);line-height:1.7;letter-spacing:.2px}
+.anim-go{flex:0 0 auto;font-size:12.5px;color:var(--ink-2);letter-spacing:.5px;white-space:nowrap}
+@media (max-width:600px){
+  .anim-card{gap:13px;padding:12px}
+  .anim-thumb{flex:0 0 112px;width:112px;height:64px}
+  .anim-meta strong{font-size:13.5px}
+  .anim-meta span{font-size:11.5px}
+  .anim-go{display:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -833,11 +857,26 @@ var _hmt = _hmt || [];
 <li><strong>到达</strong>：北京直飞伊尔库茨克约 3 小时　·　<a href="/flights-ikt.html" class="lnk">国内飞伊尔库茨克航班表</a></li>
 <li><strong>伊尔库茨克 → 利斯特维扬卡</strong>：公交 526 路，350 ₽ + 16 ₽ 站务费，约 1 小时；首班 06:30，末班 15:30</li>
 <li><strong>利斯特维扬卡 ⇄ 大科特</strong>：区间船 1,500 ₽/成人、1,000 ₽/儿童，25–30 分钟；利镇发船 09:00 / 10:00 / 17:30 / 18:30</li>
-<li><strong>大戈洛回伊尔库茨克</strong>：用车约 80 公里、1.5 小时，出租车 4,000 ₽ 起/辆（4 人）</li>
+<li><strong>大戈洛回伊尔库茨克</strong>：长途汽车约 123 公里，从大戈洛发车；也可包车，4,000 ₽ 起/辆（4 人）</li>
 <li><strong>许可</strong>：线路绝大部分在贝加尔国家公园内，须持通行许可。外国公民 700 ₽/人，一份 7 天有效　·　<a href="/permit.html" class="lnk">通行与许可须知</a></li>
 <li><strong>国家公园管理机构</strong>：ФГБУ «Заповедное Прибайкалье»　·　<a href="https://baikal-1.ru/" class="lnk">baikal-1.ru</a>（线路可能因山火、大型动物出没等原因临时关闭，以官网消息为准）</li>
 <li><strong>语言</strong>：沿线基本无英语环境，问路、买票、遇检查都需要俄语</li>
 </ul>
+
+<a href="/transit.html" class="anim-card" aria-label="看交通全程动画">
+  <div class="anim-thumb">
+    <img src="/transit-thumb.jpg" alt="贝加尔湖50径路线图" width="264" height="152" loading="lazy" />
+    <span class="anim-play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    </span>
+  </div>
+  <div class="anim-meta">
+    <strong>怎么进出：全程动画</strong>
+    <span>五段路、时刻表、票价、三个最容易踩的坑 · 10 屏约 1 分钟</span>
+  </div>
+  <span class="anim-go">看动画 →</span>
+</a>
+
 <p><img alt="贝加尔湖 · 巴尔古津湾" src="baikal-bay.jpg" /></p>
 <p><em>贝加尔湖 · 巴尔古津湾（东岸实拍）</em></p>
 <h2>服务</h2>

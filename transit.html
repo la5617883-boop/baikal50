@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#faf9f7">
+<title>怎么进出：贝加尔湖50径交通全程 · 动画 · 怪咖叔</title>
+<meta name="description" content="贝加尔湖50径交通全程动画：北京飞伊尔库茨克、公交到利斯特维扬卡、区间船到大科特、三天徒步到大戈洛、包车返回。含时刻表、票价、许可要点与三个最容易踩的坑。">
+<meta name="keywords" content="贝加尔湖50径交通,贝加尔湖徒步船班,利斯特维扬卡公交,大科特区间船,贝加尔湖国家公园许可,大贝加尔步道">
+<meta name="author" content="怪咖叔">
+<meta property="og:title" content="怎么进出：贝加尔湖50径交通全程">
+<meta property="og:description" content="10 屏看懂这条路怎么进出：公交、区间船、包车、许可。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baikal50.cn/transit.html">
+<meta property="og:image" content="https://baikal50.cn/map.png">
+<link rel="canonical" href="https://baikal50.cn/transit.html">
+<meta name="robots" content="index, follow">
+<style>
+:root{
+  --ink:#1a1a1a; --ink2:#555; --ink3:#999;
+  --paper:#faf9f7; --card:#fff; --line:#e8e6e1;
+  --serif:"Noto Serif SC","Source 110an Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Segoe UI","Microsoft Ya110ei",sans-serif;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);-webkit-font-smoothing:antialiased}
+#deck{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden}
+
+/* ===== 幻灯片 ===== */
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  padding:calc(7vh + 14px) 7vw calc(11vh + var(--safe-b));
+  opacity:0;transform:translateY(22px);
+  transition:opacity .5s cubic-bezier(.4,0,.2,1),transform .5s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;overflow-y:auto;
+}
+.slide.on{opacity:1;transform:translateY(0);pointer-events:auto}
+.slide.on > *{animation:rise .6s cubic-bezier(.4,0,.2,1) both}
+.slide.on > *:nth-child(1){animation-delay:.05s}
+.slide.on > *:nth-child(2){animation-delay:.13s}
+.slide.on > *:nth-child(3){animation-delay:.21s}
+.slide.on > *:nth-child(4){animation-delay:.29s}
+.slide.on > *:nth-child(5){animation-delay:.37s}
+.slide.on > *:nth-child(6){animation-delay:.45s}
+.pits{animation:none}
+.slide.on .pit{animation:pitIn .55s cubic-bezier(.4,0,.2,1) both}
+.slide.on .pit:nth-child(1){animation-delay:.18s}
+.slide.on .pit:nth-child(2){animation-delay:.42s}
+.slide.on .pit:nth-child(3){animation-delay:.66s}
+@keyframes pitIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== 进度 ===== */
+#bar{position:fixed;top:0;left:0;height:2px;background:var(--ink);width:0;
+  transition:width .55s cubic-bezier(.4,0,.2,1);z-index:60}
+#ticks{position:fixed;top:0;left:0;right:0;height:2px;z-index:59;display:flex}
+#ticks i{flex:1;border-right:1px solid rgba(0,0,0,.06)}
+#ticks i:last-child{border:0}
+
+/* ===== 控件 ===== */
+#ctl{position:fixed;left:0;right:0;bottom:0;
+  padding:12px 18px calc(12px + var(--safe-b));
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(to top,var(--paper) 55%,rgba(250,249,247,0));z-index:55}
+#ctl .mid{display:flex;gap:10px;align-items:center}
+#ctl button{
+  background:none;border:1px solid var(--line);color:var(--ink2);
+  font-size:12px;letter-spacing:1px;padding:9px 16px;border-radius:100px;
+  cursor:pointer;font-family:var(--sans);transition:.22s;
+}
+#ctl button:active{transform:scale(.95)}
+#ctl button.act{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#num{font-size:11.5px;color:var(--ink3);letter-spacing:1.5px;
+  font-variant-numeric:tabular-nums;min-width:52px;text-align:center}
+
+/* ===== 排版 ===== */
+.kicker{font-size:10px;letter-spacing:4px;color:var(--ink3);
+  margin-bottom:18px;text-transform:uppercase;text-align:center}
+h1{font-family:var(--serif);font-size:clamp(26px,8.4vw,40px);font-weight:600;
+  letter-spacing:1.5px;line-height:1.45;text-align:center}
+h2{font-family:var(--serif);font-size:clamp(19px,5.6vw,27px);font-weight:600;
+  letter-spacing:1px;line-height:1.5;text-align:center;margin-bottom:4px}
+.sub{font-size:clamp(12.5px,3.6vw,15px);color:var(--ink2);letter-spacing:.5px;
+  margin-top:16px;text-align:center;line-height:2}
+.hr{width:52px;height:1px;background:var(--ink);margin:30px auto}
+
+/* 大数字 */
+.big{font-family:var(--serif);font-size:clamp(56px,19vw,96px);font-weight:600;
+  line-height:.95;letter-spacing:-2px;text-align:center}
+.big small{font-size:.24em;letter-spacing:2px;color:var(--ink3);
+  margin-left:8px;font-family:var(--sans);font-weight:400}
+
+/* ===== 路线条（竖排，手机友好） ===== */
+.vroute{width:100%;max-width:330px;margin:26px auto 0;position:relative;padding-left:26px}
+.vroute::before{content:'';position:absolute;left:5px;top:14px;bottom:14px;
+  width:1px;background:var(--line)}
+.vroute .prog{position:absolute;left:5px;top:14px;width:1px;background:var(--ink);
+  height:0;transition:height 1.4s cubic-bezier(.4,0,.2,1)}
+.vroute .step{position:relative;padding:0 0 22px 0;opacity:0;transform:translateX(-8px);
+  transition:opacity .45s ease,transform .45s ease}
+.vroute .step.show{opacity:1;transform:translateX(0)}
+.vroute .step:last-child{padding-bottom:0}
+.vroute .step::before{content:'';position:absolute;left:-25px;top:7px;width:9px;height:9px;
+  border:1.5px solid var(--ink);border-radius:50%;background:var(--paper);
+  transition:background .4s ease}
+.vroute .step.show::before{background:var(--ink)}
+.vroute .nm{font-size:14px;font-weight:600;letter-spacing:.5px;line-height:1.4}
+.vroute .ds{font-size:11.5px;color:var(--ink3);margin-top:3px;letter-spacing:.3px}
+
+/* ===== 卡片 ===== */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:11px;
+  width:100%;max-width:360px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);padding:16px 12px;text-align:center}
+.card .k{font-size:9.5px;letter-spacing:2.5px;color:var(--ink3);margin-bottom:8px}
+.card .v{font-size:clamp(15px,4.6vw,19px);font-weight:600;font-family:var(--serif);
+  letter-spacing:.5px;line-height:1.25}
+.card .n{font-size:10px;color:var(--ink3);margin-top:5px;letter-spacing:.2px;line-height:1.6}
+
+/* 单列大卡 */
+.card.one{grid-column:1/-1}
+
+/* 三个坑 */
+.pits{width:100%;max-width:360px;margin-top:26px;display:flex;flex-direction:column;gap:11px}
+.pit{background:var(--card);border:1px solid var(--line);border-left:2px solid var(--ink);
+  padding:15px 16px;opacity:1;transform:none}
+.pit .t{font-size:14.5px;font-weight:600;letter-spacing:.3px;line-height:1.4}
+.pit .d{font-size:11.5px;color:var(--ink2);margin-top:6px;line-height:1.8}
+.pit .d b{font-weight:600;color:var(--ink)}
+
+/* 提示 */
+.tip{margin-top:26px;font-size:clamp(11.5px,3.2vw,13px);color:var(--ink2);
+  letter-spacing:.3px;line-height:2;text-align:center;max-width:330px}
+.tip strong{font-weight:600;color:var(--ink)}
+.tip.warn{border-left:2px solid var(--ink);padding-left:14px;text-align:left;max-width:330px}
+.src{font-size:10px;color:var(--ink3);margin-top:16px;text-align:center;letter-spacing:.2px;line-height:1.7}
+
+/* 封面 */
+.cover{background:linear-gradient(165deg,#f5f3ef 0%,#e9e6e0 100%)}
+
+/* 海拔图 */
+.elev{width:100%;max-width:320px;margin-top:16px}
+.elev svg{width:100%;display:block;overflow:visible}
+.elev .path{stroke-dasharray:1200;stroke-dashoffset:1200;
+  transition:stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1) .2s}
+.slide.on .elev .path{stroke-dashoffset:0}
+.elev .fill{opacity:0;transition:opacity .9s ease 1s}
+.slide.on .elev .fill{opacity:1}
+
+/* 按钮 */
+.cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  padding:15px 34px;font-size:13px;letter-spacing:2px;border-radius:100px;
+  font-weight:600;margin-top:34px}
+.cta:active{transform:scale(.97)}
+.backlink{display:block;margin-top:20px;color:var(--ink3);font-size:11.5px;
+  letter-spacing:1.5px;text-decoration:none}
+
+/* 小屏微调 */
+@media (max-height:640px){
+  .slide{padding-top:calc(5vh + 14px)}
+  .big{font-size:clamp(46px,15vw,72px)}
+  .cards{margin-top:20px;gap:9px}
+  .tip{margin-top:18px}
+  .vroute{margin-top:18px}
+  .vroute .step{padding-bottom:16px}
+}
+@media (min-width:520px){
+  .cards{max-width:420px;grid-template-columns:1fr 1fr 1fr}
+  .pits{max-width:420px}
+  .vroute{max-width:380px}
+  .tip{max-width:380px}
+}
+</style>
+</head>
+<body>
+<div id="ticks"></div>
+<div id="bar"></div>
+<div id="deck">
+
+<!-- 1 封面 -->
+<section class="slide cover on">
+  <div class="kicker">Transit</div>
+  <h1>怎么进出<br>这条 50 公里</h1>
+  <div class="hr"></div>
+  <p class="sub">从北京出发，走完再回到伊尔库茨克<br>10 屏看完</p>
+</section>
+
+<!-- 2 总览 -->
+<section class="slide">
+  <div class="kicker">Route</div>
+  <h2>五段路，缺一段就走不成</h2>
+  <div class="vroute">
+    <div class="prog"></div>
+    <div class="step"><div class="nm">伊尔库茨克</div><div class="ds">北京直飞 3 小时</div></div>
+    <div class="step"><div class="nm">利斯特维扬卡</div><div class="ds">公交 526 路 · 366 ₽ · 1 小时</div></div>
+    <div class="step"><div class="nm">大科特</div><div class="ds">区间船 · 1,500 ₽ · 25 分钟</div></div>
+    <div class="step"><div class="nm">大戈洛</div><div class="ds">徒步三天 · 45.8 公里</div></div>
+    <div class="step"><div class="nm">伊尔库茨克</div><div class="ds">长途汽车 123 公里 · 也可包车 4,000 ₽</div></div>
+  </div>
+  <p class="tip">徒步只有<strong>利斯特维扬卡 → 大科特 → 大戈洛</strong>这一段<br>前后两段是公交、船和包车</p>
+</section>
+
+<!-- 3 北京飞 -->
+<section class="slide">
+  <div class="kicker">第一段</div>
+  <div class="big">3<small>小时</small></div>
+  <h2 style="margin-top:22px">北京 → 伊尔库茨克</h2>
+  <div class="cards">
+    <div class="card"><div class="k">航班</div><div class="v">CA869</div><div class="n">12:55 起飞</div></div>
+    <div class="card"><div class="k">到达</div><div class="v">16:00</div><div class="n">当地时间</div></div>
+    <div class="card one"><div class="k">时差</div><div class="v">0 小时</div><div class="n">伊尔库茨克与北京同一时区</div></div>
+  </div>
+  <p class="tip">中俄<strong>互免签证</strong><br>持 6 个月以上有效期护照直接入境</p>
+</section>
+
+<!-- 4 公交 -->
+<section class="slide">
+  <div class="kicker">第二段</div>
+  <h2>伊尔库茨克 → 利斯特维扬卡</h2>
+  <div class="cards">
+    <div class="card"><div class="k">线路</div><div class="v">526 路</div><div class="n">长途公交</div></div>
+    <div class="card"><div class="k">票价</div><div class="v">366 ₽</div><div class="n">350 + 16 站务费</div></div>
+    <div class="card"><div class="k">用时</div><div class="v">约 1 小时</div><div class="n">68 公里</div></div>
+    <div class="card"><div class="k">末班</div><div class="v">15:30</div><div class="n">从利镇回伊市</div></div>
+  </div>
+  <p class="tip warn">16:00 落地，<strong>赶不上</strong>当天末班车<br>所以第一晚必须住伊尔库茨克</p>
+</section>
+
+<!-- 5 区间船 -->
+<section class="slide">
+  <div class="kicker">第三段</div>
+  <h2>利斯特维扬卡 → 大科特</h2>
+  <div class="cards">
+    <div class="card"><div class="k">船票</div><div class="v">1,500 ₽</div><div class="n">成人单程</div></div>
+    <div class="card"><div class="k">儿童</div><div class="v">1,000 ₽</div><div class="n">单程</div></div>
+    <div class="card"><div class="k">用时</div><div class="v">25–30 分</div><div class="n">湖上航线</div></div>
+    <div class="card"><div class="k">利镇发船</div><div class="v">09:00</div><div class="n">10:00 / 17:30 / 18:30</div></div>
+  </div>
+  <p class="tip">6–9 月通航<br><strong>6 月和 9 月每周一、周四不发船</strong></p>
+</section>
+
+<!-- 6 徒步 + 海拔 -->
+<section class="slide" id="s6">
+  <div class="kicker">第四段</div>
+  <div class="big" style="font-size:clamp(48px,15vw,76px)">45.8<small>公里</small></div>
+  <h2 style="margin-top:12px;font-size:clamp(17px,4.8vw,23px)">三天，两晚</h2>
+  <div class="cards" style="margin-top:18px;gap:9px">
+    <div class="card" style="padding:12px 8px"><div class="k">第一天</div><div class="v">16 km</div><div class="n">利镇 → 黑谷营地</div></div>
+    <div class="card" style="padding:12px 8px"><div class="k">第二天</div><div class="v">17 km</div><div class="n">→ 大卡季利内角</div></div>
+    <div class="card" style="padding:12px 8px"><div class="k">第三天</div><div class="v">17 km</div><div class="n">→ 大戈洛</div></div>
+    <div class="card" style="padding:12px 8px"><div class="k">累计爬升</div><div class="v">2,433 m</div><div class="n">GPS 实测</div></div>
+  </div>
+  <div class="elev">
+    <svg viewBox="-34 -6 408 132" style="width:100%;display:block">
+      <defs>
+        <linearGradient id="ge" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0.10"/>
+          <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="106" x2="340" y2="106" stroke="#e8e6e1" stroke-width="1"/>
+      <path class="fill" d="M0.0,84.1 L2.0,79.2 L4.0,75.7 L6.3,68.0 L9.0,59.1 L11.1,52.0 L12.7,42.1 L15.2,23.5 L16.4,16.2 L17.4,14.2 L19.5,14.0 L20.5,15.8 L21.8,20.2 L25.9,36.8 L30.2,53.1 L32.4,60.7 L36.5,76.8 L39.9,89.0 L41.6,92.7 L43.0,95.4 L44.5,100.2 L45.2,102.7 L46.4,96.5 L46.8,93.6 L47.5,93.2 L48.1,84.3 L49.4,81.7 L50.1,81.9 L50.9,77.0 L51.6,83.7 L52.3,85.4 L53.4,88.5 L54.9,92.7 L55.8,99.6 L57.7,98.5 L59.1,97.8 L60.8,102.9 L62.2,95.4 L63.9,99.8 L65.6,99.6 L66.9,96.5 L67.7,97.6 L68.6,96.7 L69.6,97.2 L71.7,98.5 L73.5,101.8 L74.6,102.7 L76.2,100.9 L77.3,102.2 L78.0,103.1 L79.1,99.8 L80.0,101.6 L80.8,102.2 L82.7,97.8 L84.1,100.0 L85.2,102.0 L86.1,101.4 L87.8,100.5 L90.1,94.3 L90.8,98.0 L91.5,99.1 L92.7,97.4 L94.0,99.1 L94.9,98.9 L96.6,102.9 L99.0,98.7 L101.1,98.0 L103.0,98.5 L105.1,99.6 L107.3,97.8 L108.7,105.1 L109.5,105.1 L112.2,99.1 L117.9,99.4 L120.0,101.4 L124.4,101.1 L125.3,104.0 L126.0,104.5 L128.2,100.9 L130.3,104.0 L132.8,104.9 L134.8,104.9 L136.9,105.1 L138.6,102.0 L141.7,100.0 L144.3,101.1 L146.0,101.1 L148.7,101.6 L149.9,102.9 L151.3,101.6 L152.6,100.9 L154.2,103.1 L155.1,103.1 L158.3,97.6 L161.1,105.6 L163.2,94.9 L165.0,83.9 L167.7,77.5 L171.0,91.8 L172.3,100.0 L172.9,93.2 L173.4,91.2 L174.0,87.2 L174.2,84.5 L174.6,80.6 L175.6,76.6 L176.3,83.7 L176.9,83.4 L177.4,86.5 L178.0,86.5 L178.4,89.6 L179.0,88.3 L179.5,89.4 L180.1,90.7 L180.3,92.1 L180.6,93.8 L180.8,95.8 L181.6,96.0 L182.4,95.4 L183.1,95.2 L183.8,97.4 L185.5,103.3 L187.3,102.0 L188.6,101.8 L190.7,104.9 L192.2,97.4 L193.4,103.8 L194.3,96.7 L196.1,98.7 L197.3,102.5 L199.3,102.9 L200.7,103.3 L202.1,102.5 L204.1,105.3 L205.5,104.5 L208.7,98.9 L214.2,95.2 L217.3,100.0 L219.9,98.9 L224.1,101.8 L226.9,105.1 L230.0,103.6 L235.6,102.9 L241.9,104.7 L247.2,106.0 L251.2,105.1 L254.4,104.5 L255.4,102.7 L259.6,99.6 L268.9,101.8 L286.0,100.0 L296.8,100.0 L305.3,100.5 L308.9,104.7 L310.9,102.7 L312.3,100.9 L313.7,103.3 L317.3,97.8 L323.5,100.0 L335.9,103.6 L340.0,102.7 L340.0,106 L0,106 Z" fill="url(#ge)" stroke="none"/>
+      <path class="path" d="M0.0,84.1 L2.0,79.2 L4.0,75.7 L6.3,68.0 L9.0,59.1 L11.1,52.0 L12.7,42.1 L15.2,23.5 L16.4,16.2 L17.4,14.2 L19.5,14.0 L20.5,15.8 L21.8,20.2 L25.9,36.8 L30.2,53.1 L32.4,60.7 L36.5,76.8 L39.9,89.0 L41.6,92.7 L43.0,95.4 L44.5,100.2 L45.2,102.7 L46.4,96.5 L46.8,93.6 L47.5,93.2 L48.1,84.3 L49.4,81.7 L50.1,81.9 L50.9,77.0 L51.6,83.7 L52.3,85.4 L53.4,88.5 L54.9,92.7 L55.8,99.6 L57.7,98.5 L59.1,97.8 L60.8,102.9 L62.2,95.4 L63.9,99.8 L65.6,99.6 L66.9,96.5 L67.7,97.6 L68.6,96.7 L69.6,97.2 L71.7,98.5 L73.5,101.8 L74.6,102.7 L76.2,100.9 L77.3,102.2 L78.0,103.1 L79.1,99.8 L80.0,101.6 L80.8,102.2 L82.7,97.8 L84.1,100.0 L85.2,102.0 L86.1,101.4 L87.8,100.5 L90.1,94.3 L90.8,98.0 L91.5,99.1 L92.7,97.4 L94.0,99.1 L94.9,98.9 L96.6,102.9 L99.0,98.7 L101.1,98.0 L103.0,98.5 L105.1,99.6 L107.3,97.8 L108.7,105.1 L109.5,105.1 L112.2,99.1 L117.9,99.4 L120.0,101.4 L124.4,101.1 L125.3,104.0 L126.0,104.5 L128.2,100.9 L130.3,104.0 L132.8,104.9 L134.8,104.9 L136.9,105.1 L138.6,102.0 L141.7,100.0 L144.3,101.1 L146.0,101.1 L148.7,101.6 L149.9,102.9 L151.3,101.6 L152.6,100.9 L154.2,103.1 L155.1,103.1 L158.3,97.6 L161.1,105.6 L163.2,94.9 L165.0,83.9 L167.7,77.5 L171.0,91.8 L172.3,100.0 L172.9,93.2 L173.4,91.2 L174.0,87.2 L174.2,84.5 L174.6,80.6 L175.6,76.6 L176.3,83.7 L176.9,83.4 L177.4,86.5 L178.0,86.5 L178.4,89.6 L179.0,88.3 L179.5,89.4 L180.1,90.7 L180.3,92.1 L180.6,93.8 L180.8,95.8 L181.6,96.0 L182.4,95.4 L183.1,95.2 L183.8,97.4 L185.5,103.3 L187.3,102.0 L188.6,101.8 L190.7,104.9 L192.2,97.4 L193.4,103.8 L194.3,96.7 L196.1,98.7 L197.3,102.5 L199.3,102.9 L200.7,103.3 L202.1,102.5 L204.1,105.3 L205.5,104.5 L208.7,98.9 L214.2,95.2 L217.3,100.0 L219.9,98.9 L224.1,101.8 L226.9,105.1 L230.0,103.6 L235.6,102.9 L241.9,104.7 L247.2,106.0 L251.2,105.1 L254.4,104.5 L255.4,102.7 L259.6,99.6 L268.9,101.8 L286.0,100.0 L296.8,100.0 L305.3,100.5 L308.9,104.7 L310.9,102.7 L312.3,100.9 L313.7,103.3 L317.3,97.8 L323.5,100.0 L335.9,103.6 L340.0,102.7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="113.3" y1="14" x2="113.3" y2="106" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="2.5 2.5"/>
+      <line x1="226.7" y1="14" x2="226.7" y2="106" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="2.5 2.5"/>
+      <text x="57" y="9" font-size="9.5" fill="#aaa" text-anchor="middle" font-family="sans-serif">第 1 天</text>
+      <text x="170" y="9" font-size="9.5" fill="#aaa" text-anchor="middle" font-family="sans-serif">第 2 天</text>
+      <text x="283" y="9" font-size="9.5" fill="#aaa" text-anchor="middle" font-family="sans-serif">第 3 天</text>
+      <circle cx="19.5" cy="14.0" r="2.2" fill="#1a1a1a"/>
+      <text x="27.5" y="17.0" font-size="10" fill="#1a1a1a" font-family="sans-serif" font-weight="600">869 m</text>
+      <text x="0" y="120" font-size="9" fill="#999" font-family="sans-serif">利镇 552 m</text>
+      <text x="340" y="120" font-size="9" fill="#999" text-anchor="end" font-family="sans-serif">大戈洛 468 m</text>
+    </svg>
+  </div>
+  <p class="tip" style="margin-top:14px;font-size:11.5px">绝大部分路段<strong>没有手机信号</strong>　·　营地自己选，湖水需净水</p>
+</section>
+
+<!-- 7 返程 -->
+<section class="slide">
+  <div class="kicker">第五段</div>
+  <h2>大戈洛 → 伊尔库茨克</h2>
+  <div class="cards">
+    <div class="card"><div class="k">方式</div><div class="v">长途汽车</div><div class="n">也可包车</div></div>
+    <div class="card"><div class="k">距离</div><div class="v">123 公里</div><div class="n">经库尔图克</div></div>
+    <div class="card one"><div class="k">价格</div><div class="v">4,000 ₽ 起 / 辆</div><div class="n">可坐 4 人</div></div>
+  </div>
+  <p class="tip">有长途汽车从大戈洛发车，车次少，需要提前查好时刻<br>赶不上车就只能包车，<strong>4,000 ₽ 起/辆</strong></p>
+</section>
+
+<!-- 8 许可 -->
+<section class="slide">
+  <div class="kicker">别忘了一件事</div>
+  <h2>国家公园通行许可</h2>
+  <div class="cards">
+    <div class="card"><div class="k">外国公民</div><div class="v">700 ₽</div><div class="n">每人</div></div>
+    <div class="card"><div class="k">俄公民</div><div class="v">350 ₽</div><div class="n">每人</div></div>
+    <div class="card one"><div class="k">有效期</div><div class="v">7 天</div><div class="n">一份许可覆盖全程</div></div>
+  </div>
+  <p class="tip">线路绝大部分在<strong>贝加尔国家公园</strong>范围内<br>没有许可进不去</p>
+  <p class="src">依据 ФГБУ «Заповедное Прибайкалье»<br>2025-12-25 第 12.25-3/2025 号令，2026-01-12 起执行</p>
+</section>
+
+<!-- 9 三个坑 -->
+<section class="slide">
+  <div class="kicker">最容易错的</div>
+  <h2>三个坑</h2>
+  <div class="pits">
+    <div class="pit"><div class="t">一 · 落地当天赶不上车</div><div class="d">16:00 落地，末班公交 <b>15:30</b> 已走。第一晚必须住伊尔库茨克。</div></div>
+    <div class="pit"><div class="t">二 · 船不是每天有</div><div class="d">6 月和 9 月<b>每周一、周四不发船</b>。9 月底之后停航。</div></div>
+    <div class="pit"><div class="t">三 · 大戈洛车次少</div><div class="d">有长途汽车但<b>班次很少</b>。赶不上就只得包车，4,000 ₽ 起。</div></div>
+  </div>
+</section>
+
+<!-- 10 结尾 -->
+<section class="slide cover">
+  <div class="kicker">Service</div>
+  <h1 style="font-size:clamp(22px,6.6vw,32px)">这些事<br>可以不用你自己查</h1>
+  <div class="hr"></div>
+  <p class="sub">全程后勤服务包 · 1,200 元 / 团起<br>行前方案、许可协助、预订协助、途中远程协助</p>
+  <a class="cta" href="/logistics.html">看服务说明 →</a>
+  <a class="backlink" href="/">回首页</a>
+</section>
+
+</div>
+
+<div id="ctl">
+  <button id="btnPrev">←</button>
+  <div class="mid">
+    <button id="btnPlay">播放</button>
+    <span id="num">1 / 10</span>
+  </div>
+  <button id="btnNext">→</button>
+</div>
+
+<script>
+(function(){
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0, playing = false, timer = null;
+
+  // 每页停留时长（毫秒）——按内容多少单独设定
+  var DUR = [
+    3200,   // 1 封面
+    9500,   // 2 路线五段（逐条点亮，需要时间）
+    4200,   // 3 北京飞
+    5600,   // 4 公交（有警告）
+    5800,   // 5 区间船
+    7000,   // 6 徒步 + 海拔动画
+    5600,   // 7 返程
+    6200,   // 8 许可（有法条出处）
+    8000,   // 9 三个坑（逐条滑入）
+    6000    // 10 结尾
+  ];
+
+  var bar = document.getElementById('bar');
+  var num = document.getElementById('num');
+  var btnPlay = document.getElementById('btnPlay');
+
+  // 生成刻度
+  var ticks = document.getElementById('ticks');
+  for(var i=0;i<total;i++) ticks.appendChild(document.createElement('i'));
+
+  function anim(i){
+    // 第 2 页：竖排路线逐段点亮
+    if(i === 1){
+      var steps = [].slice.call(slides[1].querySelectorAll('.vroute .step'));
+      var prog = slides[1].querySelector('.vroute .prog');
+      steps.forEach(function(s){ s.classList.remove('show'); });
+      if(prog) prog.style.height = '0';
+      steps.forEach(function(s, k){
+        setTimeout(function(){
+          s.classList.add('show');
+          if(prog && steps.length > 1){
+            prog.style.height = (k / (steps.length - 1) * 100) + '%';
+          }
+        }, 500 + k * 620);
+      });
+    }
+    // 第 6 页：海拔曲线已由 CSS 动画驱动
+
+  }
+
+  function render(i){
+    idx = Math.max(0, Math.min(total-1, i));
+    slides.forEach(function(s, k){ s.classList.toggle('on', k === idx); });
+    if(slides[idx]) slides[idx].scrollTop = 0;
+    bar.style.width = ((idx+1)/total*100) + '%';
+    num.textContent = (idx+1) + ' / ' + total;
+    anim(idx);
+  }
+
+  function next(){
+    if(idx < total-1) render(idx+1);
+    else if(playing) stop();
+  }
+  function prev(){ render(idx-1); }
+
+  function start(){
+    playing = true;
+    btnPlay.textContent = '暂停';
+    btnPlay.classList.add('act');
+    tick();
+  }
+  function stop(){
+    playing = false;
+    btnPlay.textContent = '播放';
+    btnPlay.classList.remove('act');
+    clearTimeout(timer);
+  }
+  function tick(){
+    clearTimeout(timer);
+    var wait = DUR[idx] || 5500;
+    timer = setTimeout(function(){
+      if(!playing) return;
+      if(idx >= total-1){ stop(); return; }
+      render(idx+1);
+      tick();
+    }, wait);
+  }
+
+  document.getElementById('btnNext').onclick = function(){ stop(); next(); };
+  document.getElementById('btnPrev').onclick = function(){ stop(); prev(); };
+  btnPlay.onclick = function(){
+    if(playing) stop();
+    else { if(idx >= total-1) render(0); start(); }
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); stop(); next(); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); stop(); prev(); }
+  });
+
+  var sx = 0, sy = 0;
+  var deck = document.getElementById('deck');
+  deck.addEventListener('touchstart', function(e){
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, {passive:true});
+  deck.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx) > 46 && Math.abs(dx) > Math.abs(dy)){
+      stop();
+      dx < 0 ? next() : prev();
+    }
+  }, {passive:true});
+
+  render(0);
+})();
+</script>
+</body>
+</html>
