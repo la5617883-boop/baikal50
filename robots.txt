@@ -27,31 +27,37 @@ User-agent: Googlebot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Baiduspider
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: YandexBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: DuckDuckBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Applebot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 # ── AI 助手与检索 ──────────────────────────────────────────────
 # 欢迎抓页面与 GPX（GPX 内含版权署名元数据）
@@ -59,88 +65,105 @@ User-agent: GPTBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: meta-externalagent
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: cohere-ai
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Amazonbot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: YouBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 User-agent: Bytespider
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 # 上述未显式列出的 AI 爬虫（含未来的新爬虫）走此默认组，行为一致
 User-agent: CCBot
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 # ── 默认：其他所有爬虫 ─────────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /track-summary.json
 Disallow: /track-*.json
+Disallow: /_internal/
 
 # ── 站点地图 ───────────────────────────────────────────────────
 Sitemap: https://baikal50.cn/sitemap.xml
